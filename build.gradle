@@ -26,8 +26,8 @@ def api_version = 1
 def api_featureset = 1
 
 // If TeamCity is running this build, lets set the version info
-if (hasProperty("teamcity")) {
-    version = minecraft_version + "-" + teamcity["build.number"] + "-universal"
+if (hasProperty("CI")) {
+    version = minecraft_version + "-" + CIRCLE_BUILD_NUM + "-universal"
 
     // Fix for main branch being built
     version = version.replaceAll("/", "-")

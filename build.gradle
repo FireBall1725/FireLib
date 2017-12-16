@@ -20,18 +20,18 @@ buildscript {
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-version = minecraft_version + "-" + "b" + cibuild + "-univeral"
 archivesBaseName = cibasename
 def api_version = 1
 def api_featureset = 1
 
-// If TeamCity is running this build, lets set the version info
-if (hasProperty("CI")) {
-    version = minecraft_version + "-" + CIRCLE_BUILD_NUM + "-universal"
+project.ext {
+    buildNum = System.getenv("CIRCLE_BUILD_NUM") ?: "0"
 
-    // Fix for main branch being built
-    version = version.replaceAll("/", "-")
+    curseApiKey = System.getenv("CURSE_API_KEY") ?: ""
+    curseRelease = System.getenv("CIRCLE_RELEASE_TYPE") ?: "alpha"
 }
+
+version = minecraft_version + "-b" + buildNum + "-universal"
 
 minecraft {
     version = minecraft_version + "-" + forge_version

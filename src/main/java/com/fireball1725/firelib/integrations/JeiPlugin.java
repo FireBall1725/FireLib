@@ -8,18 +8,30 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.proxy;
+package com.fireball1725.firelib.integrations;
 
-import com.fireball1725.firelib.FireLib;
-import com.fireball1725.firelib.proxy.base.IProxyServerBase;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import com.fireball1725.firelib.guimaker.GuiMakerGuiContainer;
+import mezz.jei.api.IModPlugin;
+import mezz.jei.api.IModRegistry;
+import mezz.jei.api.ISubtypeRegistry;
+import mezz.jei.api.gui.IAdvancedGuiHandler;
+import mezz.jei.api.ingredients.IModIngredientRegistration;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-@SuppressWarnings("unused")
-@SideOnly(Side.SERVER)
-public class ServerProxy extends CommonProxy implements IProxy, IProxyServerBase {
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.awt.*;
 
+public class JeiPlugin implements IModPlugin {
+    @Override
+    public void registerItemSubtypes(ISubtypeRegistry subtypeRegistry) {
+
+    }
+
+    @Override
+    public void registerIngredients(IModIngredientRegistration registry) {
+
+    }
 }
-

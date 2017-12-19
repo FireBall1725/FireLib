@@ -20,7 +20,18 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/minecraft/deobfedDeps/providedDummy.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib).jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../../.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/minecraft/deobfedDeps/deobf/mezz/jei/jei_1.12.2/4.8.5.132/jei_1.12.2-4.8.5.132.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -29,12 +40,10 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib).jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/minecraft/deobfedDeps/providedDummy.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES>
-          <root url="jar://$MODULE_DIR$/../../.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/" />
-        </SOURCES>
+        <SOURCES />
       </library>
     </orderEntry>
     <orderEntry type="library" name="Gradle: com.google.code.findbugs:jsr305:3.0.1" level="project" />

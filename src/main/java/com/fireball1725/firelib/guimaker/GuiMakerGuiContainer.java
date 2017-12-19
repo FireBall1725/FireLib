@@ -8,18 +8,29 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.proxy;
+package com.fireball1725.firelib.guimaker;
 
-import com.fireball1725.firelib.FireLib;
-import com.fireball1725.firelib.proxy.base.IProxyServerBase;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.tileentity.TileEntity;
 
-@SuppressWarnings("unused")
-@SideOnly(Side.SERVER)
-public class ServerProxy extends CommonProxy implements IProxy, IProxyServerBase {
+public class GuiMakerGuiContainer extends GuiContainer {
+    private GuiMaker guiMaker;
+    private final InventoryPlayer inventoryPlayer;
+    private final TileEntity tileEntity;
+    private int mouseX = 0;
+    private int mouseY = 0;
 
+    public GuiMakerGuiContainer(InventoryPlayer inventoryPlayer, TileEntity tileEntity, int id) {
+        super(new GuiMakerContainer(inventoryPlayer, tileEntity, id));
+
+        this.inventoryPlayer = inventoryPlayer;
+        this.tileEntity = tileEntity;
+
+    }
+
+    @Override
+    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+
+    }
 }
-

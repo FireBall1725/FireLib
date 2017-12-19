@@ -10,10 +10,13 @@
 
 package com.fireball1725.firelib;
 
+import com.fireball1725.firelib.guimaker.GuiMakerGuiHandler;
 import com.fireball1725.firelib.proxy.IProxy;
 import com.fireball1725.firelib.proxy.base.IProxyBase;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 @Mod(modid = ModInfo.MOD_ID, name = ModInfo.MOD_NAME, version = ModInfo.VERSION_BUILD)
 public class FireLib extends FireMod {

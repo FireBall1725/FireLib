@@ -11,15 +11,15 @@
 package com.fireball1725.firelib.proxy;
 
 import com.fireball1725.firelib.FireLib;
-import com.fireball1725.firelib.proxy.base.IProxyServerBase;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import com.fireball1725.firelib.guimaker.GuiMakerGuiHandler;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
-@SuppressWarnings("unused")
-@SideOnly(Side.SERVER)
-public class ServerProxy extends CommonProxy implements IProxy, IProxyServerBase {
+public abstract class CommonProxy implements IProxy {
+    @Override
+    public void preInitEnd(FMLPreInitializationEvent event) {
+        //IProxy.super.preInitEnd(event);
 
+        NetworkRegistry.INSTANCE.registerGuiHandler(FireLib.instance, new GuiMakerGuiHandler());
+    }
 }
-

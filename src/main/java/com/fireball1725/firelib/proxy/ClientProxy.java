@@ -24,10 +24,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SuppressWarnings("unused")
 @SideOnly(Side.CLIENT)
-public class ClientProxy implements IProxy, IProxyClientBase {
+public class ClientProxy extends CommonProxy implements IProxy, IProxyClientBase {
     @Override
     public void registerEventHandlers() {
-        IProxy.super.registerEventHandlers();
+        super.registerEventHandlers();
 
         // Register the Client Gui Event Handler
         FireLib.instance.getLogger().info("Registering Client Gui Event Handler");
@@ -35,15 +35,8 @@ public class ClientProxy implements IProxy, IProxyClientBase {
     }
 
     @Override
-    public void preInitEnd(FMLPreInitializationEvent event) {
-        IProxy.super.preInitEnd(event);
-
-
-    }
-
-    @Override
     public void initEnd(FMLInitializationEvent event) {
-        IProxy.super.initEnd(event);
+        super.initEnd(event);
 
         // Register the Benihime sword as a layer for all players
         FireLib.instance.getLogger().info("Registering Benihime Player Render Layer");

@@ -14,8 +14,11 @@ import com.fireball1725.firelib.proxy.base.IProxyBase;
 import com.fireball1725.firelib.util.FireLog;
 import com.fireball1725.firelib.util.ModEventHandlerHack;
 import com.google.common.base.Stopwatch;
+import net.minecraft.block.Block;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.*;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.apache.commons.lang3.JavaVersion;
 import org.apache.commons.lang3.SystemUtils;
 
@@ -37,6 +40,11 @@ public abstract class FireMod {
     public abstract String getModId();
 
     public abstract IProxyBase proxy();
+
+    public Object getModBlockRegistry() { return null; }
+
+    public Object getModItemRegistry() { return null; }
+
 
     // FML Events
 
@@ -105,5 +113,10 @@ public abstract class FireMod {
     @Mod.EventHandler
     public final void onServerStopped(FMLServerStoppedEvent event) {
         proxy().onServerStopped(event);
+    }
+
+    @SubscribeEvent
+    public final void registerBlocks(RegistryEvent.Register<Block> event) {
+        //proxy().registerBlocks(this, event.getRegistry());
     }
 }

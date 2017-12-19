@@ -10,11 +10,13 @@
 
 package com.fireball1725.firelib;
 
+import com.fireball1725.firelib.blocks.IFireBlocks;
 import com.fireball1725.firelib.proxy.base.IProxyBase;
 import com.fireball1725.firelib.util.FireLog;
 import com.fireball1725.firelib.util.ModEventHandlerHack;
 import com.google.common.base.Stopwatch;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.*;
@@ -45,6 +47,9 @@ public abstract class FireMod {
 
     public Object getModItemRegistry() { return null; }
 
+    public Class getBlockEnum() { return null; }
+
+    public Class getItemEnum() { return null; }
 
     // FML Events
 
@@ -117,6 +122,36 @@ public abstract class FireMod {
 
     @SubscribeEvent
     public final void registerBlocks(RegistryEvent.Register<Block> event) {
-        //proxy().registerBlocks(this, event.getRegistry());
+        this.getLogger().info(">>> Trying to register Blocks...");
+        if (getBlockEnum() != null)
+            registerEnum(getBlockEnum());
+    }
+
+    @SubscribeEvent
+    public final void registerItems(RegistryEvent.Register<Item> event) {
+        this.getLogger().info(">>> Trying to register Items...");
+        if (getItemEnum() != null)
+            registerEnum(getItemEnum());
+    }
+
+
+
+
+
+
+
+
+
+
+    private <E extends Enum<E>> void registerEnum(Class<E> enumData) {
+        for (Enum<E> enumBlock: enumData.getEnumConstants()) {
+            if (enumBlock instanceof IFireBlocks) {
+
+            }
+
+            /*if (enumBlock instanceof IFireItems) {
+
+            }*/
+        }
     }
 }

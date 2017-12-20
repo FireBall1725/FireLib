@@ -22,9 +22,6 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 @Mod(modid = ModInfo.MOD_ID, name = ModInfo.MOD_NAME, version = ModInfo.VERSION_BUILD)
 public class FireLib extends FireMod {
 
-    @Mod.Instance(ModInfo.MOD_ID)
-    public static FireLib instance;
-
     @SidedProxy(clientSide = ModInfo.CLIENT_PROXY_CLASS, serverSide = ModInfo.SERVER_PROXY_CLASS)
     public static IProxy proxy;
 

@@ -11,9 +11,11 @@
 package com.fireball1725.firelib;
 
 import com.fireball1725.firelib.blocks.IFireBlocks;
+import com.fireball1725.firelib.items.IFireItems;
 import com.fireball1725.firelib.proxy.base.IProxyBase;
 import com.fireball1725.firelib.util.FireLog;
 import com.fireball1725.firelib.util.ModEventHandlerHack;
+import com.fireball1725.firelib.util.RegistrationHelper;
 import com.google.common.base.Stopwatch;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -21,6 +23,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.commons.lang3.JavaVersion;
 import org.apache.commons.lang3.SystemUtils;
 
@@ -28,6 +31,9 @@ import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings("unused")
 public abstract class FireMod {
+    @Mod.Instance
+    public static FireMod instance;
+
     private final FireLog logger;
 
     public FireMod() {
@@ -124,14 +130,17 @@ public abstract class FireMod {
     public final void registerBlocks(RegistryEvent.Register<Block> event) {
         this.getLogger().info(">>> Trying to register Blocks...");
         if (getBlockEnum() != null)
-            registerEnum(getBlockEnum());
+            registerEnum(getBlockEnum(), event.getRegistry());
     }
 
     @SubscribeEvent
     public final void registerItems(RegistryEvent.Register<Item> event) {
         this.getLogger().info(">>> Trying to register Items...");
+        if (getBlockEnum() != null)
+            registerEnum(getBlockEnum(), event.getRegistry());
+
         if (getItemEnum() != null)
-            registerEnum(getItemEnum());
+            registerEnum(getItemEnum(), event.getRegistry());
     }
 
 
@@ -143,15 +152,20 @@ public abstract class FireMod {
 
 
 
-    private <E extends Enum<E>> void registerEnum(Class<E> enumData) {
-        for (Enum<E> enumBlock: enumData.getEnumConstants()) {
-            if (enumBlock instanceof IFireBlocks) {
-
+    private <E extends Enum<E>> void registerEnum(Class<E> enumData, IForgeRegistry event) {
+        for (Enum<E> enumObject: enumData.getEnumConstants()) {
+            if (event.getRegistrySuperType() == Block.class && enumObject instanceof IFireBlocks) {
+                Block block = RegistrationHelper.registerBlock(event, ((IFireBlocks) enumObject).getBlockClass());
+                ((IFireBlocks) enumObject).setBlock(block);
             }
 
-            /*if (enumBlock instanceof IFireItems) {
+            if (event.getRegistrySuperType() == Item.class && enumObject instanceof IFireBlocks) {
+                RegistrationHelper.registerItemBlock(event, ((IFireBlocks) enumObject).getBlock(), ((IFireBlocks) enumObject).getItemBlockClass());
+            }
 
-            }*/
+            if (event.getRegistrySuperType() == Item.class && enumObject instanceof IFireItems) {
+
+            }
         }
     }
 }

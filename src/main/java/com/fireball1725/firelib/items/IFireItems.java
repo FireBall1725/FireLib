@@ -8,48 +8,7 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.blocks;
+package com.fireball1725.firelib.items;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemBlock;
-
-public enum Blocks implements IFireBlocks {
-    BLOCK_TEST(TestBlock.class),
-    //BLOCK_TEST_2(TestBlock2.class, ItemBlock.class)
-    ;
-
-    private final Class<? extends BlockBase> blockClass;
-    private final Class<? extends ItemBlock> itemBlockClass;
-    private Block block;
-
-    Blocks(Class<? extends BlockBase> blockClass) {
-        this(blockClass, ItemBlock.class);
-    }
-
-    Blocks(Class<? extends BlockBase> blockClass, Class<? extends ItemBlock> itemBlockClass) {
-        this.blockClass = blockClass;
-        this.itemBlockClass = itemBlockClass;
-    }
-
-    @Override
-    public Class<? extends BlockBase> getBlockClass() {
-        return this.blockClass;
-    }
-
-    @Override
-    public Class<? extends ItemBlock> getItemBlockClass() {
-        return this.itemBlockClass;
-    }
-
-    @Override
-    public void setBlock(Block block) {
-        this.block = block;
-    }
-
-    @Override
-    public Block getBlock() {
-        return this.block;
-    }
-
-
+public interface IFireItems {
 }

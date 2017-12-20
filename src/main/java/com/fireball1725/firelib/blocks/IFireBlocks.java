@@ -10,12 +10,17 @@
 
 package com.fireball1725.firelib.blocks;
 
+import com.fireball1725.firelib.FireMod;
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemBlock;
+import net.minecraftforge.registries.IForgeRegistry;
+
+import java.util.Locale;
 
 public interface IFireBlocks {
     Class<? extends BlockBase> getBlockClass();
+    Class<? extends ItemBlock> getItemBlockClass();
 
-    default void registerBlocks() {
-
-    }
+    void setBlock(Block block);
+    Block getBlock();
 }

@@ -19,6 +19,7 @@ import com.fireball1725.firelib.util.RegistrationHelper;
 import com.google.common.base.Stopwatch;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.*;
@@ -31,12 +32,12 @@ import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings("unused")
 public abstract class FireMod {
-    @Mod.Instance
     public static FireMod instance;
 
     private final FireLog logger;
 
     public FireMod() {
+        instance = this;
         this.logger = new FireLog(this);
         ModEventHandlerHack.doHack(this);
     }
@@ -143,7 +144,10 @@ public abstract class FireMod {
             registerEnum(getItemEnum(), event.getRegistry());
     }
 
+    @SubscribeEvent
+    public final void modelRegistrationEvent(ModelRegistryEvent event) {
 
+    }
 
 
 

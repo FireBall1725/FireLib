@@ -8,48 +8,23 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.blocks;
+package com.fireball1725.testmod.common.blocks.test;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemBlock;
+import com.fireball1725.firelib.blocks.BlockBase;
+import com.fireball1725.firelib.blocks.BlockTileBase;
+import net.minecraft.block.material.Material;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
-public enum Blocks implements IFireBlocks {
-    BLOCK_TEST(TestBlock.class),
-    //BLOCK_TEST_2(TestBlock2.class, ItemBlock.class)
-    ;
-
-    private final Class<? extends BlockBase> blockClass;
-    private final Class<? extends ItemBlock> itemBlockClass;
-    private Block block;
-
-    Blocks(Class<? extends BlockBase> blockClass) {
-        this(blockClass, ItemBlock.class);
-    }
-
-    Blocks(Class<? extends BlockBase> blockClass, Class<? extends ItemBlock> itemBlockClass) {
-        this.blockClass = blockClass;
-        this.itemBlockClass = itemBlockClass;
+public class TestBlock2 extends BlockTileBase {
+    public TestBlock2() {
+        super(Material.IRON, "testblock");
+        this.setInternalName("testblock2");
+        this.setTileEnttiy(com.fireball1725.testmod.common.blocks.tileentities.TestBlock.class);
     }
 
     @Override
-    public Class<? extends BlockBase> getBlockClass() {
-        return this.blockClass;
+    public boolean hasGravity(World worldIn, BlockPos pos) {
+        return true;
     }
-
-    @Override
-    public Class<? extends ItemBlock> getItemBlockClass() {
-        return this.itemBlockClass;
-    }
-
-    @Override
-    public void setBlock(Block block) {
-        this.block = block;
-    }
-
-    @Override
-    public Block getBlock() {
-        return this.block;
-    }
-
-
 }

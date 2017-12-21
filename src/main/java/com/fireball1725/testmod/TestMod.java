@@ -8,13 +8,35 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.blocks;
+package com.fireball1725.testmod;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
+import com.fireball1725.firelib.FireMod;
+import com.fireball1725.firelib.proxy.base.IProxyBase;
+import com.fireball1725.testmod.common.blocks.Blocks;
+import com.fireball1725.testmod.proxy.IProxy;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
 
-public class TestBlock extends BlockBase {
-    public TestBlock() {
-        super(Material.CACTUS, "");
+@Mod(modid = ModInfo.MOD_ID, name = ModInfo.MOD_NAME, version = ModInfo.VERSION_BUILD)
+public class TestMod extends FireMod {
+    @Mod.Instance
+    public static TestMod instance;
+
+    @SidedProxy(clientSide = ModInfo.CLIENT_PROXY_CLASS, serverSide = ModInfo.SERVER_PROXY_CLASS)
+    public static IProxy proxy;
+
+    @Override
+    public IProxyBase proxy() {
+        return proxy;
+    }
+
+    @Override
+    public String getModId() {
+        return ModInfo.MOD_ID;
+    }
+
+    @Override
+    public Class getBlockEnum() {
+        return Blocks.class;
     }
 }

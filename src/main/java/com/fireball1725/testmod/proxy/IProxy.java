@@ -8,13 +8,24 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.blocks;
+package com.fireball1725.testmod.proxy;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
+import com.fireball1725.firelib.proxy.base.IProxyBase;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-public class TestBlock2 extends BlockBase {
-    public TestBlock2() {
-        super(Material.BARRIER, "");
+public interface IProxy extends IProxyBase {
+    @Override
+    default void registerCapabilities() {
+
+    }
+
+    @Override
+    default void initConfiguration(FMLPreInitializationEvent event) {
+
+    }
+
+    @Override
+    default void registerEventHandlers() {
+
     }
 }

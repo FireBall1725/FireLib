@@ -10,10 +10,12 @@
 
 package com.fireball1725.firelib.util;
 
+import com.fireball1725.firelib.FireLib;
 import com.fireball1725.firelib.FireMod;
 import com.fireball1725.firelib.blocks.BlockBase;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
+import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.Locale;
@@ -26,7 +28,7 @@ public class RegistrationHelper {
         try {
             block = blockClass.getConstructor().newInstance();
 
-            internalName = "hello_world"; //((BlockBase)block).getInternalName;
+            internalName = ((BlockBase)block).getInternalName();
 
             if (!internalName.equals(internalName.toLowerCase(Locale.US)))
                 throw new IllegalArgumentException(String.format("Unlocalized names need to be all lowercase! Block is %s", internalName));
@@ -39,7 +41,9 @@ public class RegistrationHelper {
 
             event.register(block);
 
-            // todo: if (block instanceof IBlockRenderer) {
+            if (block instanceof IBlockRenderer && FireMod.instance.proxy().getEffectiveSide() == Side.CLIENT) {
+                ((IBlockRenderer) block).registerBlockRenderer();
+            }
 
             FireMod.instance.getLogger().info(String.format("Registered block (%s)", blockClass.getCanonicalName()));
         } catch (Exception ex) {
@@ -58,6 +62,10 @@ public class RegistrationHelper {
             itemBlock.setRegistryName(block.getRegistryName());
 
             event.register(itemBlock);
+
+            if (block instanceof IBlockRenderer && FireMod.instance.proxy().getEffectiveSide() == Side.CLIENT) {
+                ((IBlockRenderer) block).registerBlockItemRenderer();
+            }
 
             FireMod.instance.getLogger().info(String.format("Registered block (%s)", itemBlockClass.getCanonicalName()));
         } catch (Exception ex) {

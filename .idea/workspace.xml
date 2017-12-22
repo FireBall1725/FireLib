@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d6495af-6a70-4a07-8f67-cf5da647a3d1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/FireMod.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/FireMod.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/blocks/BlockBase.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/blocks/BlockBase.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/blocks/IFireBlocks.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/blocks/IFireBlocks.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerGuiContainer.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerGuiContainer.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/integrations/JeiPlugin.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/integrations/JeiPlugin.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/items/IFireItems.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/items/IFireItems.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/proxy/ClientProxy.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/proxy/ClientProxy.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/proxy/ServerProxy.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/proxy/ServerProxy.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/util/RegistrationHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/util/RegistrationHelper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/blocks/Blocks.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/blocks/Blocks.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/blocks/test/TestBlock.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/blocks/test/TestBlock.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/items/Items.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/items/Items.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -39,11 +28,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="RegistrationHelper.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RegistrationHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/util/RegistrationHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+            <state relative-caret-position="112">
+              <caret line="15" column="49" lean-forward="true" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BlockBase.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/blocks/BlockBase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="451">
+              <caret line="145" column="20" lean-forward="true" selection-start-line="145" selection-start-column="20" selection-end-line="145" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -719,9 +718,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/items/Items.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/util/IProvideRecipe.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/FireMod.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/blocks/BlockBase.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/blocks/test/TestBlock.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/util/RegistrationHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/blocks/BlockBase.java" />
       </list>
     </option>
   </component>
@@ -802,6 +801,16 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
               <item name="firelib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
+              <item name="firelib" type="462c0819:PsiDirectoryNode" />
+              <item name="blocks" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
@@ -940,7 +949,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="external.system.task.project.file.to.start" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="copyright" />
-    <property name="SearchEverywhereHistoryKey" value="BlockAnvil&#9;PSI&#9;JAVA://net.minecraft.block.BlockAnvil&#10;EnumFa&#9;PSI&#9;JAVA://net.minecraft.util.EnumFacing&#10;BlockDis&#9;PSI&#9;JAVA://net.minecraft.block.BlockDispenser&#10;BlockFurn&#9;FILE&#9;jar:///Users/ereed/Repo/FireLib/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/net/minecraft/block/BlockFurnace.java&#10;BlockFurnace&#9;PSI&#9;JAVA://net.minecraft.block.BlockFurnace&#10;BlockLo&#9;PSI&#9;JAVA://net.minecraft.block.BlockLog&#10;Sand&#9;PSI&#9;JAVA://net.minecraft.init.Blocks#SAND&#10;ItemBlock&#9;PSI&#9;JAVA://net.minecraft.item.ItemBlock&#10;gui&#9;PSI&#9;JAVA://com.fireball1725.firelib.gui.GuiCustomizeSkin" />
+    <property name="SearchEverywhereHistoryKey" value="Sand&#9;FILE&#9;jar:///Users/ereed/Repo/FireLib/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/net/minecraft/block/BlockSand.java&#10;BlockAnvil&#9;PSI&#9;JAVA://net.minecraft.block.BlockAnvil&#10;EnumFa&#9;PSI&#9;JAVA://net.minecraft.util.EnumFacing&#10;BlockDis&#9;PSI&#9;JAVA://net.minecraft.block.BlockDispenser&#10;BlockFurn&#9;FILE&#9;jar:///Users/ereed/Repo/FireLib/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/net/minecraft/block/BlockFurnace.java&#10;BlockFurnace&#9;PSI&#9;JAVA://net.minecraft.block.BlockFurnace&#10;BlockLo&#9;PSI&#9;JAVA://net.minecraft.block.BlockLog&#10;ItemBlock&#9;PSI&#9;JAVA://net.minecraft.item.ItemBlock&#10;gui&#9;PSI&#9;JAVA://com.fireball1725.firelib.gui.GuiCustomizeSkin" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -1129,12 +1138,12 @@
       <workItem from="1513407482710" duration="18285000" />
       <workItem from="1513568775117" duration="2468000" />
       <workItem from="1513646037550" duration="46781000" />
-      <workItem from="1513908719369" duration="2327000" />
+      <workItem from="1513908719369" duration="2569000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72750000" />
+    <option name="totallyTimeSpent" value="72992000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1920" height="1104" extended-state="0" />
@@ -1219,20 +1228,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="55" column="29" lean-forward="false" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/net/minecraft/block/BlockSand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/net/minecraft/block/BlockFalling.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1528,14 +1524,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/blocks/BlockBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="699">
-          <caret line="244" column="38" lean-forward="false" selection-start-line="244" selection-start-column="38" selection-end-line="244" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/blocks/test/TestBlock.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -1583,8 +1571,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/util/RegistrationHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+        <state relative-caret-position="112">
+          <caret line="15" column="49" lean-forward="true" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/net/minecraft/block/BlockFalling.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="78" column="21" lean-forward="true" selection-start-line="78" selection-start-column="21" selection-end-line="78" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/net/minecraft/block/BlockSand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="16" column="36" lean-forward="false" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/blocks/BlockBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="145" column="20" lean-forward="true" selection-start-line="145" selection-start-column="20" selection-end-line="145" selection-end-column="20" />
           <folding />
         </state>
       </provider>

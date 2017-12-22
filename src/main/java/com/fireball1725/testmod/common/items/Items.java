@@ -17,8 +17,7 @@ import net.minecraft.item.Item;
 
 public enum Items implements IFireItems {
     TEST_ITEM(ItemTest.class),
-    TEST_TOOL(ItemToolTest.class)
-    ;
+    TEST_TOOL(ItemToolTest.class);
 
     private final Class<? extends Item> itemClass;
     private Item item;
@@ -33,12 +32,12 @@ public enum Items implements IFireItems {
     }
 
     @Override
-    public void setItem(Item item) {
-        this.item = item;
+    public Item getItem() {
+        return item;
     }
 
     @Override
-    public Item getItem() {
-        return item;
+    public void setItem(Item item) {
+        this.item = item;
     }
 }

@@ -15,6 +15,7 @@ import net.minecraft.item.Item;
 public interface IFireItems {
     Class<? extends Item> getItemClass();
 
-    void setItem(Item item);
     Item getItem();
+
+    void setItem(Item item);
 }

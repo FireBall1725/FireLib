@@ -10,12 +10,9 @@
 
 package com.fireball1725.firelib.blocks;
 
-import com.fireball1725.firelib.FireLib;
 import com.fireball1725.firelib.FireMod;
-import com.fireball1725.firelib.tileentities.TileEntityBase;
 import com.fireball1725.firelib.util.IBlockRenderer;
 import com.fireball1725.firelib.util.StringUtilities;
-import com.fireball1725.firelib.util.TileHelper;
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
@@ -36,21 +33,18 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class BlockBase extends Block implements IBlockRenderer {
+    protected static final PropertyDirection FACING = BlockHorizontal.FACING;
     protected final String resourcePath;
     protected String internalName = "";
     protected boolean fallInstantly = false;
-    protected static final PropertyDirection FACING = BlockHorizontal.FACING;
 
     protected BlockBase(Material material, String resourcePath) {
         super(material);

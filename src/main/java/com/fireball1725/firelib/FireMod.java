@@ -10,26 +10,15 @@
 
 package com.fireball1725.firelib;
 
-import com.fireball1725.firelib.blocks.IFireBlocks;
-import com.fireball1725.firelib.items.IFireItems;
 import com.fireball1725.firelib.proxy.base.IProxyBase;
 import com.fireball1725.firelib.util.FireLog;
-import com.fireball1725.firelib.util.IProvideRecipe;
 import com.fireball1725.firelib.util.ModEventHandlerHack;
 import com.fireball1725.firelib.util.RegistrationHelper;
 import com.google.common.base.Stopwatch;
-import com.google.common.eventbus.Subscribe;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.commons.lang3.JavaVersion;
 import org.apache.commons.lang3.SystemUtils;
 
@@ -55,13 +44,21 @@ public abstract class FireMod {
 
     public abstract IProxyBase proxy();
 
-    public Object getModBlockRegistry() { return null; }
+    public Object getModBlockRegistry() {
+        return null;
+    }
 
-    public Object getModItemRegistry() { return null; }
+    public Object getModItemRegistry() {
+        return null;
+    }
 
-    public Class getBlockEnum() { return null; }
+    public Class getBlockEnum() {
+        return null;
+    }
 
-    public Class getItemEnum() { return null; }
+    public Class getItemEnum() {
+        return null;
+    }
 
     // FML Events
 

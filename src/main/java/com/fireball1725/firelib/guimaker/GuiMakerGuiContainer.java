@@ -15,9 +15,9 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.tileentity.TileEntity;
 
 public class GuiMakerGuiContainer extends GuiContainer {
-    private GuiMaker guiMaker;
     private final InventoryPlayer inventoryPlayer;
     private final TileEntity tileEntity;
+    private GuiMaker guiMaker;
     private int mouseX = 0;
     private int mouseY = 0;
 

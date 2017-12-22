@@ -10,7 +10,6 @@
 
 package com.fireball1725.firelib.util;
 
-import com.fireball1725.firelib.FireLib;
 import com.fireball1725.firelib.FireMod;
 import com.fireball1725.firelib.blocks.BlockBase;
 import com.fireball1725.firelib.blocks.IFireBlocks;
@@ -21,14 +20,10 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.registries.IForgeRegistry;
-import sun.rmi.log.LogHandler;
 
 import java.util.Locale;
 
@@ -63,7 +58,7 @@ public class RegistrationHelper {
     }
 
     private <E extends Enum<E>> void registerRecipes(Class<E> enumData, RegistryEvent.Register<IRecipe> event) {
-        for (Enum<E> eEnumObject: enumData.getEnumConstants()) {
+        for (Enum<E> eEnumObject : enumData.getEnumConstants()) {
             if (eEnumObject instanceof IProvideRecipe)
                 ((IProvideRecipe) eEnumObject).registerRecipes(event);
         }
@@ -71,11 +66,12 @@ public class RegistrationHelper {
 
     /**
      * Register enum blocks, itemblocks, and items
+     *
      * @param enumData enum class
-     * @param event RegistryEvent event
+     * @param event    RegistryEvent event
      */
     private <E extends Enum<E>> void registerEnum(Class<E> enumData, IForgeRegistry event) {
-        for (Enum<E> enumObject: enumData.getEnumConstants()) {
+        for (Enum<E> enumObject : enumData.getEnumConstants()) {
             if (event.getRegistrySuperType() == Block.class && enumObject instanceof IFireBlocks) {
                 Block block = registerBlock(event, ((IFireBlocks) enumObject).getBlockClass());
                 ((IFireBlocks) enumObject).setBlock(block);
@@ -99,7 +95,7 @@ public class RegistrationHelper {
         try {
             block = blockClass.getConstructor().newInstance();
 
-            internalName = ((BlockBase)block).getInternalName();
+            internalName = ((BlockBase) block).getInternalName();
 
             if (!internalName.equals(internalName.toLowerCase(Locale.US)))
                 throw new IllegalArgumentException(String.format("Unlocalized names need to be all lowercase! Block is %s", internalName));

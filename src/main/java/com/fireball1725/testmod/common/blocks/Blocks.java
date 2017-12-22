@@ -19,8 +19,7 @@ import net.minecraft.item.ItemBlock;
 
 public enum Blocks implements IFireBlocks {
     TEST_BLOCK(TestBlock.class),
-    TEST_BLOCK_2(TestBlock2.class)
-    ;
+    TEST_BLOCK_2(TestBlock2.class);
 
     private final Class<? extends BlockBase> blockClass;
     private final Class<? extends ItemBlock> itemBlockClass;
@@ -46,12 +45,12 @@ public enum Blocks implements IFireBlocks {
     }
 
     @Override
-    public void setBlock(Block block) {
-        this.block = block;
+    public Block getBlock() {
+        return this.block;
     }
 
     @Override
-    public Block getBlock() {
-        return this.block;
+    public void setBlock(Block block) {
+        this.block = block;
     }
 }

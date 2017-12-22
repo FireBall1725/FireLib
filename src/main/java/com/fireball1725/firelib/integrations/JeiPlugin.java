@@ -10,19 +10,9 @@
 
 package com.fireball1725.firelib.integrations;
 
-import com.fireball1725.firelib.guimaker.GuiMakerGuiContainer;
 import mezz.jei.api.IModPlugin;
-import mezz.jei.api.IModRegistry;
 import mezz.jei.api.ISubtypeRegistry;
-import mezz.jei.api.gui.IAdvancedGuiHandler;
 import mezz.jei.api.ingredients.IModIngredientRegistration;
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.awt.*;
 
 public class JeiPlugin implements IModPlugin {
     @Override

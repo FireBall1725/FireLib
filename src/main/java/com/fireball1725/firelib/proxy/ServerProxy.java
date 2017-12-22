@@ -10,10 +10,7 @@
 
 package com.fireball1725.firelib.proxy;
 
-import com.fireball1725.firelib.FireLib;
 import com.fireball1725.firelib.proxy.base.IProxyServerBase;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 

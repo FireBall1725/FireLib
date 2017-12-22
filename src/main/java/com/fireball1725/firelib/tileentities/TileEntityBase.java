@@ -13,5 +13,17 @@ package com.fireball1725.firelib.tileentities;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityBase extends TileEntity {
+    private String customName = "";
 
+    public String getCustomName() {
+        return customName;
+    }
+
+    public void setCustomName(String customName) {
+        this.customName = customName;
+    }
+
+    public boolean hasCustomName() {
+        return !customName.isEmpty();
+    }
 }

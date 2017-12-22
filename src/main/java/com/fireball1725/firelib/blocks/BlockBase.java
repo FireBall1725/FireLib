@@ -11,8 +11,10 @@
 package com.fireball1725.firelib.blocks;
 
 import com.fireball1725.firelib.FireMod;
+import com.fireball1725.firelib.tileentities.TileEntityBase;
 import com.fireball1725.firelib.util.IBlockRenderer;
 import com.fireball1725.firelib.util.StringUtilities;
+import com.fireball1725.firelib.util.TileHelper;
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
@@ -33,11 +35,14 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class BlockBase extends Block implements IBlockRenderer {
@@ -70,8 +75,9 @@ public class BlockBase extends Block implements IBlockRenderer {
 
         if (canRotate()) {
             EnumFacing playerFacing = placer.getHorizontalFacing().getOpposite();
-            if (placer.isSneaking())
+            if (placer.isSneaking()) {
                 playerFacing = placer.getHorizontalFacing();
+            }
 
             worldIn.setBlockState(pos, state.withProperty(FACING, playerFacing), 2);
         }
@@ -85,32 +91,36 @@ public class BlockBase extends Block implements IBlockRenderer {
 
     @Override
     public int getMetaFromState(IBlockState state) {
-        if (canRotate())
+        if (canRotate()) {
             return (state.getValue(FACING)).getHorizontalIndex();
+        }
 
         return super.getMetaFromState(state);
     }
 
     @Override
     public IBlockState getStateFromMeta(int meta) {
-        if (canRotate())
+        if (canRotate()) {
             return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta & 3));
+        }
 
         return super.getStateFromMeta(meta);
     }
 
     @Override
     public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-        if (hasGravity(worldIn, pos))
+        if (hasGravity(worldIn, pos)) {
             worldIn.scheduleUpdate(pos, this, 2);
+        }
 
         super.onBlockAdded(worldIn, pos, state);
     }
 
     @Override
     public void observedNeighborChange(IBlockState observerState, World world, BlockPos observerPos, Block changedBlock, BlockPos changedBlockPos) {
-        if (hasGravity(world, observerPos))
+        if (hasGravity(world, observerPos)) {
             world.scheduleUpdate(observerPos, this, 2);
+        }
 
         super.observedNeighborChange(observerState, world, observerPos, changedBlock, changedBlockPos);
     }
@@ -119,13 +129,15 @@ public class BlockBase extends Block implements IBlockRenderer {
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
         super.updateTick(worldIn, pos, state, rand);
 
-        if (!worldIn.isRemote)
+        if (!worldIn.isRemote) {
             this.checkFallable(worldIn, pos);
+        }
     }
 
     private void checkFallable(World worldIn, BlockPos pos) {
-        if (!hasGravity(worldIn, pos))
+        if (!hasGravity(worldIn, pos)) {
             return;
+        }
 
         if ((worldIn.isAirBlock(pos.down()) || canFallThrough(worldIn.getBlockState(pos.down()))) && pos.getY() >= 0) {
             int i = 32;
@@ -200,32 +212,32 @@ public class BlockBase extends Block implements IBlockRenderer {
         worldIn.setBlockToAir(pos);
     }
 
-//    @Override
-//    public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-//        TileEntityBase tileEntity = TileHelper.getTileEntity(world, pos, TileEntityBase.class);
-//        if (tileEntity != null && tileEntity.hasCustomName()) {
-//            final ItemStack itemStack = new ItemStack(this, 1, tileEntity.getBlockMetadata());
-//            itemStack.setStackDisplayName(tileEntity.getCustomName());
-//
-//            ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
-//            drops.add(itemStack);
-//
-//            return drops;
-//        }
-//        return super.getDrops(world, pos, state, fortune);
-//    }
+    @Override
+    public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+        TileEntityBase tileEntity = TileHelper.getTileEntity(world, pos, TileEntityBase.class);
+        if (tileEntity != null && tileEntity.hasCustomName()) {
+            final ItemStack itemStack = new ItemStack(this, 1, tileEntity.getBlockMetadata());
+            itemStack.setStackDisplayName(tileEntity.getCustomName());
+
+            ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
+            drops.add(itemStack);
+
+            return drops;
+        }
+        return super.getDrops(world, pos, state, fortune);
+    }
 
     @SideOnly(Side.CLIENT)
     @Override
     public void registerBlockRenderer() {
-        final String resourcePath = String.format("%s:%s", FireMod.instance.getModId(), this.resourcePath);
+        final String resource = String.format("%s:%s", FireMod.instance.getModId(), this.resourcePath);
 
         ModelLoader.setCustomStateMapper(this, new DefaultStateMapper() {
             @SideOnly(Side.CLIENT)
             @Override
             @MethodsReturnNonnullByDefault
             protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
-                return new ModelResourceLocation(resourcePath, getPropertyString(state.getProperties()));
+                return new ModelResourceLocation(resource, getPropertyString(state.getProperties()));
             }
         });
     }
@@ -233,14 +245,14 @@ public class BlockBase extends Block implements IBlockRenderer {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerBlockItemRenderer() {
-        final String resourcePath = String.format("%s:%s", FireMod.instance.getModId(), this.resourcePath);
+        final String resource = String.format("%s:%s", FireMod.instance.getModId(), this.resourcePath);
 
         NonNullList<ItemStack> subBlocks = NonNullList.create();
         getSubBlocks(null, subBlocks);
 
         for (ItemStack itemStack : subBlocks) {
             IBlockState blockState = this.getStateFromMeta(itemStack.getItemDamage());
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), itemStack.getItemDamage(), new ModelResourceLocation(resourcePath, StringUtilities.getPropertyString(blockState.getProperties())));
+            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), itemStack.getItemDamage(), new ModelResourceLocation(resource, StringUtilities.getPropertyString(blockState.getProperties())));
         }
     }
 }

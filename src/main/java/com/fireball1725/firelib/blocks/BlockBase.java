@@ -12,6 +12,7 @@ package com.fireball1725.firelib.blocks;
 
 import com.fireball1725.firelib.FireMod;
 import com.fireball1725.firelib.util.IBlockRenderer;
+import com.fireball1725.firelib.util.IInternalNameProvider;
 import com.fireball1725.firelib.util.StringUtilities;
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.block.Block;
@@ -40,7 +41,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class BlockBase extends Block implements IBlockRenderer {
+public class BlockBase extends Block implements IBlockRenderer, IInternalNameProvider {
     protected static final PropertyDirection FACING = BlockHorizontal.FACING;
     protected final String resourcePath;
     protected String internalName = "";
@@ -157,10 +158,12 @@ public class BlockBase extends Block implements IBlockRenderer {
 
     }
 
+    @Override
     public String getInternalName() {
         return internalName;
     }
 
+    @Override
     public void setInternalName(String internalName) {
         this.internalName = internalName;
     }

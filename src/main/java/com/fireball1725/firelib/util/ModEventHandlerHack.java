@@ -1,8 +1,18 @@
+/*
+ * Copyright 2017 FireBall1725
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
 package com.fireball1725.firelib.util;
 
+import com.fireball1725.firelib.FireMod;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ListMultimap;
-import com.fireball1725.firelib.FireMod;
 import net.minecraftforge.fml.common.FMLModContainer;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
@@ -14,7 +24,16 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-// Created by InfinityRaider, Adapted for FireLib
+/*
+ * Originally created by InfinityRaider
+ * Adapted for FireLib
+ *
+ * Original Source Code:
+ * https://github.com/InfinityRaider/InfinityLib/blob/master/src/main/java/com/infinityraider/infinitylib/utility/ModEventHandlerHack.java
+ *
+ * Original License: MIT
+ * https://github.com/InfinityRaider/InfinityLib/blob/master/LICENSE
+ */
 
 public class ModEventHandlerHack {
     private static final List<Method> METHODS = getMethods();
@@ -40,7 +59,7 @@ public class ModEventHandlerHack {
             return (ListMultimap<Class<? extends FMLEvent>, Method>) FIELD.get(modContainer);
         } catch (Exception ex) {
             ex.printStackTrace();
-            throw new RuntimeException("CAUGHT ERROR WHEN TRYING TO RETRIEVE FML MOD CONTAINER EVENT METHODS MAP");
+            throw new RuntimeException("Caught error while trying to retrieve the FML mod container even methods map");
         }
     }
 
@@ -62,14 +81,14 @@ public class ModEventHandlerHack {
 
     private static Field getField() {
         Field[] fields = FMLModContainer.class.getDeclaredFields();
-        for(Field field : fields) {
-            if(field.getType() == ListMultimap.class) {
+        for (Field field : fields) {
+            if (field.getType() == ListMultimap.class) {
                 field.setAccessible(true);
                 return field;
             }
         }
 
         // Should not ever happen
-        throw new RuntimeException("COULD NOT RETRIEVE FML MOD CONTAINER EVENT METHODS FIELD");
+        throw new RuntimeException("Could not retrieve the FML mod container event methods field");
     }
 }

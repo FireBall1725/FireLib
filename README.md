@@ -9,3 +9,4 @@
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge)]()
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.12.2-blue.svg?style=for-the-badge)]()
+[![Discord](https://img.shields.io/badge/Discord-FireBall1725-blue.svg?style=for-the-badge)](https://discord.gg/fireball1725)

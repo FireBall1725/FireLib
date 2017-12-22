@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d6495af-6a70-4a07-8f67-cf5da647a3d1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/blocks/BlockBase.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/blocks/BlockBase.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/tileentities/TileEntityBase.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/tileentities/TileEntityBase.java" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -29,25 +29,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="BlockBase.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/blocks/BlockBase.java">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="142" column="17" lean-forward="false" selection-start-line="142" selection-start-column="17" selection-end-line="142" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#7026#7027#0" expanded="true" />
-                <element signature="e#7061#7062#0" expanded="true" />
-                <element signature="e#7117#7118#0" expanded="true" />
-                <element signature="e#7165#7166#0" expanded="true" />
-                <element signature="e#7227#7228#0" expanded="true" />
-                <element signature="e#7255#7256#0" expanded="true" />
-                <element signature="e#7289#7290#0" expanded="true" />
-                <element signature="e#7317#7318#0" expanded="true" />
-                <element signature="e#7785#7786#0" expanded="true" />
-                <element signature="e#7833#7834#0" expanded="true" />
-                <element signature="e#8825#8836#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="80">
+              <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -674,8 +661,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerGuiHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerGuiContainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/proxy/ServerProxy.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/proxy/ClientProxy.java" />
         <option value="$PROJECT_DIR$/gradle/scripts/dependencies.gradle" />
@@ -725,6 +710,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/items/ItemBase.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/tileentities/TileEntityBase.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/blocks/BlockBase.java" />
+        <option value="$PROJECT_DIR$/.codeclimate.yml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -1142,12 +1129,12 @@
       <workItem from="1513407482710" duration="18285000" />
       <workItem from="1513568775117" duration="2468000" />
       <workItem from="1513646037550" duration="46781000" />
-      <workItem from="1513908719369" duration="4554000" />
+      <workItem from="1513908719369" duration="5004000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74977000" />
+    <option name="totallyTimeSpent" value="75427000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1920" height="1104" extended-state="0" />
@@ -1197,20 +1184,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/net/minecraftforge/client/model/ModelLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="261" column="34" lean-forward="false" selection-start-line="261" selection-start-column="34" selection-end-line="261" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/net/minecraft/client/renderer/block/model/ModelBakery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="200" column="35" lean-forward="false" selection-start-line="200" selection-start-column="35" selection-end-line="200" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/net/minecraft/init/Blocks.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -1600,7 +1573,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/blocks/BlockBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
+        <state relative-caret-position="2144">
           <caret line="142" column="17" lean-forward="false" selection-start-line="142" selection-start-column="17" selection-end-line="142" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1616,6 +1589,22 @@
             <element signature="e#7833#7834#0" expanded="true" />
             <element signature="e#8825#8836#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.codeclimate.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>

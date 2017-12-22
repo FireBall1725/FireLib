@@ -1,0 +1,9 @@
+engines:
+  # ... CONFIG CONTENT ...
+  checkstyle:
+    enabled: true
+    # ... CONFIG CONTENT ...
+    checks:
+      com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck:
+        enabled: false
+# ... CONFIG CONTENT ...

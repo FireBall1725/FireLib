@@ -10,17 +10,28 @@
 
 package com.fireball1725.testmod.common.blocks.test;
 
-import com.fireball1725.firelib.blocks.BlockBase;
 import com.fireball1725.firelib.blocks.BlockTileBase;
+import com.fireball1725.firelib.util.IProvideRecipe;
 import net.minecraft.block.material.Material;
+import net.minecraft.inventory.InventoryCrafting;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.ShapedRecipes;
+import net.minecraft.item.crafting.ShapelessRecipes;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.crafting.CraftingHelper;
+import net.minecraftforge.event.RegistryEvent;
 
-public class TestBlock extends BlockTileBase {
+import javax.annotation.Nullable;
+
+public class TestBlock extends BlockTileBase implements IProvideRecipe {
     public TestBlock() {
         super(Material.IRON, "testblock");
         this.setInternalName("testblock");
-        this.setTileEnttiy(com.fireball1725.testmod.common.blocks.tileentities.TestBlock.class);
+        this.setTileEnttiy(com.fireball1725.testmod.common.tileentities.TestBlock.class);
     }
 
     @Override
@@ -31,5 +42,11 @@ public class TestBlock extends BlockTileBase {
     @Override
     public boolean canRotate() {
         return true;
+    }
+
+
+    @Override
+    public void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+
     }
 }

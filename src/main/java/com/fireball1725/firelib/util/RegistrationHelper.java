@@ -13,15 +13,86 @@ package com.fireball1725.firelib.util;
 import com.fireball1725.firelib.FireLib;
 import com.fireball1725.firelib.FireMod;
 import com.fireball1725.firelib.blocks.BlockBase;
+import com.fireball1725.firelib.blocks.IFireBlocks;
+import com.fireball1725.firelib.items.IFireItems;
+import com.fireball1725.firelib.items.ItemBase;
+import com.fireball1725.firelib.items.ItemBaseTool;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.registries.IForgeRegistry;
+import sun.rmi.log.LogHandler;
 
 import java.util.Locale;
 
 public class RegistrationHelper {
-    public static Block registerBlock(IForgeRegistry event, Class<? extends BlockBase> blockClass) {
+    @SubscribeEvent
+    public final void registerBlocks(RegistryEvent.Register<Block> event) {
+        // Blocks
+        if (FireMod.instance.getBlockEnum() != null)
+            registerEnum(FireMod.instance.getBlockEnum(), event.getRegistry());
+    }
+
+    @SubscribeEvent
+    public final void registerItems(RegistryEvent.Register<Item> event) {
+        // ItemBlocks
+        if (FireMod.instance.getBlockEnum() != null)
+            registerEnum(FireMod.instance.getBlockEnum(), event.getRegistry());
+
+        // Items
+        if (FireMod.instance.getItemEnum() != null)
+            registerEnum(FireMod.instance.getItemEnum(), event.getRegistry());
+    }
+
+    @SubscribeEvent
+    public final void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+        // Blocks
+        if (FireMod.instance.getBlockEnum() != null)
+            registerRecipes(FireMod.instance.getBlockEnum(), event);
+
+        // Items
+        if (FireMod.instance.getItemEnum() != null)
+            registerRecipes(FireMod.instance.getItemEnum(), event);
+    }
+
+    private <E extends Enum<E>> void registerRecipes(Class<E> enumData, RegistryEvent.Register<IRecipe> event) {
+        for (Enum<E> eEnumObject: enumData.getEnumConstants()) {
+            if (eEnumObject instanceof IProvideRecipe)
+                ((IProvideRecipe) eEnumObject).registerRecipes(event);
+        }
+    }
+
+    /**
+     * Register enum blocks, itemblocks, and items
+     * @param enumData enum class
+     * @param event RegistryEvent event
+     */
+    private <E extends Enum<E>> void registerEnum(Class<E> enumData, IForgeRegistry event) {
+        for (Enum<E> enumObject: enumData.getEnumConstants()) {
+            if (event.getRegistrySuperType() == Block.class && enumObject instanceof IFireBlocks) {
+                Block block = registerBlock(event, ((IFireBlocks) enumObject).getBlockClass());
+                ((IFireBlocks) enumObject).setBlock(block);
+            }
+
+            if (event.getRegistrySuperType() == Item.class && enumObject instanceof IFireBlocks) {
+                registerItemBlock(event, ((IFireBlocks) enumObject).getBlock(), ((IFireBlocks) enumObject).getItemBlockClass());
+            }
+
+            if (event.getRegistrySuperType() == Item.class && enumObject instanceof IFireItems) {
+                Item item = registerItem(event, ((IFireItems) enumObject).getItemClass());
+                ((IFireItems) enumObject).setItem(item);
+            }
+        }
+    }
+
+    private Block registerBlock(IForgeRegistry event, Class<? extends BlockBase> blockClass) {
         Block block = null;
         String internalName;
 
@@ -41,9 +112,8 @@ public class RegistrationHelper {
 
             event.register(block);
 
-            if (block instanceof IBlockRenderer && FireMod.instance.proxy().getEffectiveSide() == Side.CLIENT) {
+            if (block instanceof IBlockRenderer && FireMod.instance.proxy().getEffectiveSide() == Side.CLIENT)
                 ((IBlockRenderer) block).registerBlockRenderer();
-            }
 
             FireMod.instance.getLogger().info(String.format("Registered block (%s)", blockClass.getCanonicalName()));
         } catch (Exception ex) {
@@ -54,7 +124,7 @@ public class RegistrationHelper {
         return block;
     }
 
-    public static void registerItemBlock(IForgeRegistry event, Block block, Class<? extends ItemBlock> itemBlockClass) {
+    private void registerItemBlock(IForgeRegistry event, Block block, Class<? extends ItemBlock> itemBlockClass) {
         ItemBlock itemBlock;
 
         try {
@@ -72,5 +142,41 @@ public class RegistrationHelper {
             FireMod.instance.getLogger().fatal(String.format("Fatal error while registering block (%s)", itemBlockClass.getCanonicalName()));
             ex.printStackTrace();
         }
+    }
+
+    private Item registerItem(IForgeRegistry event, Class<? extends Item> itemClass) {
+        Item item = null;
+        String internalName = "";
+
+        try {
+            item = itemClass.getConstructor().newInstance();
+
+            if (item instanceof ItemBase)
+                internalName = ((ItemBase) item).getInternalName();
+
+            if (item instanceof ItemBaseTool)
+                internalName = ((ItemBaseTool) item).getInternalName();
+
+            if (!internalName.equals(internalName.toLowerCase(Locale.US)))
+                throw new IllegalArgumentException(String.format("Unlocalized names need to be all lowercase! Item: %s", internalName));
+
+            if (internalName.isEmpty())
+                throw new IllegalArgumentException(String.format("Unlocalized name cannot be blank! Item: %s", itemClass.getCanonicalName()));
+
+            item.setRegistryName(FireMod.instance.getModId(), internalName);
+            item.setUnlocalizedName(internalName);
+
+            event.register(item);
+
+            if (item instanceof IItemRenderer && FireMod.instance.proxy().getEffectiveSide() == Side.CLIENT)
+                ((IItemRenderer) item).registerItemRenderer();
+
+            FireMod.instance.getLogger().info(String.format("Registered item (%s)", itemClass.getCanonicalName()));
+        } catch (Exception ex) {
+            FireMod.instance.getLogger().fatal(String.format("Fatal error while registering item (%s)", itemClass.getCanonicalName()));
+            ex.printStackTrace();
+        }
+
+        return item;
     }
 }

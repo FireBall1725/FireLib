@@ -8,22 +8,37 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.testmod.common.blocks.test;
+package com.fireball1725.testmod.common.items;
 
-import com.fireball1725.firelib.blocks.BlockTileBase;
-import net.minecraft.block.material.Material;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import com.fireball1725.firelib.items.IFireItems;
+import com.fireball1725.testmod.common.items.test.ItemTest;
+import com.fireball1725.testmod.common.items.test.ItemToolTest;
+import net.minecraft.item.Item;
 
-public class TestBlock2 extends BlockTileBase {
-    public TestBlock2() {
-        super(Material.IRON, "testblock");
-        this.setInternalName("testblock2");
-        this.setTileEnttiy(com.fireball1725.testmod.common.tileentities.TestBlock.class);
+public enum Items implements IFireItems {
+    TEST_ITEM(ItemTest.class),
+    TEST_TOOL(ItemToolTest.class)
+    ;
+
+    private final Class<? extends Item> itemClass;
+    private Item item;
+
+    Items(Class<? extends Item> itemClass) {
+        this.itemClass = itemClass;
     }
 
     @Override
-    public boolean hasGravity(World worldIn, BlockPos pos) {
-        return true;
+    public Class<? extends Item> getItemClass() {
+        return this.itemClass;
+    }
+
+    @Override
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    @Override
+    public Item getItem() {
+        return item;
     }
 }

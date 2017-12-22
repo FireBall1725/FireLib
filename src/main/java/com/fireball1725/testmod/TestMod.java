@@ -13,6 +13,7 @@ package com.fireball1725.testmod;
 import com.fireball1725.firelib.FireMod;
 import com.fireball1725.firelib.proxy.base.IProxyBase;
 import com.fireball1725.testmod.common.blocks.Blocks;
+import com.fireball1725.testmod.common.items.Items;
 import com.fireball1725.testmod.proxy.IProxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -38,5 +39,10 @@ public class TestMod extends FireMod {
     @Override
     public Class getBlockEnum() {
         return Blocks.class;
+    }
+
+    @Override
+    public Class getItemEnum() {
+        return Items.class;
     }
 }

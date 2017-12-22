@@ -14,16 +14,21 @@ import com.fireball1725.firelib.blocks.IFireBlocks;
 import com.fireball1725.firelib.items.IFireItems;
 import com.fireball1725.firelib.proxy.base.IProxyBase;
 import com.fireball1725.firelib.util.FireLog;
+import com.fireball1725.firelib.util.IProvideRecipe;
 import com.fireball1725.firelib.util.ModEventHandlerHack;
 import com.fireball1725.firelib.util.RegistrationHelper;
 import com.google.common.base.Stopwatch;
+import com.google.common.eventbus.Subscribe;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.commons.lang3.JavaVersion;
 import org.apache.commons.lang3.SystemUtils;
@@ -73,6 +78,7 @@ public abstract class FireMod {
         this.proxy().registerEventHandler(this);
         proxy().initConfiguration(event);
         proxy().preInitStart(event);
+        proxy().registerEventHandler(new RegistrationHelper());
         proxy().preInitEnd(event);
 
         this.getLogger().info("Pre Initialization (Ended after " + stopwatch.elapsed(TimeUnit.MILLISECONDS) + "ms)");
@@ -128,48 +134,7 @@ public abstract class FireMod {
     }
 
     @SubscribeEvent
-    public final void registerBlocks(RegistryEvent.Register<Block> event) {
-        this.getLogger().info(">>> Trying to register Blocks...");
-        if (getBlockEnum() != null)
-            registerEnum(getBlockEnum(), event.getRegistry());
-    }
+    public final void registerModels(ModelRegistryEvent event) {
 
-    @SubscribeEvent
-    public final void registerItems(RegistryEvent.Register<Item> event) {
-        this.getLogger().info(">>> Trying to register Items...");
-        if (getBlockEnum() != null)
-            registerEnum(getBlockEnum(), event.getRegistry());
-
-        if (getItemEnum() != null)
-            registerEnum(getItemEnum(), event.getRegistry());
-    }
-
-    @SubscribeEvent
-    public final void modelRegistrationEvent(ModelRegistryEvent event) {
-
-    }
-
-
-
-
-
-
-
-
-    private <E extends Enum<E>> void registerEnum(Class<E> enumData, IForgeRegistry event) {
-        for (Enum<E> enumObject: enumData.getEnumConstants()) {
-            if (event.getRegistrySuperType() == Block.class && enumObject instanceof IFireBlocks) {
-                Block block = RegistrationHelper.registerBlock(event, ((IFireBlocks) enumObject).getBlockClass());
-                ((IFireBlocks) enumObject).setBlock(block);
-            }
-
-            if (event.getRegistrySuperType() == Item.class && enumObject instanceof IFireBlocks) {
-                RegistrationHelper.registerItemBlock(event, ((IFireBlocks) enumObject).getBlock(), ((IFireBlocks) enumObject).getItemBlockClass());
-            }
-
-            if (event.getRegistrySuperType() == Item.class && enumObject instanceof IFireItems) {
-
-            }
-        }
     }
 }

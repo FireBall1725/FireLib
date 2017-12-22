@@ -3,6 +3,7 @@
 !/.circleci
 !/.gitignore
 !/.gitmodules
+!/.codeclimate.yml
 !/src
 !/gradle
 !/gradlew

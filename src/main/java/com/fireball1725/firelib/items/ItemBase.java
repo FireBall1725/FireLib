@@ -11,7 +11,6 @@
 package com.fireball1725.firelib.items;
 
 import com.fireball1725.firelib.FireMod;
-import com.fireball1725.firelib.util.IInternalNameProvider;
 import com.fireball1725.firelib.util.IItemRenderer;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -20,7 +19,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class ItemBase extends Item implements IItemRenderer, IInternalNameProvider {
+public abstract class ItemBase extends Item implements IItemRenderer {
     protected final String resourcePath;
     protected String internalName = "";
 
@@ -28,12 +27,10 @@ public abstract class ItemBase extends Item implements IItemRenderer, IInternalN
         this.resourcePath = resourcePath;
     }
 
-    @Override
     public String getInternalName() {
         return this.internalName;
     }
 
-    @Override
     public void setInternalName(String internalName) {
         this.internalName = internalName;
     }

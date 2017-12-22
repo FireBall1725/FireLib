@@ -32,13 +32,6 @@ public class ItemBaseTool extends ItemTool implements IItemRenderer {
         this.resourcePath = resourcePath;
     }
 
-    @Override
-    public String getUnlocalizedName() {
-        String itemName = getUnwrappedUnlocalizedName(super.getUnlocalizedName());
-
-        return String.format("item.%s.%s", FireMod.instance.getModId(), itemName);
-    }
-
     public String getInternalName() {
         return internalName;
     }
@@ -47,6 +40,13 @@ public class ItemBaseTool extends ItemTool implements IItemRenderer {
         this.internalName = internalName;
     }
 
+    @Override
+    public String getUnlocalizedName() {
+        String itemName = getUnwrappedUnlocalizedName(super.getUnlocalizedName());
+
+        return String.format("item.%s.%s", FireMod.instance.getModId(), itemName);
+    }
+    
     @Override
     public String getUnlocalizedName(ItemStack stack) {
         String itemName = getUnwrappedUnlocalizedName(super.getUnlocalizedName(stack));

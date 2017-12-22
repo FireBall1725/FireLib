@@ -41,7 +41,7 @@ public abstract class ItemBase extends Item implements IItemRenderer {
 
         return String.format("item.%s.%s", FireMod.instance.getModId(), itemName);
     }
-    
+
     @Override
     public String getUnlocalizedName(ItemStack stack) {
         String itemName = getUnwrappedUnlocalizedName(super.getUnlocalizedName(stack));

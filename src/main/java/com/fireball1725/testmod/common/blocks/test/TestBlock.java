@@ -10,19 +10,46 @@
 
 package com.fireball1725.testmod.common.blocks.test;
 
+import com.fireball1725.firelib.FireMod;
 import com.fireball1725.firelib.blocks.BlockTileBase;
+import com.fireball1725.firelib.guimaker.GuiMaker;
+import com.fireball1725.firelib.guimaker.objects.GuiButton;
+import com.fireball1725.firelib.guimaker.objects.GuiLabel;
+import com.fireball1725.firelib.guimaker.objects.GuiObject;
+import com.fireball1725.firelib.guimaker.objects.GuiWindow;
 import com.fireball1725.firelib.util.IProvideRecipe;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.RegistryEvent;
 
+import java.util.ArrayList;
+
 public class TestBlock extends BlockTileBase implements IProvideRecipe {
+    private GuiMaker guiMaker = new GuiMaker();
+    private GuiWindow guiWindow = new GuiWindow(256, 256);
+    private GuiLabel guiLabel = new GuiLabel(4, 4);
+    private GuiLabel guiLabel2 = new GuiLabel(4, 16);
+
     public TestBlock() {
         super(Material.IRON, "testblock");
         this.setInternalName("testblock");
         this.setTileEnttiy(com.fireball1725.testmod.common.tileentities.TestBlock.class);
+
+        guiMaker.registerGuiObject(guiWindow);
+        guiMaker.registerGuiObject(guiLabel);
+        guiMaker.registerGuiObject(guiLabel2);
+
+        guiLabel.setLabel("Hello World");
+        guiLabel.setColor(0xFF69B4);
+
+        guiLabel2.setLabel("This is a test...");
+        guiLabel2.setColor(0xFFFFFF);
     }
 
     @Override
@@ -39,5 +66,12 @@ public class TestBlock extends BlockTileBase implements IProvideRecipe {
     @Override
     public void registerRecipes(RegistryEvent.Register<IRecipe> event) {
 
+    }
+
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        guiMaker.show(worldIn, playerIn, pos);
+
+        return true;
     }
 }

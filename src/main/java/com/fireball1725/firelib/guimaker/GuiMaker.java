@@ -10,32 +10,107 @@
 
 package com.fireball1725.firelib.guimaker;
 
+import com.fireball1725.firelib.FireLib;
+import com.fireball1725.firelib.FireMod;
+import com.fireball1725.firelib.guimaker.objects.GuiObject;
+import com.fireball1725.firelib.guimaker.objects.GuiWindow;
+import com.fireball1725.firelib.util.TileHelper;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public abstract class GuiMaker {
+public class GuiMaker {
     private static HashMap<Integer, GuiMaker> guiInstances = new HashMap<>();
-    private static int guiInstanceCount = 0;
+    private HashMap<String, ArrayList<GuiObject>> guiObjects = new HashMap<>();
+    private String defaultGroup = "default";
 
     private final int guiID;
-    private final GuiMaker guiMakerInstance;
 
-    private int guiHeight;
-    private int guiWidth;
+    public GuiMaker() {
+        this.guiID = guiInstances.size();
 
-    public GuiMaker(int guiWidth, int guiHeight) {
-        this.guiWidth = guiWidth;
-        this.guiHeight = guiHeight;
-        this.guiID = getNextGuiID();
-        this.guiMakerInstance = this;
-
-        guiInstances.put(this.guiID, this.guiMakerInstance);
+        guiInstances.put(this.guiID, this);
     }
 
-    private int getNextGuiID() {
-        int nextID = guiInstanceCount;
-        guiInstanceCount++;
-        return nextID;
+    public void show(World world, EntityPlayer player, BlockPos pos) {
+        player.openGui(FireLib.instance, this.guiID, world, pos.getX(), pos.getY(), pos.getZ());
     }
 
+    public static GuiMaker getGuiMaker(int guiID) {
+        if (guiInstances.containsKey(guiID)) {
+            return guiInstances.get(guiID);
+        }
 
+        return null;
+    }
+
+    public void registerGuiObjectGroup(String groupName) {
+        if (groupExists(groupName)) {
+            return;
+        }
+
+        guiObjects.put(groupName, new ArrayList<GuiObject>());
+    }
+
+    public void registerGuiObject(GuiObject guiObject) {
+        if (!groupExists(defaultGroup)) {
+            registerGuiObjectGroup(defaultGroup);
+        }
+
+        registerGuiObject(defaultGroup, guiObject);
+    }
+
+    public void registerGuiObject(String groupName, GuiObject guiObject) {
+        if (!groupExists(groupName)) {
+            return;
+        }
+
+        ArrayList<GuiObject> guiObjectsArray = guiObjects.get(groupName);
+        guiObjectsArray.add(guiObject);
+        guiObjects.replace(groupName, guiObjectsArray);
+    }
+
+    public ArrayList<GuiObject> getGuiObjects() {
+        return getGuiObjects(defaultGroup);
+    }
+
+    public ArrayList<GuiObject> getGuiObjects(String groupName) {
+        if (!groupExists(groupName)) {
+            return null;
+        }
+
+        return guiObjects.get(groupName);
+    }
+
+    public void setDefaultGroup(String defaultGroup) {
+        this.defaultGroup = defaultGroup;
+    }
+
+    public GuiWindow getGuiWindow() {
+        return getGuiWindow(defaultGroup);
+    }
+
+    public GuiWindow getGuiWindow(String groupName) {
+        if (!groupExists(groupName)) {
+            return null;
+        }
+
+        ArrayList<GuiObject> guiObjectArrayList = getGuiObjects(groupName);
+        for (GuiObject guiObject : guiObjectArrayList) {
+            if (guiObject instanceof GuiWindow) {
+                return (GuiWindow)guiObject;
+            }
+        }
+
+        return null;
+    }
+
+    private boolean groupExists(String groupName) {
+        return guiObjects.containsKey(groupName);
+    }
 }

@@ -8,38 +8,45 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.guimaker;
+package com.fireball1725.firelib.guimaker.objects;
 
-import com.fireball1725.firelib.FireMod;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.IGuiHandler;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
+import java.io.IOException;
 
-public class GuiMakerGuiHandler implements IGuiHandler {
-    @Nullable
-    @Override
-    public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-        TileEntity tileEntity = world.getTileEntity(new BlockPos(x, y, z));
+public class GuiLabel extends GuiObject implements IGuiObject {
+    public String label = "";
+    public int color = 0;
 
-        FireMod.instance.getLogger().info(">>> Opening Gui: " + ID);
-
-        return new GuiMakerContainer(player.inventory, tileEntity, ID);
+    public GuiLabel(int x, int y) {
+        super(0);
+        this.x = x;
+        this.y = y;
     }
 
-    @Nullable
     @SideOnly(Side.CLIENT)
     @Override
-    public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-        TileEntity tileEntity = world.getTileEntity(new BlockPos(x, y, z));
+    public void drawGuiContainerForegroundLayer(GuiContainer guiContainer, int mouseX, int mouseY) {
+        super.drawGuiContainerForegroundLayer(guiContainer, mouseX, mouseY);
 
-        FireMod.instance.getLogger().info(">>> Opening Gui: " + ID);
+        guiContainer.drawString(guiContainer.mc.fontRenderer, this.label, this.x, this.y, this.color);
+    }
 
-        return new GuiMakerGuiContainer(player.inventory, tileEntity, ID);
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 }

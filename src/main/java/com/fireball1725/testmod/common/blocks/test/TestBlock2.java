@@ -11,19 +11,42 @@
 package com.fireball1725.testmod.common.blocks.test;
 
 import com.fireball1725.firelib.blocks.BlockTileBase;
+import com.fireball1725.firelib.guimaker.GuiMaker;
+import com.fireball1725.firelib.guimaker.objects.GuiCheckbox;
+import com.fireball1725.firelib.guimaker.objects.GuiWindow;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class TestBlock2 extends BlockTileBase {
+    public GuiMaker guiMaker = new GuiMaker();
+    public GuiWindow guiWindow = new GuiWindow(100, 40);
+    public GuiCheckbox guiCheckbox = new GuiCheckbox(1);
+
     public TestBlock2() {
         super(Material.IRON, "testblock");
         this.setInternalName("testblock2");
         this.setTileEnttiy(com.fireball1725.testmod.common.tileentities.TestBlock.class);
+
+        guiMaker.registerGuiObject(guiWindow);
+        guiMaker.registerGuiObject(guiCheckbox);
+
+        guiCheckbox.setLocation(4, 4);
     }
 
     @Override
     public boolean hasGravity(World worldIn, BlockPos pos) {
+        return true;
+    }
+
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        guiMaker.show(worldIn, playerIn, pos);
+
         return true;
     }
 }

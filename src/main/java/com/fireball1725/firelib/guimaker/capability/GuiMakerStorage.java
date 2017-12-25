@@ -8,24 +8,24 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.proxy;
+package com.fireball1725.firelib.guimaker.capability;
 
-import com.fireball1725.firelib.FireLib;
-import com.fireball1725.firelib.guimaker.GuiMakerGuiHandler;
-import com.fireball1725.firelib.guimaker.capability.GuiMakerCapability;
-import com.fireball1725.firelib.guimaker.capability.GuiMakerStorage;
-import com.fireball1725.firelib.guimaker.capability.IGuiMakerCapability;
-import com.fireball1725.firelib.network.PacketHandler;
-import net.minecraftforge.common.capabilities.CapabilityManager;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
+import net.minecraftforge.common.capabilities.Capability;
 
-public abstract class CommonProxy implements IProxy {
+import javax.annotation.Nullable;
+
+public class GuiMakerStorage implements Capability.IStorage<IGuiMakerCapability> {
+    @Nullable
     @Override
-    public void preInitEnd(FMLPreInitializationEvent event) {
-        PacketHandler.init();
-        NetworkRegistry.INSTANCE.registerGuiHandler(FireLib.instance, new GuiMakerGuiHandler());
+    public NBTBase writeNBT(Capability<IGuiMakerCapability> capability, IGuiMakerCapability instance, EnumFacing side) {
+        return new NBTTagCompound();
+    }
 
-        CapabilityManager.INSTANCE.register(IGuiMakerCapability.class, new GuiMakerStorage(), GuiMakerCapability.class);
+    @Override
+    public void readNBT(Capability<IGuiMakerCapability> capability, IGuiMakerCapability instance, EnumFacing side, NBTBase nbt) {
+
     }
 }

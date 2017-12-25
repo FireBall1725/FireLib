@@ -32,7 +32,7 @@ public class TileEntityTestBlock2 extends TileEntityBase implements IGuiMaker {
         guiMaker.registerGuiObject(guiCheckbox2);
 
         guiCheckbox.setLocation(4, 4);
-        guiCheckbox2.setLocation(4, 18);
+        guiCheckbox2.setLocation(4, 20);
     }
 
     @Override

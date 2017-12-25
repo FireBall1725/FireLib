@@ -8,33 +8,46 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.guimaker;
+package com.fireball1725.firelib.guimaker.capability;
 
 import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
-import net.minecraftforge.common.capabilities.CapabilityManager;
+import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class CapabilityGuiMaker {
-    @CapabilityInject(GuiMaker.class)
-    public static Capability<GuiMaker> GUI_MAKER_CAPABILITY = null;
+public class GuiMakerProvider implements ICapabilitySerializable<NBTBase> {
+    @CapabilityInject(IGuiMakerCapability.class)
+    public static final Capability<IGuiMakerCapability> GUI_MAKER_CAPABILITY = null;
 
-    public static void register() {
-        CapabilityManager.INSTANCE.register(GuiMaker.class, new Capability.IStorage<GuiMaker>() {
+    private IGuiMakerCapability instance = GUI_MAKER_CAPABILITY.getDefaultInstance();
 
-            @Nullable
-            @Override
-            public NBTBase writeNBT(Capability<GuiMaker> capability, GuiMaker instance, EnumFacing side) {
-                return null;
-            }
+    @Override
+    public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing) {
+        return false;
+    }
 
-            @Override
-            public void readNBT(Capability<GuiMaker> capability, GuiMaker instance, EnumFacing side, NBTBase nbt) {
+    @Nullable
+    @Override
+    public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing) {
+        return null;
+    }
 
-            }
-        }, GuiMaker::new);
+    @Override
+    public NBTBase serializeNBT() {
+        NBTTagCompound tagCompound = new NBTTagCompound();
+
+        tagCompound.setBoolean("Hello", true);
+
+        return tagCompound;
+    }
+
+    @Override
+    public void deserializeNBT(NBTBase nbt) {
+
     }
 }

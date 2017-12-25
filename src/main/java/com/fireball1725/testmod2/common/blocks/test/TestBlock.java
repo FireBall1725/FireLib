@@ -16,6 +16,7 @@ import com.fireball1725.firelib.guimaker.objects.GuiLabel;
 import com.fireball1725.firelib.guimaker.objects.GuiWindow;
 import com.fireball1725.firelib.util.IProvideRecipe;
 import com.fireball1725.testmod2.TestMod2;
+import com.fireball1725.testmod2.common.tileentities.TileEntityTestBlock2;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,7 +36,7 @@ public class TestBlock extends BlockTileBase implements IProvideRecipe {
     public TestBlock() {
         super(Material.IRON, "testblock", TestMod2.instance);
         this.setInternalName("testblock");
-        this.setTileEntity(com.fireball1725.testmod.common.tileentities.TestBlock.class);
+        this.setTileEntity(TileEntityTestBlock2.class);
 
         guiMaker.registerGuiObject(guiWindow);
         guiMaker.registerGuiObject(guiLabel);

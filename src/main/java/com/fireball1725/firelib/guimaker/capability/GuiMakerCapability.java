@@ -8,24 +8,18 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.proxy;
+package com.fireball1725.firelib.guimaker.capability;
 
-import com.fireball1725.firelib.FireLib;
-import com.fireball1725.firelib.guimaker.GuiMakerGuiHandler;
-import com.fireball1725.firelib.guimaker.capability.GuiMakerCapability;
-import com.fireball1725.firelib.guimaker.capability.GuiMakerStorage;
-import com.fireball1725.firelib.guimaker.capability.IGuiMakerCapability;
-import com.fireball1725.firelib.network.PacketHandler;
-import net.minecraftforge.common.capabilities.CapabilityManager;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
+import java.util.UUID;
 
-public abstract class CommonProxy implements IProxy {
+public class GuiMakerCapability implements IGuiMakerCapability {
     @Override
-    public void preInitEnd(FMLPreInitializationEvent event) {
-        PacketHandler.init();
-        NetworkRegistry.INSTANCE.registerGuiHandler(FireLib.instance, new GuiMakerGuiHandler());
+    public void set(UUID controlUUID, boolean state) {
 
-        CapabilityManager.INSTANCE.register(IGuiMakerCapability.class, new GuiMakerStorage(), GuiMakerCapability.class);
+    }
+
+    @Override
+    public boolean get(UUID controlUUID) {
+        return false;
     }
 }

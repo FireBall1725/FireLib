@@ -8,29 +8,33 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.guimaker.objects;
+package com.fireball1725.firelib.guimaker;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraftforge.fml.client.config.GuiUtils;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.util.EnumFacing;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityInject;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class GuiWindow extends GuiObject implements IGuiObject {
-    public GuiWindow(int width, int height) {
-        super(UUID.randomUUID());
-        this.width = width;
-        this.height = height;
-    }
+public class CapabilityGuiMaker {
+    @CapabilityInject(GuiMaker.class)
+    public static Capability<GuiMaker> GUI_MAKER_CAPABILITY = null;
 
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY) {
-        super.drawGuiContainerBackgroundLayer(guiContainer, partialTicks, mouseX, mouseY);
+    public static void register() {
+        CapabilityManager.INSTANCE.register(GuiMaker.class, new Capability.IStorage<GuiMaker>() {
 
-        GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft(), guiContainer.getGuiTop(), 0, 0, this.width, this.height, 32, 32, 4, 1);
+            @Nullable
+            @Override
+            public NBTBase writeNBT(Capability<GuiMaker> capability, GuiMaker instance, EnumFacing side) {
+                return null;
+            }
 
+            @Override
+            public void readNBT(Capability<GuiMaker> capability, GuiMaker instance, EnumFacing side, NBTBase nbt) {
 
+            }
+        }, GuiMaker::new);
     }
 }

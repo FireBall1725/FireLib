@@ -8,29 +8,25 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.guimaker.objects;
+package com.fireball1725.firelib.network;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraftforge.fml.client.config.GuiUtils;
+import com.fireball1725.firelib.ModInfo;
+import com.fireball1725.firelib.network.messages.PacketGuiToggleEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.UUID;
+public class PacketHandler {
+    public static final SimpleNetworkWrapper NETWORK_INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(ModInfo.MOD_ID.toLowerCase());
+    private static int packetId = 0;
 
-public class GuiWindow extends GuiObject implements IGuiObject {
-    public GuiWindow(int width, int height) {
-        super(UUID.randomUUID());
-        this.width = width;
-        this.height = height;
+    private static int nextID() {
+        return packetId++;
     }
 
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY) {
-        super.drawGuiContainerBackgroundLayer(guiContainer, partialTicks, mouseX, mouseY);
+    public static void init() {
+        NETWORK_INSTANCE.registerMessage(PacketGuiToggleEvent.Handler.class, PacketGuiToggleEvent.class, nextID(), Side.SERVER);
 
-        GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft(), guiContainer.getGuiTop(), 0, 0, this.width, this.height, 32, 32, 4, 1);
-
-
+        NETWORK_INSTANCE.registerMessage(PacketGuiToggleEvent.Handler.class, PacketGuiToggleEvent.class, nextID(), Side.CLIENT);
     }
 }

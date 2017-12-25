@@ -25,11 +25,13 @@ import java.util.Set;
 
 public class ItemBaseTool extends ItemTool implements IItemRenderer {
     protected final String resourcePath;
+    protected final FireMod fireMod;
     protected String internalName = "";
 
-    public ItemBaseTool(float attackDamageIn, float attackSpeedIn, Item.ToolMaterial materalIn, Set<Block> effectiveBlockIn, String resourcePath) {
+    public ItemBaseTool(float attackDamageIn, float attackSpeedIn, Item.ToolMaterial materalIn, Set<Block> effectiveBlockIn, String resourcePath, FireMod fireMod) {
         super(attackDamageIn, attackSpeedIn, materalIn, effectiveBlockIn);
         this.resourcePath = resourcePath;
+        this.fireMod = fireMod;
     }
 
     public String getInternalName() {
@@ -44,14 +46,14 @@ public class ItemBaseTool extends ItemTool implements IItemRenderer {
     public String getUnlocalizedName() {
         String itemName = getUnwrappedUnlocalizedName(super.getUnlocalizedName());
 
-        return String.format("item.%s.%s", FireMod.instance.getModId(), itemName);
+        return String.format("item.%s.%s", fireMod.getModId(), itemName);
     }
 
     @Override
     public String getUnlocalizedName(ItemStack stack) {
         String itemName = getUnwrappedUnlocalizedName(super.getUnlocalizedName(stack));
 
-        return String.format("item.%s.%s", FireMod.instance.getModId(), itemName);
+        return String.format("item.%s.%s", fireMod.getModId(), itemName);
     }
 
     protected String getUnwrappedUnlocalizedName(String unlocalizedName) {
@@ -61,7 +63,7 @@ public class ItemBaseTool extends ItemTool implements IItemRenderer {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerItemRenderer() {
-        final String resourcePath = String.format("%s:%s", FireMod.instance.getModId(), this.resourcePath);
+        final String resourcePath = String.format("%s:%s", fireMod.getModId(), this.resourcePath);
 
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(resourcePath, "inventory"));
     }

@@ -8,29 +8,36 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.guimaker.objects;
+package com.fireball1725.testmod2.common.items;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraftforge.fml.client.config.GuiUtils;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import com.fireball1725.firelib.items.IFireItems;
+import com.fireball1725.testmod2.common.items.test.ItemTest;
+import com.fireball1725.testmod2.common.items.test.ItemToolTest;
+import net.minecraft.item.Item;
 
-import java.util.UUID;
+public enum Items implements IFireItems {
+    TEST_ITEM(ItemTest.class),
+    TEST_TOOL(ItemToolTest.class);
 
-public class GuiWindow extends GuiObject implements IGuiObject {
-    public GuiWindow(int width, int height) {
-        super(UUID.randomUUID());
-        this.width = width;
-        this.height = height;
+    private final Class<? extends Item> itemClass;
+    private Item item;
+
+    Items(Class<? extends Item> itemClass) {
+        this.itemClass = itemClass;
     }
 
-    @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY) {
-        super.drawGuiContainerBackgroundLayer(guiContainer, partialTicks, mouseX, mouseY);
+    public Class<? extends Item> getItemClass() {
+        return this.itemClass;
+    }
 
-        GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft(), guiContainer.getGuiTop(), 0, 0, this.width, this.height, 32, 32, 4, 1);
+    @Override
+    public Item getItem() {
+        return item;
+    }
 
-
+    @Override
+    public void setItem(Item item) {
+        this.item = item;
     }
 }

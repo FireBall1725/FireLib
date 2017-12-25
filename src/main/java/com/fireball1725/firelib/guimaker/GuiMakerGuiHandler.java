@@ -10,7 +10,6 @@
 
 package com.fireball1725.firelib.guimaker;
 
-import com.fireball1725.firelib.FireMod;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -27,8 +26,6 @@ public class GuiMakerGuiHandler implements IGuiHandler {
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         TileEntity tileEntity = world.getTileEntity(new BlockPos(x, y, z));
 
-        FireMod.instance.getLogger().info(">>> Opening Gui: " + ID);
-
         return new GuiMakerContainer(player.inventory, tileEntity, ID);
     }
 
@@ -37,8 +34,6 @@ public class GuiMakerGuiHandler implements IGuiHandler {
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         TileEntity tileEntity = world.getTileEntity(new BlockPos(x, y, z));
-
-        FireMod.instance.getLogger().info(">>> Opening Gui: " + ID);
 
         return new GuiMakerGuiContainer(player.inventory, tileEntity, ID);
     }

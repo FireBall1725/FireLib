@@ -28,40 +28,38 @@ import net.minecraftforge.registries.IForgeRegistry;
 import java.util.Locale;
 
 public class RegistrationHelper {
-    @SubscribeEvent
-    public final void registerBlocks(RegistryEvent.Register<Block> event) {
-        // Blocks
-        if (FireMod.instance.getBlockEnum() != null)
-            registerEnum(FireMod.instance.getBlockEnum(), event.getRegistry());
+    private FireMod fireMod;
+
+    public RegistrationHelper(FireMod fireMod) {
+        this.fireMod = fireMod;
     }
 
-    @SubscribeEvent
-    public final void registerItems(RegistryEvent.Register<Item> event) {
-        // ItemBlocks
-        if (FireMod.instance.getBlockEnum() != null)
-            registerEnum(FireMod.instance.getBlockEnum(), event.getRegistry());
+    public static <E extends Enum<E>> void registerRecipes(Class<E> enumData, RegistryEvent.Register<IRecipe> event) {
+        if (enumData == null) {
+            return;
+        }
 
-        // Items
-        if (FireMod.instance.getItemEnum() != null)
-            registerEnum(FireMod.instance.getItemEnum(), event.getRegistry());
-    }
-
-    @SubscribeEvent
-    public final void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        // Blocks
-        if (FireMod.instance.getBlockEnum() != null)
-            registerRecipes(FireMod.instance.getBlockEnum(), event);
-
-        // Items
-        if (FireMod.instance.getItemEnum() != null)
-            registerRecipes(FireMod.instance.getItemEnum(), event);
-    }
-
-    private <E extends Enum<E>> void registerRecipes(Class<E> enumData, RegistryEvent.Register<IRecipe> event) {
         for (Enum<E> eEnumObject : enumData.getEnumConstants()) {
             if (eEnumObject instanceof IProvideRecipe)
                 ((IProvideRecipe) eEnumObject).registerRecipes(event);
         }
+    }
+
+    @SubscribeEvent
+    public final void registerBlocks(RegistryEvent.Register<Block> event) {
+        registerEnum(fireMod.getBlockEnum(), event.getRegistry());
+    }
+
+    @SubscribeEvent
+    public final void registerItems(RegistryEvent.Register<Item> event) {
+        registerEnum(fireMod.getBlockEnum(), event.getRegistry());
+        registerEnum(fireMod.getItemEnum(), event.getRegistry());
+    }
+
+    @SubscribeEvent
+    public final void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+        registerRecipes(fireMod.getBlockEnum(), event);
+        registerRecipes(fireMod.getItemEnum(), event);
     }
 
     /**
@@ -70,7 +68,11 @@ public class RegistrationHelper {
      * @param enumData enum class
      * @param event    RegistryEvent event
      */
-    private <E extends Enum<E>> void registerEnum(Class<E> enumData, IForgeRegistry event) {
+    public <E extends Enum<E>> void registerEnum(Class<E> enumData, IForgeRegistry event) {
+        if (enumData == null) {
+            return;
+        }
+
         for (Enum<E> enumObject : enumData.getEnumConstants()) {
             if (event.getRegistrySuperType() == Block.class && enumObject instanceof IFireBlocks) {
                 Block block = registerBlock(event, ((IFireBlocks) enumObject).getBlockClass());
@@ -108,12 +110,12 @@ public class RegistrationHelper {
 
             event.register(block);
 
-            if (block instanceof IBlockRenderer && FireMod.instance.proxy().getEffectiveSide() == Side.CLIENT)
+            if (block instanceof IBlockRenderer && fireMod.proxy().getEffectiveSide() == Side.CLIENT)
                 ((IBlockRenderer) block).registerBlockRenderer();
 
-            FireMod.instance.getLogger().info(String.format("Registered block (%s)", blockClass.getCanonicalName()));
+            fireMod.getLogger().info(String.format("Registered block (%s)", blockClass.getCanonicalName()));
         } catch (Exception ex) {
-            FireMod.instance.getLogger().fatal(String.format("Fatal error while registering block (%s)", blockClass.getCanonicalName()));
+            fireMod.getLogger().fatal(String.format("Fatal error while registering block (%s)", blockClass.getCanonicalName()));
             ex.printStackTrace();
         }
 
@@ -129,13 +131,13 @@ public class RegistrationHelper {
 
             event.register(itemBlock);
 
-            if (block instanceof IBlockRenderer && FireMod.instance.proxy().getEffectiveSide() == Side.CLIENT) {
+            if (block instanceof IBlockRenderer && fireMod.proxy().getEffectiveSide() == Side.CLIENT) {
                 ((IBlockRenderer) block).registerBlockItemRenderer();
             }
 
-            FireMod.instance.getLogger().info(String.format("Registered block (%s)", itemBlockClass.getCanonicalName()));
+            fireMod.getLogger().info(String.format("Registered block (%s)", itemBlockClass.getCanonicalName()));
         } catch (Exception ex) {
-            FireMod.instance.getLogger().fatal(String.format("Fatal error while registering block (%s)", itemBlockClass.getCanonicalName()));
+            fireMod.getLogger().fatal(String.format("Fatal error while registering block (%s)", itemBlockClass.getCanonicalName()));
             ex.printStackTrace();
         }
     }
@@ -159,17 +161,17 @@ public class RegistrationHelper {
             if (internalName.isEmpty())
                 throw new IllegalArgumentException(String.format("Unlocalized name cannot be blank! Item: %s", itemClass.getCanonicalName()));
 
-            item.setRegistryName(FireMod.instance.getModId(), internalName);
+            item.setRegistryName(fireMod.getModId(), internalName);
             item.setUnlocalizedName(internalName);
 
             event.register(item);
 
-            if (item instanceof IItemRenderer && FireMod.instance.proxy().getEffectiveSide() == Side.CLIENT)
+            if (item instanceof IItemRenderer && fireMod.proxy().getEffectiveSide() == Side.CLIENT)
                 ((IItemRenderer) item).registerItemRenderer();
 
-            FireMod.instance.getLogger().info(String.format("Registered item (%s)", itemClass.getCanonicalName()));
+            fireMod.getLogger().info(String.format("Registered item (%s)", itemClass.getCanonicalName()));
         } catch (Exception ex) {
-            FireMod.instance.getLogger().fatal(String.format("Fatal error while registering item (%s)", itemClass.getCanonicalName()));
+            fireMod.getLogger().fatal(String.format("Fatal error while registering item (%s)", itemClass.getCanonicalName()));
             ex.printStackTrace();
         }
 

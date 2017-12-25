@@ -8,14 +8,14 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.testmod.common.blocks.test;
+package com.fireball1725.testmod2.common.blocks.test;
 
 import com.fireball1725.firelib.blocks.BlockTileBase;
 import com.fireball1725.firelib.guimaker.GuiMaker;
 import com.fireball1725.firelib.guimaker.objects.GuiLabel;
 import com.fireball1725.firelib.guimaker.objects.GuiWindow;
 import com.fireball1725.firelib.util.IProvideRecipe;
-import com.fireball1725.testmod.TestMod;
+import com.fireball1725.testmod2.TestMod2;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,7 +33,7 @@ public class TestBlock extends BlockTileBase implements IProvideRecipe {
     private GuiLabel guiLabel2 = new GuiLabel(4, 16);
 
     public TestBlock() {
-        super(Material.IRON, "testblock", TestMod.instance);
+        super(Material.IRON, "testblock", TestMod2.instance);
         this.setInternalName("testblock");
         this.setTileEntity(com.fireball1725.testmod.common.tileentities.TestBlock.class);
 
@@ -70,7 +70,6 @@ public class TestBlock extends BlockTileBase implements IProvideRecipe {
             return true;
         }
 
-        TestMod.instance.getLogger().info(">>> CLICKED ON THE THING WITH THE STUFFS!~");
         guiMaker.show(worldIn, playerIn, pos);
 
         return true;

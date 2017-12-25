@@ -10,14 +10,11 @@
 
 package com.fireball1725.firelib.guimaker;
 
-import com.fireball1725.firelib.FireMod;
-import com.fireball1725.firelib.guimaker.objects.GuiObject;
+import com.fireball1725.firelib.FireLib;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.tileentity.TileEntity;
-
-import java.util.ArrayList;
 
 public class GuiMakerContainer extends Container {
     private final InventoryPlayer inventoryPlayer;
@@ -30,11 +27,10 @@ public class GuiMakerContainer extends Container {
         this.guiMaker = GuiMaker.getGuiMaker(id);
 
         if (this.guiMaker == null) {
-            FireMod.instance.getLogger().fatal("GuiMaker is returning a null instance, this is a problem...");
+            FireLib.instance.getLogger().fatal("GuiMaker is returning a null instance, this is a problem...");
         }
 
         initContainer();
-        FireMod.instance.getLogger().info(">>> GUIMAKER-CONTAINER");
     }
 
     public void initContainer() {

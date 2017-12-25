@@ -48,10 +48,11 @@ import java.util.Random;
 public class BlockBase extends Block implements IBlockRenderer {
     protected static final PropertyDirection FACING = BlockHorizontal.FACING;
     protected final String resourcePath;
+    protected final FireMod fireMod;
     protected String internalName = "";
     protected boolean fallInstantly = false;
 
-    protected BlockBase(Material material, String resourcePath) {
+    protected BlockBase(Material material, String resourcePath, FireMod fireMod) {
         super(material);
 
         if (this.canRotate()) {
@@ -59,6 +60,7 @@ public class BlockBase extends Block implements IBlockRenderer {
         }
 
         this.resourcePath = resourcePath;
+        this.fireMod = fireMod;
     }
 
     @Override
@@ -144,7 +146,6 @@ public class BlockBase extends Block implements IBlockRenderer {
 
             if (!fallInstantly && worldIn.isAreaLoaded(pos.add(-i, -i, -i), pos.add(i, i, i))) {
                 if (!worldIn.isRemote) {
-                    FireMod.instance.getLogger().info(">>> Position: " + worldIn.getBlockState(pos).toString());
                     EntityFallingBlock entityfallingblock = new EntityFallingBlock(worldIn, (double) pos.getX() + 0.5D, (double) pos.getY(), (double) pos.getZ() + 0.5D, worldIn.getBlockState(pos));
 
                     this.onStartFalling(entityfallingblock);
@@ -189,7 +190,7 @@ public class BlockBase extends Block implements IBlockRenderer {
     public String getUnlocalizedName() {
         String blockName = getUnwrappedUnlocalizedName(super.getUnlocalizedName());
 
-        return String.format("tile.%s.%s", FireMod.instance.getModId(), blockName);
+        return String.format("tile.%s.%s", fireMod.getModId(), blockName);
     }
 
     private String getUnwrappedUnlocalizedName(String unlocalizedName) {
@@ -230,7 +231,7 @@ public class BlockBase extends Block implements IBlockRenderer {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerBlockRenderer() {
-        final String resource = String.format("%s:%s", FireMod.instance.getModId(), this.resourcePath);
+        final String resource = String.format("%s:%s", fireMod.getModId(), this.resourcePath);
 
         ModelLoader.setCustomStateMapper(this, new DefaultStateMapper() {
             @SideOnly(Side.CLIENT)
@@ -245,7 +246,7 @@ public class BlockBase extends Block implements IBlockRenderer {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerBlockItemRenderer() {
-        final String resource = String.format("%s:%s", FireMod.instance.getModId(), this.resourcePath);
+        final String resource = String.format("%s:%s", fireMod.getModId(), this.resourcePath);
 
         NonNullList<ItemStack> subBlocks = NonNullList.create();
         getSubBlocks(null, subBlocks);

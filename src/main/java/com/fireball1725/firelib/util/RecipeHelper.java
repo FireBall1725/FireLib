@@ -10,19 +10,10 @@
 
 package com.fireball1725.firelib.util;
 
-import com.fireball1725.firelib.FireMod;
-import net.minecraft.block.Block;
+import com.fireball1725.firelib.FireLib;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.item.crafting.ShapedRecipes;
-import net.minecraft.item.crafting.ShapelessRecipes;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.crafting.CraftingHelper;
-import net.minecraftforge.common.crafting.CraftingHelper.ShapedPrimer;
-import net.minecraftforge.oredict.OreIngredient;
 
 public class RecipeHelper {
     public static void addRecipe(String name, IRecipe recipe) {
@@ -30,7 +21,7 @@ public class RecipeHelper {
         //todo: check to see if output is disabled.
 
         if (recipe.getRegistryName() == null) {
-            recipe.setRegistryName(new ResourceLocation(FireMod.instance.getModId(), name));
+            recipe.setRegistryName(new ResourceLocation(FireLib.instance.getModId(), name));
         }
 
         //todo: add recipe to list to register, or register

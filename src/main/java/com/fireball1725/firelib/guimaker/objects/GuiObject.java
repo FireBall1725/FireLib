@@ -10,25 +10,29 @@
 
 package com.fireball1725.firelib.guimaker.objects;
 
-import com.fireball1725.firelib.FireMod;
-import com.fireball1725.firelib.util.ControlState;
+import com.fireball1725.firelib.guimaker.GuiControlOption;
+import com.fireball1725.firelib.guimaker.GuiControlState;
+import com.fireball1725.firelib.guimaker.GuiMakerGuiContainer;
+import com.fireball1725.firelib.network.PacketHandler;
+import com.fireball1725.firelib.network.messages.PacketGuiToggleEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import sun.rmi.log.LogHandler;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.UUID;
 
 public abstract class GuiObject implements IGuiObject {
     protected final ResourceLocation DarkSkin = new ResourceLocation("firelib", "textures/gui/dark.png");
 
-    protected final int controlID;
+    protected final UUID controlID;
 
     protected int x;
     protected int y;
@@ -38,13 +42,46 @@ public abstract class GuiObject implements IGuiObject {
     protected int mouseX;
     protected int mouseY;
 
-    protected ControlState controlState = ControlState.NORMAL;
+    private ArrayList<GuiControlState> controlStates = new ArrayList<>();
+    private boolean supportsHover = false;
+    private boolean supportsToggle = false;
+    private boolean supportsClick = false;
 
     private int offsetX;
     private int offsetY;
 
-    public GuiObject(int controlId) {
+    public GuiObject(UUID controlId, GuiControlOption... guiOptions) {
         this.controlID = controlId;
+
+        for (GuiControlOption guiOption : guiOptions) {
+            switch (guiOption) {
+                case HOVER_STATE:
+                    this.supportsHover = true;
+                    break;
+                case TOGGLE_STATE:
+                    this.supportsToggle = true;
+                    break;
+                case BUTTON_CLICK:
+                    this.supportsClick = true;
+                    break;
+            }
+        }
+    }
+
+    public void addGuiControlState(GuiControlState guiControlState) {
+        if (!this.controlStates.contains(guiControlState)) {
+            this.controlStates.add(guiControlState);
+        }
+    }
+
+    public void removeGuiControlState(GuiControlState guiControlState) {
+        if (this.controlStates.contains(guiControlState)) {
+            this.controlStates.remove(guiControlState);
+        }
+    }
+
+    public boolean hasGuiControlState(GuiControlState guiControlState) {
+        return this.controlStates.contains(guiControlState);
     }
 
     // ----------
@@ -61,71 +98,50 @@ public abstract class GuiObject implements IGuiObject {
 
     @Override
     public void drawGuiContainerForegroundLayer(GuiContainer guiContainer, int mouseX, int mouseY) {
-
+        if (this.hasGuiControlState(GuiControlState.INVISIBLE)) {
+            return;
+        }
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY) {
-        Rectangle rectangle = new Rectangle(guiContainer.getGuiLeft() + this.x, guiContainer.getGuiTop() + y, this.width, this.height);
-        boolean mouseOver = rectangle.contains(mouseX, mouseY);
+        if (this.hasGuiControlState(GuiControlState.INVISIBLE)) {
+            return;
+        }
 
-        switch (this.controlState) {
-            default:
-            case DISABLED:
-            case DISABLED_SELECTED:
-            case INVISIBLE:
-                break;
-            case NORMAL:
-                if (mouseOver) {
-                    this.controlState = ControlState.HOVERED;
-                }
-                break;
-            case HOVERED:
-                if (!mouseOver) {
-                    this.controlState = ControlState.NORMAL;
-                }
-                break;
-            case SELECTED:
-                if (mouseOver) {
-                    this.controlState = ControlState.SELECTED_HOVER;
-                }
-                break;
-            case SELECTED_HOVER:
-                if (!mouseOver) {
-                    this.controlState = ControlState.SELECTED;
-                }
+        if (this.supportsHover) {
+            Rectangle rectangle = new Rectangle(guiContainer.getGuiLeft() + this.x, guiContainer.getGuiTop() + y, this.width, this.height);
+            boolean mouseOver = rectangle.contains(mouseX, mouseY);
+
+            if (mouseOver) {
+                this.addGuiControlState(GuiControlState.HOVERED);
+            } else {
+                this.removeGuiControlState(GuiControlState.HOVERED);
+            }
         }
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public void mouseClicked(GuiContainer guiContainer, int mouseX, int mouseY, int mouseButton) throws IOException {
-        if (this.controlState == ControlState.DISABLED ||
-                this.controlState == ControlState.DISABLED_SELECTED ||
-                this.controlState == ControlState.INVISIBLE
-                ) {
+        if (this.hasGuiControlState(GuiControlState.INVISIBLE)) {
             return;
         }
+
+        TileEntity te = ((GuiMakerGuiContainer) guiContainer).getTileEntity();
 
         Rectangle rectangle = new Rectangle(guiContainer.getGuiLeft() + this.x, guiContainer.getGuiTop() + y, this.width, this.height);
         boolean mouseOver = rectangle.contains(mouseX, mouseY);
 
-        if (mouseOver && mouseButton == 0) {
-            switch (this.controlState) {
-                default:
-                case NORMAL:
-                case HOVERED:
-                    this.controlState = ControlState.SELECTED;
-                    Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));
-                    break;
-                case SELECTED:
-                case SELECTED_HOVER:
-                    this.controlState = ControlState.NORMAL;
-                    Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));
-                    break;
-            }
-            FireMod.instance.getLogger().info(">>> CLICK " + this.controlState.name() + " - " + mouseButton);
+        if (this.supportsToggle && mouseButton == 0 && mouseOver) {
+
+            boolean toggleState = this.hasGuiControlState(GuiControlState.SELECTED);
+
+            PacketGuiToggleEvent packetGuiToggleEvent = new PacketGuiToggleEvent(this.controlID, !toggleState, te.getPos());
+            PacketHandler.NETWORK_INSTANCE.sendToServer(packetGuiToggleEvent);
+
+            Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));
         }
     }
 
@@ -168,4 +184,10 @@ public abstract class GuiObject implements IGuiObject {
         this.y = y;
     }
 
+    // ------------
+
+
+    public UUID getControlID() {
+        return controlID;
+    }
 }

@@ -26,14 +26,12 @@ import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings("unused")
 public abstract class FireMod {
-    public static FireMod instance;
-
     private final FireLog logger;
 
     public FireMod() {
-        instance = this;
         this.logger = new FireLog(this);
         ModEventHandlerHack.doHack(this);
+
     }
 
     public final FireLog getLogger() {
@@ -75,7 +73,7 @@ public abstract class FireMod {
         this.proxy().registerEventHandler(this);
         proxy().initConfiguration(event);
         proxy().preInitStart(event);
-        proxy().registerEventHandler(new RegistrationHelper());
+        proxy().registerEventHandler(new RegistrationHelper(this));
         proxy().preInitEnd(event);
 
         this.getLogger().info("Pre Initialization (Ended after " + stopwatch.elapsed(TimeUnit.MILLISECONDS) + "ms)");

@@ -8,12 +8,12 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.testmod.common.blocks.test;
+package com.fireball1725.testmod2.common.blocks.test;
 
 import com.fireball1725.firelib.blocks.BlockTileBase;
 import com.fireball1725.firelib.util.TileHelper;
-import com.fireball1725.testmod.TestMod;
-import com.fireball1725.testmod.common.tileentities.TileEntityTestBlock2;
+import com.fireball1725.testmod2.TestMod2;
+import com.fireball1725.testmod2.common.tileentities.TileEntityTestBlock2;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,7 +26,7 @@ public class TestBlock2 extends BlockTileBase {
 
 
     public TestBlock2() {
-        super(Material.IRON, "testblock", TestMod.instance);
+        super(Material.IRON, "testblock", TestMod2.instance);
         this.setInternalName("testblock2");
         this.setTileEntity(TileEntityTestBlock2.class);
     }

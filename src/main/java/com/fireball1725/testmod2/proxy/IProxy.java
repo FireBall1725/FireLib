@@ -8,29 +8,24 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.guimaker.objects;
+package com.fireball1725.testmod2.proxy;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraftforge.fml.client.config.GuiUtils;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import com.fireball1725.firelib.proxy.base.IProxyBase;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-import java.util.UUID;
+public interface IProxy extends IProxyBase {
+    @Override
+    default void registerCapabilities() {
 
-public class GuiWindow extends GuiObject implements IGuiObject {
-    public GuiWindow(int width, int height) {
-        super(UUID.randomUUID());
-        this.width = width;
-        this.height = height;
     }
 
-    @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY) {
-        super.drawGuiContainerBackgroundLayer(guiContainer, partialTicks, mouseX, mouseY);
+    default void initConfiguration(FMLPreInitializationEvent event) {
 
-        GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft(), guiContainer.getGuiTop(), 0, 0, this.width, this.height, 32, 32, 4, 1);
+    }
 
+    @Override
+    default void registerEventHandlers() {
 
     }
 }

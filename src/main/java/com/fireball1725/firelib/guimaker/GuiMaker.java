@@ -11,34 +11,26 @@
 package com.fireball1725.firelib.guimaker;
 
 import com.fireball1725.firelib.FireLib;
-import com.fireball1725.firelib.FireMod;
 import com.fireball1725.firelib.guimaker.objects.GuiObject;
 import com.fireball1725.firelib.guimaker.objects.GuiWindow;
-import com.fireball1725.firelib.util.TileHelper;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class GuiMaker {
     private static HashMap<Integer, GuiMaker> guiInstances = new HashMap<>();
+    private final int guiID;
     private HashMap<String, ArrayList<GuiObject>> guiObjects = new HashMap<>();
     private String defaultGroup = "default";
-
-    private final int guiID;
 
     public GuiMaker() {
         this.guiID = guiInstances.size();
 
         guiInstances.put(this.guiID, this);
-    }
-
-    public void show(World world, EntityPlayer player, BlockPos pos) {
-        player.openGui(FireLib.instance, this.guiID, world, pos.getX(), pos.getY(), pos.getZ());
     }
 
     public static GuiMaker getGuiMaker(int guiID) {
@@ -47,6 +39,14 @@ public class GuiMaker {
         }
 
         return null;
+    }
+
+    public static UUID generateUUIDFromName(String input) {
+        return UUID.nameUUIDFromBytes(input.getBytes());
+    }
+
+    public void show(World world, EntityPlayer player, BlockPos pos) {
+        player.openGui(FireLib.instance, this.guiID, world, pos.getX(), pos.getY(), pos.getZ());
     }
 
     public void registerGuiObjectGroup(String groupName) {
@@ -103,7 +103,7 @@ public class GuiMaker {
         ArrayList<GuiObject> guiObjectArrayList = getGuiObjects(groupName);
         for (GuiObject guiObject : guiObjectArrayList) {
             if (guiObject instanceof GuiWindow) {
-                return (GuiWindow)guiObject;
+                return (GuiWindow) guiObject;
             }
         }
 
@@ -112,5 +112,35 @@ public class GuiMaker {
 
     private boolean groupExists(String groupName) {
         return guiObjects.containsKey(groupName);
+    }
+
+    public void addGuiControlState(GuiControlState guiControlState, UUID guiControlID) {
+        GuiObject guiObject = getGuiObjectFromUUID(guiControlID);
+
+        if (guiObject == null) {
+            return;
+        }
+
+        guiObject.addGuiControlState(guiControlState);
+    }
+
+    public void removeGuiControlState(GuiControlState guiControlState, UUID guiControlID) {
+        GuiObject guiObject = getGuiObjectFromUUID(guiControlID);
+
+        if (guiObject == null) {
+            return;
+        }
+
+        guiObject.removeGuiControlState(guiControlState);
+    }
+
+    private GuiObject getGuiObjectFromUUID(UUID guiControlID) {
+        for (GuiObject guiObject : this.getGuiObjects()) {
+            if (guiObject.getControlID().equals(guiControlID)) {
+                return guiObject;
+            }
+        }
+
+        return null;
     }
 }

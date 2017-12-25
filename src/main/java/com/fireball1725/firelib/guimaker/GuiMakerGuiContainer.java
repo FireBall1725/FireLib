@@ -10,13 +10,17 @@
 
 package com.fireball1725.firelib.guimaker;
 
-import com.fireball1725.firelib.FireMod;
+import com.fireball1725.firelib.FireLib;
 import com.fireball1725.firelib.guimaker.objects.GuiObject;
 import com.fireball1725.firelib.guimaker.objects.GuiWindow;
-import com.fireball1725.firelib.guimaker.objects.IGuiObject;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,14 +41,15 @@ public class GuiMakerGuiContainer extends GuiContainer {
         this.guiMaker = GuiMaker.getGuiMaker(id);
 
         if (this.guiMaker == null) {
-            FireMod.instance.getLogger().fatal("GuiMaker is returning a null instance, this is a problem...");
+            FireLib.instance.getLogger().fatal("GuiMaker is returning a null instance, this is a problem...");
         }
 
-        FireMod.instance.getLogger().info(">>> GUIMAKER-GUICONTAINER");
     }
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+        scissorCut(this.guiLeft, this.guiTop, this.xSize, this.ySize);
+
         ArrayList<GuiObject> guiObjects = guiMaker.getGuiObjects();
 
         for (GuiObject guiObject : guiObjects) {
@@ -52,12 +57,12 @@ public class GuiMakerGuiContainer extends GuiContainer {
                 guiObject.drawGuiContainerBackgroundLayer(this, partialTicks, mouseX, mouseY);
             }
         }
+
+        scissorsEnd();
     }
 
     @Override
     public void initGui() {
-        //todo: get guiWindow and get width + height then set that here...
-
         GuiWindow guiWindow = guiMaker.getGuiWindow();
         if (guiWindow != null) {
             this.xSize = guiWindow.getWidth();
@@ -65,6 +70,14 @@ public class GuiMakerGuiContainer extends GuiContainer {
         }
 
         super.initGui();
+
+        ArrayList<GuiObject> guiObjects = guiMaker.getGuiObjects();
+
+        for (GuiObject guiObject : guiObjects) {
+            if (guiObject != null) {
+                guiObject.initGui(this);
+            }
+        }
     }
 
     @Override
@@ -85,6 +98,8 @@ public class GuiMakerGuiContainer extends GuiContainer {
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
         super.drawGuiContainerForegroundLayer(mouseX, mouseY);
 
+        scissorCut(this.guiLeft + 2, this.guiTop + 2, this.xSize - 4, this.ySize - 4);
+
         ArrayList<GuiObject> guiObjects = guiMaker.getGuiObjects();
 
         for (GuiObject guiObject : guiObjects) {
@@ -92,6 +107,8 @@ public class GuiMakerGuiContainer extends GuiContainer {
                 guiObject.drawGuiContainerForegroundLayer(this, mouseX, mouseY);
             }
         }
+
+        scissorsEnd();
     }
 
     @Override
@@ -146,5 +163,23 @@ public class GuiMakerGuiContainer extends GuiContainer {
         }
     }
 
+    // --------
 
+    @SideOnly(Side.CLIENT)
+    public void scissorCut(int x, int y, int w, int h) {
+        ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
+        int scale = scaledResolution.getScaleFactor();
+
+        GL11.glEnable(GL11.GL_SCISSOR_TEST);
+        GL11.glScissor(x * scale, y * scale, w * scale, h * scale);
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void scissorsEnd() {
+        GL11.glDisable(GL11.GL_SCISSOR_TEST);
+    }
+
+    public TileEntity getTileEntity() {
+        return tileEntity;
+    }
 }

@@ -12,14 +12,14 @@ package com.fireball1725.firelib.proxy;
 
 import com.fireball1725.firelib.FireLib;
 import com.fireball1725.firelib.guimaker.GuiMakerGuiHandler;
+import com.fireball1725.firelib.network.PacketHandler;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 public abstract class CommonProxy implements IProxy {
     @Override
     public void preInitEnd(FMLPreInitializationEvent event) {
-        //IProxy.super.preInitEnd(event);
-
+        PacketHandler.init();
         NetworkRegistry.INSTANCE.registerGuiHandler(FireLib.instance, new GuiMakerGuiHandler());
     }
 }

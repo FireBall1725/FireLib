@@ -14,14 +14,14 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.io.IOException;
+import java.util.UUID;
 
 public class GuiLabel extends GuiObject implements IGuiObject {
     public String label = "";
     public int color = 0;
 
     public GuiLabel(int x, int y) {
-        super(0);
+        super(UUID.randomUUID());
         this.x = x;
         this.y = y;
     }

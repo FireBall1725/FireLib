@@ -11,12 +11,13 @@
 package com.fireball1725.testmod.common.items.test;
 
 import com.fireball1725.firelib.items.ItemBaseTool;
+import com.fireball1725.testmod.TestMod;
 import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
 
 public class ItemToolTest extends ItemBaseTool {
     public ItemToolTest() {
-        super(3.0f, 1.0f, ToolMaterial.DIAMOND, Sets.newHashSet(new Block[]{}), "tools/test");
+        super(3.0f, 1.0f, ToolMaterial.DIAMOND, Sets.newHashSet(new Block[]{}), "tools/test", TestMod.instance);
         this.setInternalName("testtool");
     }
 }

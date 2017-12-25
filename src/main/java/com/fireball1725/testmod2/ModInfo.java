@@ -8,29 +8,18 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.guimaker.objects;
+package com.fireball1725.testmod2;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraftforge.fml.client.config.GuiUtils;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.UUID;
-
-public class GuiWindow extends GuiObject implements IGuiObject {
-    public GuiWindow(int width, int height) {
-        super(UUID.randomUUID());
-        this.width = width;
-        this.height = height;
-    }
-
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY) {
-        super.drawGuiContainerBackgroundLayer(guiContainer, partialTicks, mouseX, mouseY);
-
-        GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft(), guiContainer.getGuiTop(), 0, 0, this.width, this.height, 32, 32, 4, 1);
-
-
-    }
+public class ModInfo {
+    public static final String PACKAGE_NAME = "com.fireball1725.";
+    public static final String MOD_ID = "testmod2";
+    public static final String MOD_NAME = "Mod to test FireLib";
+    public static final String VERSION_BUILD = "@VERSION@";
+    public static final String MINECRAFT_VERSION = "@MCVERSION@";
+    public static final String DEPENDENCIES = "";
+    public static final String SERVER_PROXY_CLASS = PACKAGE_NAME + MOD_ID + ".proxy.ServerProxy";
+    public static final String CLIENT_PROXY_CLASS = PACKAGE_NAME + MOD_ID + ".proxy.ClientProxy";
+    public static final String FINGERPRINT = "@FINGERPRINT@";
+    public static final String GUI_FACTORY = PACKAGE_NAME + MOD_ID + ".common.config.ConfigGuiFactory";
+    public static final String PATH_INTEGRATIONS = PACKAGE_NAME + MOD_ID + ".common.integrations.";
 }

@@ -21,10 +21,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class ItemBase extends Item implements IItemRenderer {
     protected final String resourcePath;
+    protected final FireMod fireMod;
     protected String internalName = "";
 
-    public ItemBase(String resourcePath) {
+    public ItemBase(String resourcePath, FireMod fireMod) {
         this.resourcePath = resourcePath;
+        this.fireMod = fireMod;
     }
 
     public String getInternalName() {
@@ -39,14 +41,14 @@ public abstract class ItemBase extends Item implements IItemRenderer {
     public String getUnlocalizedName() {
         String itemName = getUnwrappedUnlocalizedName(super.getUnlocalizedName());
 
-        return String.format("item.%s.%s", FireMod.instance.getModId(), itemName);
+        return String.format("item.%s.%s", fireMod.getModId(), itemName);
     }
 
     @Override
     public String getUnlocalizedName(ItemStack stack) {
         String itemName = getUnwrappedUnlocalizedName(super.getUnlocalizedName(stack));
 
-        return String.format("item.%s.%s", FireMod.instance.getModId(), itemName);
+        return String.format("item.%s.%s", fireMod.getModId(), itemName);
     }
 
     protected String getUnwrappedUnlocalizedName(String unlocalizedName) {
@@ -56,7 +58,7 @@ public abstract class ItemBase extends Item implements IItemRenderer {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerItemRenderer() {
-        final String resourcePath = String.format("%s:%s", FireMod.instance.getModId(), this.resourcePath);
+        final String resourcePath = String.format("%s:%s", fireMod.getModId(), this.resourcePath);
 
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(resourcePath, "inventory"));
     }

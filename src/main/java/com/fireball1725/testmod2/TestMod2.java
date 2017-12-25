@@ -8,29 +8,41 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.guimaker.objects;
+package com.fireball1725.testmod2;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraftforge.fml.client.config.GuiUtils;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import com.fireball1725.firelib.FireMod;
+import com.fireball1725.firelib.proxy.base.IProxyBase;
+import com.fireball1725.testmod2.common.blocks.Blocks;
+import com.fireball1725.testmod2.common.items.Items;
+import com.fireball1725.testmod2.proxy.IProxy;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
 
-import java.util.UUID;
+@Mod(modid = ModInfo.MOD_ID, name = ModInfo.MOD_NAME, version = ModInfo.VERSION_BUILD)
+public class TestMod2 extends FireMod {
+    @Mod.Instance(ModInfo.MOD_ID)
+    public static TestMod2 instance;
 
-public class GuiWindow extends GuiObject implements IGuiObject {
-    public GuiWindow(int width, int height) {
-        super(UUID.randomUUID());
-        this.width = width;
-        this.height = height;
+    @SidedProxy(clientSide = ModInfo.CLIENT_PROXY_CLASS, serverSide = ModInfo.SERVER_PROXY_CLASS)
+    public static IProxy proxy;
+
+    @Override
+    public IProxyBase proxy() {
+        return proxy;
     }
 
-    @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY) {
-        super.drawGuiContainerBackgroundLayer(guiContainer, partialTicks, mouseX, mouseY);
+    public String getModId() {
+        return ModInfo.MOD_ID;
+    }
 
-        GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft(), guiContainer.getGuiTop(), 0, 0, this.width, this.height, 32, 32, 4, 1);
+    @Override
+    public Class getBlockEnum() {
+        return Blocks.class;
+    }
 
-
+    @Override
+    public Class getItemEnum() {
+        return Items.class;
     }
 }

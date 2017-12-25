@@ -10,15 +10,18 @@
 
 package com.fireball1725.firelib.guimaker.objects;
 
-import com.fireball1725.firelib.util.ControlState;
+import com.fireball1725.firelib.guimaker.GuiControlOption;
+import com.fireball1725.firelib.guimaker.GuiControlState;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraftforge.fml.client.config.GuiUtils;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.UUID;
+
 public class GuiCheckbox extends GuiObject implements IGuiObject {
-    public GuiCheckbox(int controlId) {
-        super(controlId);
+    public GuiCheckbox(UUID controlId) {
+        super(controlId, GuiControlOption.HOVER_STATE, GuiControlOption.TOGGLE_STATE);
         this.width = 12;
         this.height = 12;
     }
@@ -28,27 +31,23 @@ public class GuiCheckbox extends GuiObject implements IGuiObject {
     public void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY) {
         super.drawGuiContainerBackgroundLayer(guiContainer, partialTicks, mouseX, mouseY);
 
-        if (this.controlState == ControlState.INVISIBLE) {
-            return;
-        }
-
-        // Draw Checkbox Border
+        //Draw Checkbox Border
         GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.x, guiContainer.getGuiTop() + this.y, 0, 32, 12, 12, 12, 12, 1, 100);
 
-        switch (this.controlState) {
-            default:
-            case NORMAL:
-                GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.x, guiContainer.getGuiTop() + this.y, 16, 32, 12, 12, 12, 12, 1, 100);
-                break;
-            case HOVERED:
-                GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.x, guiContainer.getGuiTop() + this.y, 32, 32, 12, 12, 12, 12, 1, 100);
-                break;
-            case SELECTED:
-                GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.x, guiContainer.getGuiTop() + this.y, 48, 32, 12, 12, 12, 12, 1, 100);
-                break;
-            case SELECTED_HOVER:
+        if (this.hasGuiControlState(GuiControlState.HOVERED)) {
+            if (this.hasGuiControlState(GuiControlState.SELECTED)) {
+                // Hovered Checked
                 GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.x, guiContainer.getGuiTop() + this.y, 64, 32, 12, 12, 12, 12, 1, 100);
-                break;
+            } else {
+                // Hovered
+                GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.x, guiContainer.getGuiTop() + this.y, 32, 32, 12, 12, 12, 12, 1, 100);
+            }
+        } else if (this.hasGuiControlState(GuiControlState.SELECTED)) {
+            // Checked
+            GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.x, guiContainer.getGuiTop() + this.y, 48, 32, 12, 12, 12, 12, 1, 100);
+        } else {
+            // Normal
+            GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.x, guiContainer.getGuiTop() + this.y, 16, 32, 12, 12, 12, 12, 1, 100);
         }
     }
 }

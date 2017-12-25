@@ -28,151 +28,162 @@ import net.minecraftforge.registries.IForgeRegistry;
 import java.util.Locale;
 
 public class RegistrationHelper {
-    @SubscribeEvent
-    public final void registerBlocks(RegistryEvent.Register<Block> event) {
-        // Blocks
-        if (FireMod.instance.getBlockEnum() != null)
-            registerEnum(FireMod.instance.getBlockEnum(), event.getRegistry());
-    }
+	@SubscribeEvent
+	public final void registerBlocks(RegistryEvent.Register<Block> event) {
+		// Blocks
+		if (FireMod.instance().getBlockEnum() != null)
+			registerEnum(FireMod.instance().getBlockEnum(), event.getRegistry());
+	}
 
-    @SubscribeEvent
-    public final void registerItems(RegistryEvent.Register<Item> event) {
-        // ItemBlocks
-        if (FireMod.instance.getBlockEnum() != null)
-            registerEnum(FireMod.instance.getBlockEnum(), event.getRegistry());
+	@SubscribeEvent
+	public final void registerItems(RegistryEvent.Register<Item> event) {
+		// ItemBlocks
+		if (FireMod.instance().getBlockEnum() != null)
+			registerEnum(FireMod.instance().getBlockEnum(), event.getRegistry());
 
-        // Items
-        if (FireMod.instance.getItemEnum() != null)
-            registerEnum(FireMod.instance.getItemEnum(), event.getRegistry());
-    }
+		// Items
+		if (FireMod.instance().getItemEnum() != null)
+			registerEnum(FireMod.instance().getItemEnum(), event.getRegistry());
+	}
 
-    @SubscribeEvent
-    public final void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        // Blocks
-        if (FireMod.instance.getBlockEnum() != null)
-            registerRecipes(FireMod.instance.getBlockEnum(), event);
+	@SubscribeEvent
+	public final void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+		// Blocks
+		if (FireMod.instance().getBlockEnum() != null)
+			registerRecipes(FireMod.instance().getBlockEnum(), event);
 
-        // Items
-        if (FireMod.instance.getItemEnum() != null)
-            registerRecipes(FireMod.instance.getItemEnum(), event);
-    }
+		// Items
+		if (FireMod.instance().getItemEnum() != null)
+			registerRecipes(FireMod.instance().getItemEnum(), event);
+	}
 
-    private <E extends Enum<E>> void registerRecipes(Class<E> enumData, RegistryEvent.Register<IRecipe> event) {
-        for (Enum<E> eEnumObject : enumData.getEnumConstants()) {
-            if (eEnumObject instanceof IProvideRecipe)
-                ((IProvideRecipe) eEnumObject).registerRecipes(event);
-        }
-    }
+	private <E extends Enum<E>> void registerRecipes(Class<E> enumData, RegistryEvent.Register<IRecipe> event) {
+		for (Enum<E> eEnumObject : enumData.getEnumConstants()) {
+			if (eEnumObject instanceof IProvideRecipe)
+				((IProvideRecipe) eEnumObject).registerRecipes(event);
+		}
+	}
 
-    /**
-     * Register enum blocks, itemblocks, and items
-     *
-     * @param enumData enum class
-     * @param event    RegistryEvent event
-     */
-    private <E extends Enum<E>> void registerEnum(Class<E> enumData, IForgeRegistry event) {
-        for (Enum<E> enumObject : enumData.getEnumConstants()) {
-            if (event.getRegistrySuperType() == Block.class && enumObject instanceof IFireBlocks) {
-                Block block = registerBlock(event, ((IFireBlocks) enumObject).getBlockClass());
-                ((IFireBlocks) enumObject).setBlock(block);
-            }
+	/**
+	 * Register enum blocks, itemblocks, and items
+	 *
+	 * @param enumData
+	 *            enum class
+	 * @param event
+	 *            RegistryEvent event
+	 */
+	private <E extends Enum<E>> void registerEnum(Class<E> enumData, IForgeRegistry event) {
+		for (Enum<E> enumObject : enumData.getEnumConstants()) {
+			if (event.getRegistrySuperType() == Block.class && enumObject instanceof IFireBlocks) {
+				Block block = registerBlock(event, ((IFireBlocks) enumObject).getBlockClass());
+				((IFireBlocks) enumObject).setBlock(block);
+			}
 
-            if (event.getRegistrySuperType() == Item.class && enumObject instanceof IFireBlocks) {
-                registerItemBlock(event, ((IFireBlocks) enumObject).getBlock(), ((IFireBlocks) enumObject).getItemBlockClass());
-            }
+			if (event.getRegistrySuperType() == Item.class && enumObject instanceof IFireBlocks) {
+				registerItemBlock(event, ((IFireBlocks) enumObject).getBlock(),
+						((IFireBlocks) enumObject).getItemBlockClass());
+			}
 
-            if (event.getRegistrySuperType() == Item.class && enumObject instanceof IFireItems) {
-                Item item = registerItem(event, ((IFireItems) enumObject).getItemClass());
-                ((IFireItems) enumObject).setItem(item);
-            }
-        }
-    }
+			if (event.getRegistrySuperType() == Item.class && enumObject instanceof IFireItems) {
+				Item item = registerItem(event, ((IFireItems) enumObject).getItemClass());
+				((IFireItems) enumObject).setItem(item);
+			}
+		}
+	}
 
-    private Block registerBlock(IForgeRegistry event, Class<? extends BlockBase> blockClass) {
-        Block block = null;
-        String internalName;
+	private Block registerBlock(IForgeRegistry event, Class<? extends BlockBase> blockClass) {
+		Block block = null;
+		String internalName;
 
-        try {
-            block = blockClass.getConstructor().newInstance();
+		try {
+			block = blockClass.getConstructor().newInstance();
 
-            internalName = ((BlockBase) block).getInternalName();
+			internalName = ((BlockBase) block).getInternalName();
 
-            if (!internalName.equals(internalName.toLowerCase(Locale.US)))
-                throw new IllegalArgumentException(String.format("Unlocalized names need to be all lowercase! Block is %s", internalName));
+			if (!internalName.equals(internalName.toLowerCase(Locale.US)))
+				throw new IllegalArgumentException(
+						String.format("Unlocalized names need to be all lowercase! Block is %s", internalName));
 
-            if (internalName.isEmpty())
-                throw new IllegalArgumentException(String.format("Unlocalized names cannot be blank! Block is %s", blockClass.getCanonicalName()));
+			if (internalName.isEmpty())
+				throw new IllegalArgumentException(
+						String.format("Unlocalized names cannot be blank! Block is %s", blockClass.getCanonicalName()));
 
-            block.setRegistryName(internalName);
-            block.setUnlocalizedName(internalName);
+			block.setRegistryName(internalName);
+			block.setUnlocalizedName(internalName);
 
-            event.register(block);
+			event.register(block);
 
-            if (block instanceof IBlockRenderer && FireMod.instance.proxy().getEffectiveSide() == Side.CLIENT)
-                ((IBlockRenderer) block).registerBlockRenderer();
+			if (block instanceof IBlockRenderer && FireMod.instance().proxy().getEffectiveSide() == Side.CLIENT)
+				((IBlockRenderer) block).registerBlockRenderer();
 
-            FireMod.instance.getLogger().info(String.format("Registered block (%s)", blockClass.getCanonicalName()));
-        } catch (Exception ex) {
-            FireMod.instance.getLogger().fatal(String.format("Fatal error while registering block (%s)", blockClass.getCanonicalName()));
-            ex.printStackTrace();
-        }
+			FireMod.instance().getLogger().info(String.format("Registered block (%s)", blockClass.getCanonicalName()));
+		} catch (Exception ex) {
+			FireMod.instance().getLogger()
+					.fatal(String.format("Fatal error while registering block (%s)", blockClass.getCanonicalName()));
+			ex.printStackTrace();
+		}
 
-        return block;
-    }
+		return block;
+	}
 
-    private void registerItemBlock(IForgeRegistry event, Block block, Class<? extends ItemBlock> itemBlockClass) {
-        ItemBlock itemBlock;
+	private void registerItemBlock(IForgeRegistry event, Block block, Class<? extends ItemBlock> itemBlockClass) {
+		ItemBlock itemBlock;
 
-        try {
-            itemBlock = itemBlockClass.getConstructor(Block.class).newInstance(block);
-            itemBlock.setRegistryName(block.getRegistryName());
+		try {
+			itemBlock = itemBlockClass.getConstructor(Block.class).newInstance(block);
+			itemBlock.setRegistryName(block.getRegistryName());
 
-            event.register(itemBlock);
+			event.register(itemBlock);
 
-            if (block instanceof IBlockRenderer && FireMod.instance.proxy().getEffectiveSide() == Side.CLIENT) {
-                ((IBlockRenderer) block).registerBlockItemRenderer();
-            }
+			if (block instanceof IBlockRenderer && FireMod.instance().proxy().getEffectiveSide() == Side.CLIENT) {
+				((IBlockRenderer) block).registerBlockItemRenderer();
+			}
 
-            FireMod.instance.getLogger().info(String.format("Registered block (%s)", itemBlockClass.getCanonicalName()));
-        } catch (Exception ex) {
-            FireMod.instance.getLogger().fatal(String.format("Fatal error while registering block (%s)", itemBlockClass.getCanonicalName()));
-            ex.printStackTrace();
-        }
-    }
+			FireMod.instance().getLogger()
+					.info(String.format("Registered block (%s)", itemBlockClass.getCanonicalName()));
+		} catch (Exception ex) {
+			FireMod.instance().getLogger().fatal(
+					String.format("Fatal error while registering block (%s)", itemBlockClass.getCanonicalName()));
+			ex.printStackTrace();
+		}
+	}
 
-    private Item registerItem(IForgeRegistry event, Class<? extends Item> itemClass) {
-        Item item = null;
-        String internalName = "";
+	private Item registerItem(IForgeRegistry event, Class<? extends Item> itemClass) {
+		Item item = null;
+		String internalName = "";
 
-        try {
-            item = itemClass.getConstructor().newInstance();
+		try {
+			item = itemClass.getConstructor().newInstance();
 
-            if (item instanceof ItemBase)
-                internalName = ((ItemBase) item).getInternalName();
+			if (item instanceof ItemBase)
+				internalName = ((ItemBase) item).getInternalName();
 
-            if (item instanceof ItemBaseTool)
-                internalName = ((ItemBaseTool) item).getInternalName();
+			if (item instanceof ItemBaseTool)
+				internalName = ((ItemBaseTool) item).getInternalName();
 
-            if (!internalName.equals(internalName.toLowerCase(Locale.US)))
-                throw new IllegalArgumentException(String.format("Unlocalized names need to be all lowercase! Item: %s", internalName));
+			if (!internalName.equals(internalName.toLowerCase(Locale.US)))
+				throw new IllegalArgumentException(
+						String.format("Unlocalized names need to be all lowercase! Item: %s", internalName));
 
-            if (internalName.isEmpty())
-                throw new IllegalArgumentException(String.format("Unlocalized name cannot be blank! Item: %s", itemClass.getCanonicalName()));
+			if (internalName.isEmpty())
+				throw new IllegalArgumentException(
+						String.format("Unlocalized name cannot be blank! Item: %s", itemClass.getCanonicalName()));
 
-            item.setRegistryName(FireMod.instance.getModId(), internalName);
-            item.setUnlocalizedName(internalName);
+			item.setRegistryName(FireMod.instance().getModId(), internalName);
+			item.setUnlocalizedName(internalName);
 
-            event.register(item);
+			event.register(item);
 
-            if (item instanceof IItemRenderer && FireMod.instance.proxy().getEffectiveSide() == Side.CLIENT)
-                ((IItemRenderer) item).registerItemRenderer();
+			if (item instanceof IItemRenderer && FireMod.instance().proxy().getEffectiveSide() == Side.CLIENT)
+				((IItemRenderer) item).registerItemRenderer();
 
-            FireMod.instance.getLogger().info(String.format("Registered item (%s)", itemClass.getCanonicalName()));
-        } catch (Exception ex) {
-            FireMod.instance.getLogger().fatal(String.format("Fatal error while registering item (%s)", itemClass.getCanonicalName()));
-            ex.printStackTrace();
-        }
+			FireMod.instance().getLogger().info(String.format("Registered item (%s)", itemClass.getCanonicalName()));
+		} catch (Exception ex) {
+			FireMod.instance().getLogger()
+					.fatal(String.format("Fatal error while registering item (%s)", itemClass.getCanonicalName()));
+			ex.printStackTrace();
+		}
 
-        return item;
-    }
+		return item;
+	}
 }

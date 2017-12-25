@@ -10,128 +10,153 @@
 
 package com.fireball1725.firelib;
 
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.lang3.JavaVersion;
+import org.apache.commons.lang3.SystemUtils;
+
 import com.fireball1725.firelib.proxy.base.IProxyBase;
 import com.fireball1725.firelib.util.FireLog;
 import com.fireball1725.firelib.util.ModEventHandlerHack;
 import com.fireball1725.firelib.util.RegistrationHelper;
 import com.google.common.base.Stopwatch;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.event.*;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import org.apache.commons.lang3.JavaVersion;
-import org.apache.commons.lang3.SystemUtils;
 
-import java.util.concurrent.TimeUnit;
+import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.common.ForgeModContainer;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.LoaderState;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
+import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @SuppressWarnings("unused")
 public abstract class FireMod {
-    public static FireMod instance;
 
-    private final FireLog logger;
+	public static FireMod instance() {
+		FireMod loader = null;
+		try {
+			if (!Loader.instance().hasReachedState(LoaderState.POSTINITIALIZATION)) {
+				return (FireMod) Loader.instance().activeModContainer().getMod();
+			} else {
+				throw new Exception("Calling Instance after load. SHOULD NOT BE ALLOWED!");
+			}
+		} catch (Exception e) {
+			return FireLib.instance;
+		}
 
-    public FireMod() {
-        instance = this;
-        this.logger = new FireLog(this);
-        ModEventHandlerHack.doHack(this);
-    }
+	}
 
-    public final FireLog getLogger() {
-        return this.logger;
-    }
+	private final FireLog logger;
 
-    public abstract String getModId();
+	public FireMod() {
+		this.logger = new FireLog(this);
+		ModEventHandlerHack.doHack(this);
+	}
 
-    public abstract IProxyBase proxy();
+	public final FireLog getLogger() {
+		return this.logger;
+	}
 
-    public Object getModBlockRegistry() {
-        return null;
-    }
+	public abstract String getModId();
 
-    public Object getModItemRegistry() {
-        return null;
-    }
+	public abstract IProxyBase proxy();
 
-    public Class getBlockEnum() {
-        return null;
-    }
+	public Object getModBlockRegistry() {
+		return null;
+	}
 
-    public Class getItemEnum() {
-        return null;
-    }
+	public Object getModItemRegistry() {
+		return null;
+	}
 
-    // FML Events
+	public Class getBlockEnum() {
+		return null;
+	}
 
-    @Mod.EventHandler
-    public final void preInit(FMLPreInitializationEvent event) {
-        final Stopwatch stopwatch = Stopwatch.createStarted();
-        this.getLogger().info("Pre Initialization (Started)");
+	public Class getItemEnum() {
+		return null;
+	}
 
-        // Check java version to make sure we are on Java 1.8
-        if (!SystemUtils.isJavaVersionAtLeast(JavaVersion.JAVA_1_8)) {
-            //throw new OutdatedJavaException(String.format("%s requires Java 8 or newer, Please update your java", ModInfo.MOD_NAME));
-        }
+	// FML Events
 
-        this.proxy().registerEventHandler(this);
-        proxy().initConfiguration(event);
-        proxy().preInitStart(event);
-        proxy().registerEventHandler(new RegistrationHelper());
-        proxy().preInitEnd(event);
+	@Mod.EventHandler
+	public final void preInit(FMLPreInitializationEvent event) {
+		final Stopwatch stopwatch = Stopwatch.createStarted();
+		this.getLogger().info("Pre Initialization (Started)");
 
-        this.getLogger().info("Pre Initialization (Ended after " + stopwatch.elapsed(TimeUnit.MILLISECONDS) + "ms)");
-    }
+		// Check java version to make sure we are on Java 1.8
+		if (!SystemUtils.isJavaVersionAtLeast(JavaVersion.JAVA_1_8)) {
+			// throw new OutdatedJavaException(String.format("%s requires Java 8 or newer,
+			// Please update your java", ModInfo.MOD_NAME));
+		}
 
-    @Mod.EventHandler
-    public final void init(FMLInitializationEvent event) {
-        final Stopwatch stopwatch = Stopwatch.createStarted();
-        this.getLogger().info("Initialization (Started)");
+		this.proxy().registerEventHandler(this);
+		proxy().initConfiguration(event);
+		proxy().preInitStart(event);
+		proxy().registerEventHandler(new RegistrationHelper());
+		proxy().preInitEnd(event);
 
-        proxy().initStart(event);
-        proxy().registerCapabilities();
-        proxy().registerEventHandlers();
-        proxy().initEnd(event);
+		this.getLogger().info("Pre Initialization (Ended after " + stopwatch.elapsed(TimeUnit.MILLISECONDS) + "ms)");
+	}
 
-        this.getLogger().info("Initialization (Ended after " + stopwatch.elapsed(TimeUnit.MILLISECONDS) + "ms)");
-    }
+	@Mod.EventHandler
+	public final void init(FMLInitializationEvent event) {
+		final Stopwatch stopwatch = Stopwatch.createStarted();
+		this.getLogger().info("Initialization (Started)");
 
-    @Mod.EventHandler
-    public final void postInit(FMLPostInitializationEvent event) {
-        final Stopwatch stopwatch = Stopwatch.createStarted();
-        this.getLogger().info("Post Initialization (Started)");
+		proxy().initStart(event);
+		proxy().registerCapabilities();
+		proxy().registerEventHandlers();
+		proxy().initEnd(event);
 
-        proxy().postInitStart(event);
-        proxy().postInitEnd(event);
+		this.getLogger().info("Initialization (Ended after " + stopwatch.elapsed(TimeUnit.MILLISECONDS) + "ms)");
+	}
 
-        this.getLogger().info("Post Initialization (Ended after " + stopwatch.elapsed(TimeUnit.MILLISECONDS) + "ms)");
-    }
+	@Mod.EventHandler
+	public final void postInit(FMLPostInitializationEvent event) {
+		final Stopwatch stopwatch = Stopwatch.createStarted();
+		this.getLogger().info("Post Initialization (Started)");
 
-    @Mod.EventHandler
-    public final void onServerAboutToStart(FMLServerAboutToStartEvent event) {
-        proxy().onServerAboutToStart(event);
-    }
+		proxy().postInitStart(event);
+		proxy().postInitEnd(event);
 
-    @Mod.EventHandler
-    public final void onServerStarting(FMLServerStartingEvent event) {
-        proxy().onServerStarting(event);
-    }
+		this.getLogger().info("Post Initialization (Ended after " + stopwatch.elapsed(TimeUnit.MILLISECONDS) + "ms)");
+	}
 
-    @Mod.EventHandler
-    public final void onServerStarted(FMLServerStartedEvent event) {
-        proxy().onServerStarted(event);
-    }
+	@Mod.EventHandler
+	public final void onServerAboutToStart(FMLServerAboutToStartEvent event) {
+		proxy().onServerAboutToStart(event);
+	}
 
-    @Mod.EventHandler
-    public final void onServerStopping(FMLServerStoppingEvent event) {
-        proxy().onServerStopping(event);
-    }
+	@Mod.EventHandler
+	public final void onServerStarting(FMLServerStartingEvent event) {
+		proxy().onServerStarting(event);
+	}
 
-    @Mod.EventHandler
-    public final void onServerStopped(FMLServerStoppedEvent event) {
-        proxy().onServerStopped(event);
-    }
+	@Mod.EventHandler
+	public final void onServerStarted(FMLServerStartedEvent event) {
+		proxy().onServerStarted(event);
+	}
 
-    @SubscribeEvent
-    public final void registerModels(ModelRegistryEvent event) {
+	@Mod.EventHandler
+	public final void onServerStopping(FMLServerStoppingEvent event) {
+		proxy().onServerStopping(event);
+	}
 
-    }
+	@Mod.EventHandler
+	public final void onServerStopped(FMLServerStoppedEvent event) {
+		proxy().onServerStopped(event);
+	}
+
+	@SubscribeEvent
+	public final void registerModels(ModelRegistryEvent event) {
+
+	}
 }

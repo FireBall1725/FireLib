@@ -46,213 +46,224 @@ import java.util.List;
 import java.util.Random;
 
 public class BlockBase extends Block implements IBlockRenderer {
-    protected static final PropertyDirection FACING = BlockHorizontal.FACING;
-    protected final String resourcePath;
-    protected String internalName = "";
-    protected boolean fallInstantly = false;
+	protected static final PropertyDirection FACING = BlockHorizontal.FACING;
+	protected final String resourcePath;
+	protected String internalName = "";
+	protected boolean fallInstantly = false;
+	private String modId;
 
-    protected BlockBase(Material material, String resourcePath) {
-        super(material);
+	protected BlockBase(Material material, String resourcePath) {
+		super(material);
 
-        if (this.canRotate()) {
-            this.setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-        }
+		if (this.canRotate()) {
+			this.setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+		}
 
-        this.resourcePath = resourcePath;
-    }
+		this.resourcePath = resourcePath;
+		this.modId = FireMod.instance().getModId();
+	}
 
-    @Override
-    protected BlockStateContainer createBlockState() {
-        if (canRotate()) {
-            return new BlockStateContainer(this, FACING);
-        }
-        return super.createBlockState();
-    }
+	@Override
+	protected BlockStateContainer createBlockState() {
+		if (canRotate()) {
+			return new BlockStateContainer(this, FACING);
+		}
+		return super.createBlockState();
+	}
 
-    @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-        super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+	@Override
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer,
+			ItemStack stack) {
+		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
 
-        if (canRotate()) {
-            EnumFacing playerFacing = placer.getHorizontalFacing().getOpposite();
-            if (placer.isSneaking()) {
-                playerFacing = placer.getHorizontalFacing();
-            }
+		if (canRotate()) {
+			EnumFacing playerFacing = placer.getHorizontalFacing().getOpposite();
+			if (placer.isSneaking()) {
+				playerFacing = placer.getHorizontalFacing();
+			}
 
-            worldIn.setBlockState(pos, state.withProperty(FACING, playerFacing), 2);
-        }
-    }
+			worldIn.setBlockState(pos, state.withProperty(FACING, playerFacing), 2);
+		}
+	}
 
-    private boolean canFallThrough(IBlockState blockState) {
-        Block block = blockState.getBlock();
-        Material material = blockState.getMaterial();
-        return block == Blocks.FIRE || material == Material.AIR || material == Material.WATER || material == Material.LAVA;
-    }
+	private boolean canFallThrough(IBlockState blockState) {
+		Block block = blockState.getBlock();
+		Material material = blockState.getMaterial();
+		return block == Blocks.FIRE || material == Material.AIR || material == Material.WATER
+				|| material == Material.LAVA;
+	}
 
-    @Override
-    public int getMetaFromState(IBlockState state) {
-        if (canRotate()) {
-            return (state.getValue(FACING)).getHorizontalIndex();
-        }
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		if (canRotate()) {
+			return (state.getValue(FACING)).getHorizontalIndex();
+		}
 
-        return super.getMetaFromState(state);
-    }
+		return super.getMetaFromState(state);
+	}
 
-    @Override
-    public IBlockState getStateFromMeta(int meta) {
-        if (canRotate()) {
-            return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta & 3));
-        }
+	@Override
+	public IBlockState getStateFromMeta(int meta) {
+		if (canRotate()) {
+			return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta & 3));
+		}
 
-        return super.getStateFromMeta(meta);
-    }
+		return super.getStateFromMeta(meta);
+	}
 
-    @Override
-    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-        if (hasGravity(worldIn, pos)) {
-            worldIn.scheduleUpdate(pos, this, 2);
-        }
+	@Override
+	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+		if (hasGravity(worldIn, pos)) {
+			worldIn.scheduleUpdate(pos, this, 2);
+		}
 
-        super.onBlockAdded(worldIn, pos, state);
-    }
+		super.onBlockAdded(worldIn, pos, state);
+	}
 
-    @Override
-    public void observedNeighborChange(IBlockState observerState, World world, BlockPos observerPos, Block changedBlock, BlockPos changedBlockPos) {
-        if (hasGravity(world, observerPos)) {
-            world.scheduleUpdate(observerPos, this, 2);
-        }
+	@Override
+	public void observedNeighborChange(IBlockState observerState, World world, BlockPos observerPos, Block changedBlock,
+			BlockPos changedBlockPos) {
+		if (hasGravity(world, observerPos)) {
+			world.scheduleUpdate(observerPos, this, 2);
+		}
 
-        super.observedNeighborChange(observerState, world, observerPos, changedBlock, changedBlockPos);
-    }
+		super.observedNeighborChange(observerState, world, observerPos, changedBlock, changedBlockPos);
+	}
 
-    @Override
-    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-        super.updateTick(worldIn, pos, state, rand);
+	@Override
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+		super.updateTick(worldIn, pos, state, rand);
 
-        if (!worldIn.isRemote) {
-            this.checkFallable(worldIn, pos);
-        }
-    }
+		if (!worldIn.isRemote) {
+			this.checkFallable(worldIn, pos);
+		}
+	}
 
-    private void checkFallable(World worldIn, BlockPos pos) {
-        if (!hasGravity(worldIn, pos)) {
-            return;
-        }
+	private void checkFallable(World worldIn, BlockPos pos) {
+		if (!hasGravity(worldIn, pos)) {
+			return;
+		}
 
-        if ((worldIn.isAirBlock(pos.down()) || canFallThrough(worldIn.getBlockState(pos.down()))) && pos.getY() >= 0) {
-            int i = 32;
+		if ((worldIn.isAirBlock(pos.down()) || canFallThrough(worldIn.getBlockState(pos.down()))) && pos.getY() >= 0) {
+			int i = 32;
 
-            if (!fallInstantly && worldIn.isAreaLoaded(pos.add(-i, -i, -i), pos.add(i, i, i))) {
-                if (!worldIn.isRemote) {
-                    FireMod.instance.getLogger().info(">>> Position: " + worldIn.getBlockState(pos).toString());
-                    EntityFallingBlock entityfallingblock = new EntityFallingBlock(worldIn, (double) pos.getX() + 0.5D, (double) pos.getY(), (double) pos.getZ() + 0.5D, worldIn.getBlockState(pos));
+			if (!fallInstantly && worldIn.isAreaLoaded(pos.add(-i, -i, -i), pos.add(i, i, i))) {
+				if (!worldIn.isRemote) {
+					FireMod.instance().getLogger().info(">>> Position: " + worldIn.getBlockState(pos).toString());
+					EntityFallingBlock entityfallingblock = new EntityFallingBlock(worldIn, (double) pos.getX() + 0.5D,
+							(double) pos.getY(), (double) pos.getZ() + 0.5D, worldIn.getBlockState(pos));
 
-                    this.onStartFalling(entityfallingblock);
-                    worldIn.spawnEntity(entityfallingblock);
-                }
-            } else {
-                worldIn.setBlockToAir(pos);
-                BlockPos blockpos;
+					this.onStartFalling(entityfallingblock);
+					worldIn.spawnEntity(entityfallingblock);
+				}
+			} else {
+				worldIn.setBlockToAir(pos);
+				BlockPos blockpos;
 
-                for (blockpos = pos.down(); (worldIn.isAirBlock(blockpos) || canFallThrough(worldIn.getBlockState(blockpos))) && blockpos.getY() > 0; blockpos = blockpos.down()) {
+				for (blockpos = pos
+						.down(); (worldIn.isAirBlock(blockpos) || canFallThrough(worldIn.getBlockState(blockpos)))
+								&& blockpos.getY() > 0; blockpos = blockpos.down()) {
 
-                }
+				}
 
-                if (blockpos.getY() > 0) {
-                    worldIn.setBlockState(blockpos.up(), this.getDefaultState());
-                }
-            }
-        }
-    }
+				if (blockpos.getY() > 0) {
+					worldIn.setBlockState(blockpos.up(), this.getDefaultState());
+				}
+			}
+		}
+	}
 
-    protected void onStartFalling(EntityFallingBlock fallingEntity) {
+	protected void onStartFalling(EntityFallingBlock fallingEntity) {
 
-    }
+	}
 
-    public String getInternalName() {
-        return internalName;
-    }
+	public String getInternalName() {
+		return internalName;
+	}
 
-    public void setInternalName(String internalName) {
-        this.internalName = internalName;
-    }
+	public void setInternalName(String internalName) {
+		this.internalName = internalName;
+	}
 
-    public boolean hasGravity(World worldIn, BlockPos pos) {
-        return false;
-    }
+	public boolean hasGravity(World worldIn, BlockPos pos) {
+		return false;
+	}
 
-    public boolean canRotate() {
-        return false;
-    }
+	public boolean canRotate() {
+		return false;
+	}
 
-    @Override
-    public String getUnlocalizedName() {
-        String blockName = getUnwrappedUnlocalizedName(super.getUnlocalizedName());
+	@Override
+	public String getUnlocalizedName() {
+		String blockName = getUnwrappedUnlocalizedName(super.getUnlocalizedName());
 
-        return String.format("tile.%s.%s", FireMod.instance.getModId(), blockName);
-    }
+		return String.format("tile.%s.%s", modId, blockName);
+	}
 
-    private String getUnwrappedUnlocalizedName(String unlocalizedName) {
-        return unlocalizedName.substring(unlocalizedName.indexOf('.') + 1);
-    }
+	private String getUnwrappedUnlocalizedName(String unlocalizedName) {
+		return unlocalizedName.substring(unlocalizedName.indexOf('.') + 1);
+	}
 
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.MODEL;
-    }
+	@Override
+	public EnumBlockRenderType getRenderType(IBlockState state) {
+		return EnumBlockRenderType.MODEL;
+	}
 
-    @Override
-    public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer player, boolean willHarvest) {
-        return willHarvest || super.removedByPlayer(state, world, pos, player, false);
-    }
+	@Override
+	public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer player,
+			boolean willHarvest) {
+		return willHarvest || super.removedByPlayer(state, world, pos, player, false);
+	}
 
-    @Override
-    public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack) {
-        super.harvestBlock(worldIn, player, pos, state, te, stack);
-        worldIn.setBlockToAir(pos);
-    }
+	@Override
+	public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te,
+			ItemStack stack) {
+		super.harvestBlock(worldIn, player, pos, state, te, stack);
+		worldIn.setBlockToAir(pos);
+	}
 
-    @Override
-    public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
-        TileEntityBase tileEntity = TileHelper.getTileEntity(world, pos, TileEntityBase.class);
-        if (tileEntity != null && tileEntity.hasCustomName()) {
-            final ItemStack itemStack = new ItemStack(this, 1, tileEntity.getBlockMetadata());
-            itemStack.setStackDisplayName(tileEntity.getCustomName());
+	@Override
+	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+		TileEntityBase tileEntity = TileHelper.getTileEntity(world, pos, TileEntityBase.class);
+		if (tileEntity != null && tileEntity.hasCustomName()) {
+			final ItemStack itemStack = new ItemStack(this, 1, tileEntity.getBlockMetadata());
+			itemStack.setStackDisplayName(tileEntity.getCustomName());
 
-            ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
-            drops.add(itemStack);
+			ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
+			drops.add(itemStack);
 
-            return drops;
-        }
-        return super.getDrops(world, pos, state, fortune);
-    }
+			return drops;
+		}
+		return super.getDrops(world, pos, state, fortune);
+	}
 
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void registerBlockRenderer() {
-        final String resource = String.format("%s:%s", FireMod.instance.getModId(), this.resourcePath);
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void registerBlockRenderer() {
+		final String resource = String.format("%s:%s", FireMod.instance().getModId(), this.resourcePath);
 
-        ModelLoader.setCustomStateMapper(this, new DefaultStateMapper() {
-            @SideOnly(Side.CLIENT)
-            @Override
-            @MethodsReturnNonnullByDefault
-            protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
-                return new ModelResourceLocation(resource, getPropertyString(state.getProperties()));
-            }
-        });
-    }
+		ModelLoader.setCustomStateMapper(this, new DefaultStateMapper() {
+			@SideOnly(Side.CLIENT)
+			@Override
+			@MethodsReturnNonnullByDefault
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				return new ModelResourceLocation(resource, getPropertyString(state.getProperties()));
+			}
+		});
+	}
 
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void registerBlockItemRenderer() {
-        final String resource = String.format("%s:%s", FireMod.instance.getModId(), this.resourcePath);
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void registerBlockItemRenderer() {
+		final String resource = String.format("%s:%s", FireMod.instance().getModId(), this.resourcePath);
 
-        NonNullList<ItemStack> subBlocks = NonNullList.create();
-        getSubBlocks(null, subBlocks);
+		NonNullList<ItemStack> subBlocks = NonNullList.create();
+		getSubBlocks(null, subBlocks);
 
-        for (ItemStack itemStack : subBlocks) {
-            IBlockState blockState = this.getStateFromMeta(itemStack.getItemDamage());
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), itemStack.getItemDamage(), new ModelResourceLocation(resource, StringUtilities.getPropertyString(blockState.getProperties())));
-        }
-    }
+		for (ItemStack itemStack : subBlocks) {
+			IBlockState blockState = this.getStateFromMeta(itemStack.getItemDamage());
+			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), itemStack.getItemDamage(),
+					new ModelResourceLocation(resource, StringUtilities.getPropertyString(blockState.getProperties())));
+		}
+	}
 }

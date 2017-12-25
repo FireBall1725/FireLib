@@ -10,20 +10,19 @@
 
 package com.fireball1725.firelib.guimaker.objects;
 
+import java.awt.Rectangle;
+import java.io.IOException;
+
 import com.fireball1725.firelib.FireMod;
 import com.fireball1725.firelib.util.ControlState;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import sun.rmi.log.LogHandler;
-
-import java.awt.*;
-import java.io.IOException;
 
 public abstract class GuiObject implements IGuiObject {
     protected final ResourceLocation DarkSkin = new ResourceLocation("firelib", "textures/gui/dark.png");
@@ -125,7 +124,7 @@ public abstract class GuiObject implements IGuiObject {
                     Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));
                     break;
             }
-            FireMod.instance.getLogger().info(">>> CLICK " + this.controlState.name() + " - " + mouseButton);
+            FireMod.instance().getLogger().info(">>> CLICK " + this.controlState.name() + " - " + mouseButton);
         }
     }
 

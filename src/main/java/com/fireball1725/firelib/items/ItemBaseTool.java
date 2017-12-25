@@ -24,45 +24,48 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.Set;
 
 public class ItemBaseTool extends ItemTool implements IItemRenderer {
-    protected final String resourcePath;
-    protected String internalName = "";
+	protected final String resourcePath;
+	protected String internalName = "";
+	private String modId;
 
-    public ItemBaseTool(float attackDamageIn, float attackSpeedIn, Item.ToolMaterial materalIn, Set<Block> effectiveBlockIn, String resourcePath) {
-        super(attackDamageIn, attackSpeedIn, materalIn, effectiveBlockIn);
-        this.resourcePath = resourcePath;
-    }
+	public ItemBaseTool(float attackDamageIn, float attackSpeedIn, Item.ToolMaterial materalIn,
+			Set<Block> effectiveBlockIn, String resourcePath) {
+		super(attackDamageIn, attackSpeedIn, materalIn, effectiveBlockIn);
+		this.resourcePath = resourcePath;
+		this.modId = FireMod.instance().getModId();
+	}
 
-    public String getInternalName() {
-        return internalName;
-    }
+	public String getInternalName() {
+		return internalName;
+	}
 
-    public void setInternalName(String internalName) {
-        this.internalName = internalName;
-    }
+	public void setInternalName(String internalName) {
+		this.internalName = internalName;
+	}
 
-    @Override
-    public String getUnlocalizedName() {
-        String itemName = getUnwrappedUnlocalizedName(super.getUnlocalizedName());
+	@Override
+	public String getUnlocalizedName() {
+		String itemName = getUnwrappedUnlocalizedName(super.getUnlocalizedName());
 
-        return String.format("item.%s.%s", FireMod.instance.getModId(), itemName);
-    }
+		return String.format("item.%s.%s", modId, itemName);
+	}
 
-    @Override
-    public String getUnlocalizedName(ItemStack stack) {
-        String itemName = getUnwrappedUnlocalizedName(super.getUnlocalizedName(stack));
+	@Override
+	public String getUnlocalizedName(ItemStack stack) {
+		String itemName = getUnwrappedUnlocalizedName(super.getUnlocalizedName(stack));
 
-        return String.format("item.%s.%s", FireMod.instance.getModId(), itemName);
-    }
+		return String.format("item.%s.%s", modId, itemName);
+	}
 
-    protected String getUnwrappedUnlocalizedName(String unlocalizedName) {
-        return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
-    }
+	protected String getUnwrappedUnlocalizedName(String unlocalizedName) {
+		return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
+	}
 
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void registerItemRenderer() {
-        final String resourcePath = String.format("%s:%s", FireMod.instance.getModId(), this.resourcePath);
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void registerItemRenderer() {
+		final String resourcePath = String.format("%s:%s", FireMod.instance().getModId(), this.resourcePath);
 
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(resourcePath, "inventory"));
-    }
+		ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(resourcePath, "inventory"));
+	}
 }

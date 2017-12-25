@@ -18,17 +18,17 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import javax.annotation.Nonnull;
 
 public class BlockTileBase extends BlockBase {
-    @Nonnull
-    private Class<? extends TileEntity> tileEntityClass;
+	@Nonnull
+	private Class<? extends TileEntity> tileEntityClass;
 
-    public BlockTileBase(Material material, String resourcePath) {
-        super(material, resourcePath);
-    }
+	public BlockTileBase(Material material, String resourcePath) {
+		super(material, resourcePath);
+	}
 
-    protected void setTileEnttiy(final Class<? extends TileEntity> clazz) {
-        this.tileEntityClass = clazz;
+	protected void setTileEnttiy(final Class<? extends TileEntity> clazz) {
+		this.tileEntityClass = clazz;
 
-        String tileName = "tileentity." + FireMod.instance.getModId() + "." + clazz.getSimpleName();
-        GameRegistry.registerTileEntity(this.tileEntityClass, tileName);
-    }
+		String tileName = "tileentity." + FireMod.instance().getModId() + "." + clazz.getSimpleName();
+		GameRegistry.registerTileEntity(this.tileEntityClass, tileName);
+	}
 }

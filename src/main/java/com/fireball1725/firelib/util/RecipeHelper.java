@@ -25,21 +25,22 @@ import net.minecraftforge.common.crafting.CraftingHelper.ShapedPrimer;
 import net.minecraftforge.oredict.OreIngredient;
 
 public class RecipeHelper {
-    public static void addRecipe(String name, IRecipe recipe) {
-        Item item = recipe.getRecipeOutput().getItem();
-        //todo: check to see if output is disabled.
+	public static void addRecipe(String name, IRecipe recipe) {
+		Item item = recipe.getRecipeOutput().getItem();
+		// todo: check to see if output is disabled.
 
-        if (recipe.getRegistryName() == null) {
-            recipe.setRegistryName(new ResourceLocation(FireMod.instance.getModId(), name));
-        }
+		if (recipe.getRegistryName() == null) {
+			recipe.setRegistryName(new ResourceLocation(FireMod.instance().getModId(), name));
+		}
 
-        //todo: add recipe to list to register, or register
-    }
+		// todo: add recipe to list to register, or register
+	}
 
-//    public static void addOldShaped(ItemStack itemOutput, Object... itemInput){
-//        ShapedPrimer primer = CraftingHelper.parseShaped(itemInput);
-//
-//        addRecipe(j++, new ShapedRecipes(new ResourceLocation(MODID, "recipes"+j).toString(), primer.width,
-//                primer.height, primer.input, itemOutput));
-//    }
+	// public static void addOldShaped(ItemStack itemOutput, Object... itemInput){
+	// ShapedPrimer primer = CraftingHelper.parseShaped(itemInput);
+	//
+	// addRecipe(j++, new ShapedRecipes(new ResourceLocation(MODID,
+	// "recipes"+j).toString(), primer.width,
+	// primer.height, primer.input, itemOutput));
+	// }
 }

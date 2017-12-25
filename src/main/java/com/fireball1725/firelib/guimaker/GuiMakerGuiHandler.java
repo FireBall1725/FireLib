@@ -27,7 +27,7 @@ public class GuiMakerGuiHandler implements IGuiHandler {
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         TileEntity tileEntity = world.getTileEntity(new BlockPos(x, y, z));
 
-        FireMod.instance.getLogger().info(">>> Opening Gui: " + ID);
+        FireMod.instance().getLogger().info(">>> Opening Gui: " + ID);
 
         return new GuiMakerContainer(player.inventory, tileEntity, ID);
     }
@@ -38,7 +38,7 @@ public class GuiMakerGuiHandler implements IGuiHandler {
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         TileEntity tileEntity = world.getTileEntity(new BlockPos(x, y, z));
 
-        FireMod.instance.getLogger().info(">>> Opening Gui: " + ID);
+        FireMod.instance().getLogger().info(">>> Opening Gui: " + ID);
 
         return new GuiMakerGuiContainer(player.inventory, tileEntity, ID);
     }

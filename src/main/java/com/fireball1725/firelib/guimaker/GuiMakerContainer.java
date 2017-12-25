@@ -30,11 +30,11 @@ public class GuiMakerContainer extends Container {
         this.guiMaker = GuiMaker.getGuiMaker(id);
 
         if (this.guiMaker == null) {
-            FireMod.instance.getLogger().fatal("GuiMaker is returning a null instance, this is a problem...");
+            FireMod.instance().getLogger().fatal("GuiMaker is returning a null instance, this is a problem...");
         }
 
         initContainer();
-        FireMod.instance.getLogger().info(">>> GUIMAKER-CONTAINER");
+        FireMod.instance().getLogger().info(">>> GUIMAKER-CONTAINER");
     }
 
     public void initContainer() {

@@ -13,6 +13,7 @@ package com.fireball1725.firelib.guimaker.objects;
 import com.fireball1725.firelib.guimaker.GuiControlOption;
 import com.fireball1725.firelib.guimaker.GuiControlState;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.client.config.GuiUtils;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -48,6 +49,26 @@ public class GuiCheckbox extends GuiObject implements IGuiObject {
         } else {
             // Normal
             GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.x, guiContainer.getGuiTop() + this.y, 16, 32, 12, 12, 12, 12, 1, 100);
+        }
+    }
+
+    @Override
+    public NBTTagCompound writeNBT() {
+        NBTTagCompound nbtTagCompound = new NBTTagCompound();
+
+        nbtTagCompound.setBoolean("controlSelected", this.hasGuiControlState(GuiControlState.SELECTED));
+
+        return nbtTagCompound;
+    }
+
+    @Override
+    public void readNBT(NBTTagCompound nbt) {
+        if (nbt.hasKey("controlSelected")) {
+            if (nbt.getBoolean("controlSelected")) {
+                this.addGuiControlState(GuiControlState.SELECTED);
+            } else {
+                this.removeGuiControlState(GuiControlState.SELECTED);
+            }
         }
     }
 }

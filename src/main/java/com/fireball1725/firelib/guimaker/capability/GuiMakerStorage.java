@@ -10,22 +10,48 @@
 
 package com.fireball1725.firelib.guimaker.capability;
 
+import com.fireball1725.firelib.FireLib;
+import com.fireball1725.firelib.guimaker.IGuiMaker;
+import com.fireball1725.firelib.guimaker.objects.GuiObject;
 import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagByteArray;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 
-public class GuiMakerStorage implements Capability.IStorage<IGuiMakerCapability> {
+public class GuiMakerStorage implements Capability.IStorage<IGuiMaker> {
     @Nullable
     @Override
-    public NBTBase writeNBT(Capability<IGuiMakerCapability> capability, IGuiMakerCapability instance, EnumFacing side) {
-        return new NBTTagCompound();
+    public NBTBase writeNBT(Capability<IGuiMaker> capability, IGuiMaker instance, EnumFacing side) {
+        NBTTagCompound nbtTagCompound = new NBTTagCompound();
+
+        ArrayList<GuiObject> guiObjects = instance.getGuiMaker().getGuiObjects();
+
+        for (GuiObject guiObject : guiObjects) {
+            NBTTagCompound guiObjectTag = guiObject.writeNBT();
+
+            if (guiObjectTag != null) {
+                nbtTagCompound.setTag(guiObject.getControlID().toString(), guiObjectTag);
+            }
+        }
+
+        return nbtTagCompound;
     }
 
     @Override
-    public void readNBT(Capability<IGuiMakerCapability> capability, IGuiMakerCapability instance, EnumFacing side, NBTBase nbt) {
+    public void readNBT(Capability<IGuiMaker> capability, IGuiMaker instance, EnumFacing side, NBTBase nbt) {
+        ArrayList<GuiObject> guiObjects = instance.getGuiMaker().getGuiObjects();
+        NBTTagCompound nbtTagCompound = (NBTTagCompound)nbt;
 
+        for (GuiObject guiObject : guiObjects) {
+            String controlID = guiObject.getControlID().toString();
+
+            if (nbtTagCompound.hasKey(controlID)) {
+                guiObject.readNBT(nbtTagCompound.getCompoundTag(controlID));
+            }
+        }
     }
 }

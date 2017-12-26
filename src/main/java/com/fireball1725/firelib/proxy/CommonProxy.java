@@ -12,9 +12,10 @@ package com.fireball1725.firelib.proxy;
 
 import com.fireball1725.firelib.FireLib;
 import com.fireball1725.firelib.guimaker.GuiMakerGuiHandler;
+import com.fireball1725.firelib.guimaker.IGuiMaker;
 import com.fireball1725.firelib.guimaker.capability.GuiMakerCapability;
+import com.fireball1725.firelib.guimaker.capability.GuiMakerHandler;
 import com.fireball1725.firelib.guimaker.capability.GuiMakerStorage;
-import com.fireball1725.firelib.guimaker.capability.IGuiMakerCapability;
 import com.fireball1725.firelib.network.PacketHandler;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -26,6 +27,8 @@ public abstract class CommonProxy implements IProxy {
         PacketHandler.init();
         NetworkRegistry.INSTANCE.registerGuiHandler(FireLib.instance, new GuiMakerGuiHandler());
 
-        CapabilityManager.INSTANCE.register(IGuiMakerCapability.class, new GuiMakerStorage(), GuiMakerCapability.class);
+        CapabilityManager.INSTANCE.register(IGuiMaker.class, new GuiMakerStorage(), GuiMakerCapability.class);
+
+        this.registerEventHandler(new GuiMakerHandler());
     }
 }

@@ -10,8 +10,10 @@
 
 package com.fireball1725.firelib.guimaker.capability;
 
+import com.fireball1725.firelib.FireLib;
+import com.fireball1725.firelib.guimaker.IGuiMaker;
 import net.minecraft.nbt.NBTBase;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
@@ -21,33 +23,36 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class GuiMakerProvider implements ICapabilitySerializable<NBTBase> {
-    @CapabilityInject(IGuiMakerCapability.class)
-    public static final Capability<IGuiMakerCapability> GUI_MAKER_CAPABILITY = null;
+    @CapabilityInject(IGuiMaker.class)
+    public static final Capability<IGuiMaker> GUI_MAKER_CAPABILITY = null;
 
-    private IGuiMakerCapability instance = GUI_MAKER_CAPABILITY.getDefaultInstance();
+    private IGuiMaker instance = GUI_MAKER_CAPABILITY.getDefaultInstance();
+
+    public GuiMakerProvider(TileEntity tileEntity) {
+        if (tileEntity instanceof IGuiMaker) {
+            instance = (IGuiMaker) tileEntity;
+        }
+    }
 
     @Override
     public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing) {
-        return false;
+        return GUI_MAKER_CAPABILITY != null && capability == GUI_MAKER_CAPABILITY;
     }
 
     @Nullable
     @Override
     public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing) {
-        return null;
+        FireLib.instance.getLogger().info(">>> Get Capibility");
+        return capability == GUI_MAKER_CAPABILITY ? GUI_MAKER_CAPABILITY.cast(this.instance) : null;
     }
 
     @Override
     public NBTBase serializeNBT() {
-        NBTTagCompound tagCompound = new NBTTagCompound();
-
-        tagCompound.setBoolean("Hello", true);
-
-        return tagCompound;
+        return GUI_MAKER_CAPABILITY.getStorage().writeNBT(GUI_MAKER_CAPABILITY, this.instance, null);
     }
 
     @Override
     public void deserializeNBT(NBTBase nbt) {
-
+        GUI_MAKER_CAPABILITY.getStorage().readNBT(GUI_MAKER_CAPABILITY, this.instance, null, nbt);
     }
 }

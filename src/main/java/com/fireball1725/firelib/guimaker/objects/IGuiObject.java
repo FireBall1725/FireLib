@@ -11,6 +11,7 @@
 package com.fireball1725.firelib.guimaker.objects;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.nbt.NBTTagCompound;
 
 import java.io.IOException;
 
@@ -30,4 +31,8 @@ public interface IGuiObject {
     void onGuiClosed(GuiContainer guiContainer);
 
     void updateScreen(GuiContainer guiContainer);
+
+    NBTTagCompound writeNBT();
+
+    void readNBT(NBTTagCompound nbt);
 }

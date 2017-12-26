@@ -10,19 +10,10 @@
 
 package com.fireball1725.firelib;
 
-import com.fireball1725.firelib.guimaker.IGuiMaker;
-import com.fireball1725.firelib.guimaker.capability.GuiMakerCapability;
-import com.fireball1725.firelib.guimaker.capability.GuiMakerProvider;
-import com.fireball1725.firelib.guimaker.capability.GuiMakerStorage;
-import com.fireball1725.firelib.guimaker.capability.IGuiMakerCapability;
 import com.fireball1725.firelib.proxy.IProxy;
 import com.fireball1725.firelib.proxy.base.IProxyBase;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod(modid = ModInfo.MOD_ID, name = ModInfo.MOD_NAME, version = ModInfo.VERSION_BUILD)
 public class FireLib extends FireMod {
@@ -40,12 +31,5 @@ public class FireLib extends FireMod {
     @Override
     public String getModId() {
         return ModInfo.MOD_ID;
-    }
-
-    @SubscribeEvent
-    public void attachCapabilitiesEvent(AttachCapabilitiesEvent <TileEntity>event) {
-        if (event.getObject() instanceof IGuiMaker) {
-            event.addCapability(new ResourceLocation("GuiMaker"), new GuiMakerProvider());
-        }
     }
 }

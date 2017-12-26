@@ -19,6 +19,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -157,6 +158,16 @@ public abstract class GuiObject implements IGuiObject {
 
     @Override
     public void updateScreen(GuiContainer guiContainer) {
+
+    }
+
+    @Override
+    public NBTTagCompound writeNBT() {
+        return null;
+    }
+
+    @Override
+    public void readNBT(NBTTagCompound nbt) {
 
     }
 

@@ -125,9 +125,6 @@ public class TileEntityBase extends TileEntity {
         if (this.customName != null)
             nbtTagCompound.setString("CustomName", this.customName);
 
-        if (this.controlStates != null)
-            nbtTagCompound.setTag("ControlState", this.controlStates);
-
         return super.writeToNBT(nbtTagCompound);
     }
 
@@ -136,23 +133,13 @@ public class TileEntityBase extends TileEntity {
         super.readFromNBT(nbtTagCompound);
 
         this.customName = nbtTagCompound.hasKey("CustomName") ? nbtTagCompound.getString("CustomName") : null;
-
-        this.controlStates = nbtTagCompound.hasKey("ControlState") ? nbtTagCompound.getCompoundTag("ControlState") : null;
-    }
+        }
 
     public IBlockState getBlockState() {
         if (this.getWorld() == null)
             return null;
 
         return this.getWorld().getBlockState(pos);
-    }
-
-    public NBTTagCompound getControlStates() {
-        return controlStates;
-    }
-
-    public void setControlStates(NBTTagCompound controlStates) {
-        this.controlStates = controlStates;
     }
 
     //    @Override

@@ -10,9 +10,22 @@
 
 package com.fireball1725.firelib.guimaker.capability;
 
-import java.util.UUID;
+import com.fireball1725.firelib.FireLib;
+import com.fireball1725.firelib.guimaker.IGuiMaker;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public interface IGuiMakerCapability {
-    void set(UUID controlUUID, boolean state);
-    boolean get(UUID controlUUID);
+public class GuiMakerHandler {
+    public static final ResourceLocation GUI_MAKER = new ResourceLocation("FireMod", "GuiMaker");
+
+    @SubscribeEvent
+    public void attachCapabilitiesEvent(AttachCapabilitiesEvent<TileEntity> event) {
+        if (event.getObject() instanceof IGuiMaker) {
+            FireLib.instance.getLogger().info(">>> Attaching capability");
+            event.addCapability(GUI_MAKER, new GuiMakerProvider(event.getObject()));
+
+        }
+    }
 }

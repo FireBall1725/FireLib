@@ -10,16 +10,13 @@
 
 package com.fireball1725.firelib.guimaker.capability;
 
-import java.util.UUID;
+import com.fireball1725.firelib.guimaker.GuiMaker;
+import com.fireball1725.firelib.guimaker.IGuiMaker;
 
-public class GuiMakerCapability implements IGuiMakerCapability {
-    @Override
-    public void set(UUID controlUUID, boolean state) {
-
-    }
+public class GuiMakerCapability implements IGuiMaker {
 
     @Override
-    public boolean get(UUID controlUUID) {
-        return false;
+    public GuiMaker getGuiMaker() {
+        return null;
     }
 }

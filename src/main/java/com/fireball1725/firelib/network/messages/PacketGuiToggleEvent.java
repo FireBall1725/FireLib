@@ -12,16 +12,13 @@ package com.fireball1725.firelib.network.messages;
 
 import com.fireball1725.firelib.guimaker.GuiControlState;
 import com.fireball1725.firelib.guimaker.IGuiMaker;
-import com.fireball1725.firelib.guimaker.capability.GuiMakerCapability;
 import com.fireball1725.firelib.guimaker.capability.GuiMakerProvider;
-import com.fireball1725.firelib.guimaker.capability.IGuiMakerCapability;
 import com.fireball1725.firelib.network.PacketHandler;
 import com.fireball1725.firelib.tileentities.TileEntityBase;
 import com.fireball1725.firelib.util.TileHelper;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
@@ -100,19 +97,9 @@ public class PacketGuiToggleEvent implements IMessage {
                 }
             }
 
-            NBTTagCompound controlStates = tileEntity.getControlStates();
-
-            if (controlStates == null) {
-                controlStates = new NBTTagCompound();
-            }
-
-            controlStates.setBoolean(message.controlUUID.toString(), message.toggleState);
-
-            IGuiMakerCapability gui = tileEntity.getCapability(GuiMakerProvider.GUI_MAKER_CAPABILITY, EnumFacing.NORTH);
+            IGuiMaker gui = tileEntity.getCapability(GuiMakerProvider.GUI_MAKER_CAPABILITY, null);
 
 
-
-            tileEntity.setControlStates(controlStates);
             tileEntity.markDirty();
         }
 

@@ -11,11 +11,11 @@
 package com.fireball1725.firelib.proxy;
 
 import com.fireball1725.firelib.FireLib;
-import com.fireball1725.firelib.guimaker.GuiMakerGuiHandler;
-import com.fireball1725.firelib.guimaker.IGuiMaker;
 import com.fireball1725.firelib.guimaker.capability.GuiMakerCapability;
 import com.fireball1725.firelib.guimaker.capability.GuiMakerHandler;
 import com.fireball1725.firelib.guimaker.capability.GuiMakerStorage;
+import com.fireball1725.firelib.guimaker.events.GuiMakerGuiHandler;
+import com.fireball1725.firelib.guimaker.util.IGuiMaker;
 import com.fireball1725.firelib.network.PacketHandler;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;

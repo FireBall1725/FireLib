@@ -11,11 +11,15 @@
 package com.fireball1725.firelib.guimaker;
 
 import com.fireball1725.firelib.FireLib;
+import com.fireball1725.firelib.guimaker.util.IGuiMaker;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.tileentity.TileEntity;
 
+/**
+ * GuiMaker Server Side Container
+ */
 public class GuiMakerContainer extends Container {
     private final InventoryPlayer inventoryPlayer;
     private final TileEntity tileEntity;
@@ -40,6 +44,10 @@ public class GuiMakerContainer extends Container {
 
     @Override
     public boolean canInteractWith(EntityPlayer playerIn) {
-        return true;
+        if (tileEntity instanceof IGuiMaker) {
+            return ((IGuiMaker) tileEntity).canInteractWith();
+        }
+
+        return false;
     }
 }

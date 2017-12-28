@@ -11,9 +11,9 @@
 package com.fireball1725.testmod2.common.tileentities;
 
 import com.fireball1725.firelib.guimaker.GuiMaker;
-import com.fireball1725.firelib.guimaker.IGuiMaker;
 import com.fireball1725.firelib.guimaker.objects.GuiCheckbox;
 import com.fireball1725.firelib.guimaker.objects.GuiWindow;
+import com.fireball1725.firelib.guimaker.util.IGuiMaker;
 import com.fireball1725.firelib.tileentities.TileEntityBase;
 import net.minecraft.nbt.NBTTagCompound;
 
@@ -38,6 +38,11 @@ public class TileEntityTestBlock2 extends TileEntityBase implements IGuiMaker {
     @Override
     public GuiMaker getGuiMaker() {
         return guiMaker;
+    }
+
+    @Override
+    public boolean canInteractWith() {
+        return true;
     }
 
     @Override

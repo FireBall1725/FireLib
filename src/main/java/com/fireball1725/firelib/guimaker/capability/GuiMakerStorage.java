@@ -10,11 +10,9 @@
 
 package com.fireball1725.firelib.guimaker.capability;
 
-import com.fireball1725.firelib.FireLib;
-import com.fireball1725.firelib.guimaker.IGuiMaker;
-import com.fireball1725.firelib.guimaker.objects.GuiObject;
+import com.fireball1725.firelib.guimaker.base.GuiObject;
+import com.fireball1725.firelib.guimaker.util.IGuiMaker;
 import net.minecraft.nbt.NBTBase;
-import net.minecraft.nbt.NBTTagByteArray;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
@@ -44,7 +42,7 @@ public class GuiMakerStorage implements Capability.IStorage<IGuiMaker> {
     @Override
     public void readNBT(Capability<IGuiMaker> capability, IGuiMaker instance, EnumFacing side, NBTBase nbt) {
         ArrayList<GuiObject> guiObjects = instance.getGuiMaker().getGuiObjects();
-        NBTTagCompound nbtTagCompound = (NBTTagCompound)nbt;
+        NBTTagCompound nbtTagCompound = (NBTTagCompound) nbt;
 
         for (GuiObject guiObject : guiObjects) {
             String controlID = guiObject.getControlID().toString();

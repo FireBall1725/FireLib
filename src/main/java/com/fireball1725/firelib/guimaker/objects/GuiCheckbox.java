@@ -10,8 +10,10 @@
 
 package com.fireball1725.firelib.guimaker.objects;
 
-import com.fireball1725.firelib.guimaker.GuiControlOption;
-import com.fireball1725.firelib.guimaker.GuiControlState;
+import com.fireball1725.firelib.guimaker.base.GuiToggleable;
+import com.fireball1725.firelib.guimaker.base.IGuiObject;
+import com.fireball1725.firelib.guimaker.util.GuiControlOption;
+import com.fireball1725.firelib.guimaker.util.GuiControlState;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.client.config.GuiUtils;
@@ -20,7 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.UUID;
 
-public class GuiCheckbox extends GuiObject implements IGuiObject {
+public class GuiCheckbox extends GuiToggleable implements IGuiObject {
     public GuiCheckbox(UUID controlId) {
         super(controlId, GuiControlOption.HOVER_STATE, GuiControlOption.TOGGLE_STATE);
         this.width = 12;

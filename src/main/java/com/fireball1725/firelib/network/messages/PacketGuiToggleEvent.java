@@ -10,15 +10,14 @@
 
 package com.fireball1725.firelib.network.messages;
 
-import com.fireball1725.firelib.guimaker.GuiControlState;
-import com.fireball1725.firelib.guimaker.IGuiMaker;
-import com.fireball1725.firelib.guimaker.capability.GuiMakerProvider;
+import com.fireball1725.firelib.FireLib;
+import com.fireball1725.firelib.guimaker.util.IGuiMaker;
 import com.fireball1725.firelib.network.PacketHandler;
-import com.fireball1725.firelib.tileentities.TileEntityBase;
 import com.fireball1725.firelib.util.TileHelper;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
@@ -31,30 +30,30 @@ import java.util.UUID;
 
 public class PacketGuiToggleEvent implements IMessage {
     public UUID controlUUID;
-    public boolean toggleState;
+    public NBTTagCompound controlTag;
     public BlockPos blockPos;
 
     public PacketGuiToggleEvent() {
-
+        /* Required for Forge Simple Network Wrapper */
     }
 
-    public PacketGuiToggleEvent(UUID controlID, boolean toggleState, BlockPos blockPos) {
+    public PacketGuiToggleEvent(UUID controlID, NBTTagCompound controlTag, BlockPos blockPos) {
         this.controlUUID = controlID;
-        this.toggleState = toggleState;
+        this.controlTag = controlTag;
         this.blockPos = blockPos;
     }
 
     @Override
     public void fromBytes(ByteBuf buf) {
         this.controlUUID = UUID.fromString(ByteBufUtils.readUTF8String(buf));
-        this.toggleState = buf.readByte() == 1;
+        this.controlTag = ByteBufUtils.readTag(buf);
         this.blockPos = new BlockPos(buf.readInt(), buf.readInt(), buf.readInt());
     }
 
     @Override
     public void toBytes(ByteBuf buf) {
         ByteBufUtils.writeUTF8String(buf, controlUUID.toString());
-        buf.writeByte(toggleState ? 1 : 0);
+        ByteBufUtils.writeTag(buf, controlTag);
         buf.writeInt(blockPos.getX());
         buf.writeInt(blockPos.getY());
         buf.writeInt(blockPos.getZ());
@@ -70,7 +69,7 @@ public class PacketGuiToggleEvent implements IMessage {
 
         private void handle(PacketGuiToggleEvent message, MessageContext ctx) {
             if (ctx.side == Side.SERVER) {
-                PacketGuiToggleEvent packetGuiToggleEvent = new PacketGuiToggleEvent(message.controlUUID, message.toggleState, message.blockPos);
+                PacketGuiToggleEvent packetGuiToggleEvent = new PacketGuiToggleEvent(message.controlUUID, message.controlTag, message.blockPos);
                 //PacketHandler.NETWORK_INSTANCE.sendToAllAround(packetGuiToggleEvent, new NetworkRegistry.TargetPoint(ctx.getServerHandler().player.dimension, message.blockPos.getX(), message.blockPos.getY(), message.blockPos.getZ(), 100));
                 PacketHandler.NETWORK_INSTANCE.sendToAll(packetGuiToggleEvent);
             }
@@ -83,41 +82,25 @@ public class PacketGuiToggleEvent implements IMessage {
         }
 
         private void updateServer(PacketGuiToggleEvent message, MessageContext ctx) {
-            TileEntityBase tileEntity = TileHelper.getTileEntity(ctx.getServerHandler().player.world, message.blockPos, TileEntityBase.class);
+            TileEntity tileEntity = TileHelper.getTileEntity(ctx.getServerHandler().player.world, message.blockPos, TileEntity.class);
 
-            if (tileEntity == null) {
+            if (tileEntity == null || !(tileEntity instanceof IGuiMaker)) {
                 return;
             }
 
-            if (tileEntity instanceof IGuiMaker) {
-                if (message.toggleState) {
-                    ((IGuiMaker) tileEntity).getGuiMaker().addGuiControlState(GuiControlState.SELECTED, message.controlUUID);
-                } else {
-                    ((IGuiMaker) tileEntity).getGuiMaker().removeGuiControlState(GuiControlState.SELECTED, message.controlUUID);
-                }
-            }
-
-            IGuiMaker gui = tileEntity.getCapability(GuiMakerProvider.GUI_MAKER_CAPABILITY, null);
-
+            FireLib.instance.getLogger().info(">>> Update Server...");
 
             tileEntity.markDirty();
         }
 
         private void updateClient(PacketGuiToggleEvent message, MessageContext ctx) {
-            TileEntityBase tileEntity = TileHelper.getTileEntity(Minecraft.getMinecraft().world, message.blockPos, TileEntityBase.class);
+            TileEntity tileEntity = TileHelper.getTileEntity(Minecraft.getMinecraft().world, message.blockPos, TileEntity.class);
 
-            if (tileEntity == null) {
+            if (tileEntity == null || !(tileEntity instanceof IGuiMaker)) {
                 return;
             }
 
-            if (tileEntity instanceof IGuiMaker) {
-                if (message.toggleState) {
-                    ((IGuiMaker) tileEntity).getGuiMaker().addGuiControlState(GuiControlState.SELECTED, message.controlUUID);
-                } else {
-                    ((IGuiMaker) tileEntity).getGuiMaker().removeGuiControlState(GuiControlState.SELECTED, message.controlUUID);
-                }
-            }
-
+            FireLib.instance.getLogger().info(">>> Update Client...");
         }
     }
 }

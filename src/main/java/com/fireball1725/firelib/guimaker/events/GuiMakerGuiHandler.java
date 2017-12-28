@@ -8,47 +8,35 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.guimaker.objects;
+package com.fireball1725.firelib.guimaker.events;
 
-import com.fireball1725.firelib.guimaker.base.GuiObject;
-import com.fireball1725.firelib.guimaker.base.IGuiObject;
-import net.minecraft.client.gui.inventory.GuiContainer;
+import com.fireball1725.firelib.guimaker.GuiMakerContainer;
+import com.fireball1725.firelib.guimaker.GuiMakerGuiContainer;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class GuiLabel extends GuiObject implements IGuiObject {
-    public String label = "";
-    public int color = 0;
+public class GuiMakerGuiHandler implements IGuiHandler {
+    @Nullable
+    @Override
+    public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+        TileEntity tileEntity = world.getTileEntity(new BlockPos(x, y, z));
 
-    public GuiLabel(int x, int y) {
-        super(UUID.randomUUID());
-        this.x = x;
-        this.y = y;
+        return new GuiMakerContainer(player.inventory, tileEntity, ID);
     }
 
+    @Nullable
     @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerForegroundLayer(GuiContainer guiContainer, int mouseX, int mouseY) {
-        super.drawGuiContainerForegroundLayer(guiContainer, mouseX, mouseY);
+    public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+        TileEntity tileEntity = world.getTileEntity(new BlockPos(x, y, z));
 
-        guiContainer.drawString(guiContainer.mc.fontRenderer, this.label, this.x, this.y, this.color);
-    }
-
-    public String getLabel() {
-        return label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
-    }
-
-    public int getColor() {
-        return color;
-    }
-
-    public void setColor(int color) {
-        this.color = color;
+        return new GuiMakerGuiContainer(player.inventory, tileEntity, ID);
     }
 }

@@ -8,33 +8,16 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.guimaker;
+package com.fireball1725.firelib.guimaker.base;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.IGuiHandler;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import com.fireball1725.firelib.guimaker.util.GuiControlOption;
 
-import javax.annotation.Nullable;
+import java.util.UUID;
 
-public class GuiMakerGuiHandler implements IGuiHandler {
-    @Nullable
-    @Override
-    public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-        TileEntity tileEntity = world.getTileEntity(new BlockPos(x, y, z));
-
-        return new GuiMakerContainer(player.inventory, tileEntity, ID);
+public class GuiToggleable extends GuiObject implements IGuiObject {
+    public GuiToggleable(UUID controlId, GuiControlOption... guiOptions) {
+        super(controlId, guiOptions);
     }
 
-    @Nullable
-    @SideOnly(Side.CLIENT)
-    @Override
-    public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-        TileEntity tileEntity = world.getTileEntity(new BlockPos(x, y, z));
 
-        return new GuiMakerGuiContainer(player.inventory, tileEntity, ID);
-    }
 }

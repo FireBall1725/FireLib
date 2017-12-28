@@ -11,12 +11,16 @@
 package com.fireball1725.firelib.guimaker.capability;
 
 import com.fireball1725.firelib.guimaker.GuiMaker;
-import com.fireball1725.firelib.guimaker.IGuiMaker;
+import com.fireball1725.firelib.guimaker.util.IGuiMaker;
 
 public class GuiMakerCapability implements IGuiMaker {
-
     @Override
     public GuiMaker getGuiMaker() {
         return null;
+    }
+
+    @Override
+    public boolean canInteractWith() {
+        return false;
     }
 }

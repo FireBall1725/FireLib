@@ -8,13 +8,13 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.guimaker.objects;
+package com.fireball1725.firelib.guimaker.base;
 
-import com.fireball1725.firelib.guimaker.GuiControlOption;
-import com.fireball1725.firelib.guimaker.GuiControlState;
 import com.fireball1725.firelib.guimaker.GuiMakerGuiContainer;
+import com.fireball1725.firelib.guimaker.network.PacketGuiObjectUpdate;
+import com.fireball1725.firelib.guimaker.util.GuiControlOption;
+import com.fireball1725.firelib.guimaker.util.GuiControlState;
 import com.fireball1725.firelib.network.PacketHandler;
-import com.fireball1725.firelib.network.messages.PacketGuiToggleEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -139,8 +139,14 @@ public abstract class GuiObject implements IGuiObject {
 
             boolean toggleState = this.hasGuiControlState(GuiControlState.SELECTED);
 
-            PacketGuiToggleEvent packetGuiToggleEvent = new PacketGuiToggleEvent(this.controlID, !toggleState, te.getPos());
-            PacketHandler.NETWORK_INSTANCE.sendToServer(packetGuiToggleEvent);
+            if (toggleState) {
+                this.removeGuiControlState(GuiControlState.SELECTED);
+            } else {
+                this.addGuiControlState(GuiControlState.SELECTED);
+            }
+
+            PacketGuiObjectUpdate packetGuiObjectUpdate = new PacketGuiObjectUpdate(this.controlID, this.writeNBT(), te.getPos()); //todo: fix this to use nbt
+            PacketHandler.NETWORK_INSTANCE.sendToServer(packetGuiObjectUpdate);
 
             Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));
         }

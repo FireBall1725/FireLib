@@ -8,31 +8,24 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.guimaker.objects;
+package com.fireball1725.firelib.guimaker.util;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.nbt.NBTTagCompound;
+import io.netty.buffer.ByteBuf;
+import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
-import java.io.IOException;
+public class NetworkHelper {
+    public static NetworkRegistry.TargetPoint getTargetPoint(int dim, BlockPos blockPos, int range) {
+        return new NetworkRegistry.TargetPoint(dim, blockPos.getX(), blockPos.getY(), blockPos.getZ(), range);
+    }
 
-public interface IGuiObject {
-    void initGui(GuiContainer guiContainer);
+    public static void writeBlockPos(ByteBuf byteBuf, BlockPos blockPos) {
+        byteBuf.writeInt(blockPos.getX());
+        byteBuf.writeInt(blockPos.getY());
+        byteBuf.writeInt(blockPos.getZ());
+    }
 
-    void drawScreen(GuiContainer guiContainer, int mouseX, int mouseY, float partialTicks);
-
-    void drawGuiContainerForegroundLayer(GuiContainer guiContainer, int mouseX, int mouseY);
-
-    void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY);
-
-    void mouseClicked(GuiContainer guiContainer, int mouseX, int mouseY, int mouseButton) throws IOException;
-
-    void keyTyped(GuiContainer guiContainer, char typedChar, int keyCode) throws IOException;
-
-    void onGuiClosed(GuiContainer guiContainer);
-
-    void updateScreen(GuiContainer guiContainer);
-
-    NBTTagCompound writeNBT();
-
-    void readNBT(NBTTagCompound nbt);
+    public static BlockPos readBlockPos(ByteBuf byteBuf) {
+        return new BlockPos(byteBuf.readInt(), byteBuf.readInt(), byteBuf.readInt());
+    }
 }

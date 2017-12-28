@@ -133,7 +133,7 @@ public class TileEntityBase extends TileEntity {
         super.readFromNBT(nbtTagCompound);
 
         this.customName = nbtTagCompound.hasKey("CustomName") ? nbtTagCompound.getString("CustomName") : null;
-        }
+    }
 
     public IBlockState getBlockState() {
         if (this.getWorld() == null)

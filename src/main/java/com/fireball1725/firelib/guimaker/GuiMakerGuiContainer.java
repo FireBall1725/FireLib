@@ -11,7 +11,7 @@
 package com.fireball1725.firelib.guimaker;
 
 import com.fireball1725.firelib.FireLib;
-import com.fireball1725.firelib.guimaker.objects.GuiObject;
+import com.fireball1725.firelib.guimaker.base.GuiObject;
 import com.fireball1725.firelib.guimaker.objects.GuiWindow;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -25,12 +25,13 @@ import org.lwjgl.opengl.GL11;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * GuiMaker Client Side Container
+ */
 public class GuiMakerGuiContainer extends GuiContainer {
     private final InventoryPlayer inventoryPlayer;
     private final TileEntity tileEntity;
     private final GuiMaker guiMaker;
-    private int mouseX = 0;
-    private int mouseY = 0;
 
     public GuiMakerGuiContainer(InventoryPlayer inventoryPlayer, TileEntity tileEntity, int id) {
         super(new GuiMakerContainer(inventoryPlayer, tileEntity, id));
@@ -44,21 +45,6 @@ public class GuiMakerGuiContainer extends GuiContainer {
             FireLib.instance.getLogger().fatal("GuiMaker is returning a null instance, this is a problem...");
         }
 
-    }
-
-    @Override
-    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-        scissorCut(this.guiLeft, this.guiTop, this.xSize, this.ySize);
-
-        ArrayList<GuiObject> guiObjects = guiMaker.getGuiObjects();
-
-        for (GuiObject guiObject : guiObjects) {
-            if (guiObject != null) {
-                guiObject.drawGuiContainerBackgroundLayer(this, partialTicks, mouseX, mouseY);
-            }
-        }
-
-        scissorsEnd();
     }
 
     @Override
@@ -81,17 +67,18 @@ public class GuiMakerGuiContainer extends GuiContainer {
     }
 
     @Override
-    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        this.drawDefaultBackground();
-        super.drawScreen(mouseX, mouseY, partialTicks);
+    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+        scissorCut(this.guiLeft, this.guiTop, this.xSize, this.ySize);
 
         ArrayList<GuiObject> guiObjects = guiMaker.getGuiObjects();
 
         for (GuiObject guiObject : guiObjects) {
             if (guiObject != null) {
-                guiObject.drawScreen(this, mouseX, mouseY, partialTicks);
+                guiObject.drawGuiContainerBackgroundLayer(this, partialTicks, mouseX, mouseY);
             }
         }
+
+        scissorsEnd();
     }
 
     @Override
@@ -109,6 +96,20 @@ public class GuiMakerGuiContainer extends GuiContainer {
         }
 
         scissorsEnd();
+    }
+
+    @Override
+    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        this.drawDefaultBackground();
+        super.drawScreen(mouseX, mouseY, partialTicks);
+
+        ArrayList<GuiObject> guiObjects = guiMaker.getGuiObjects();
+
+        for (GuiObject guiObject : guiObjects) {
+            if (guiObject != null) {
+                guiObject.drawScreen(this, mouseX, mouseY, partialTicks);
+            }
+        }
     }
 
     @Override

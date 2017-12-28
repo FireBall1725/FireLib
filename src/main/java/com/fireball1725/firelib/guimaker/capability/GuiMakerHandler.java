@@ -11,7 +11,7 @@
 package com.fireball1725.firelib.guimaker.capability;
 
 import com.fireball1725.firelib.FireLib;
-import com.fireball1725.firelib.guimaker.IGuiMaker;
+import com.fireball1725.firelib.guimaker.util.IGuiMaker;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;

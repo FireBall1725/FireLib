@@ -11,8 +11,9 @@
 package com.fireball1725.firelib.guimaker;
 
 import com.fireball1725.firelib.FireLib;
-import com.fireball1725.firelib.guimaker.objects.GuiObject;
+import com.fireball1725.firelib.guimaker.base.GuiObject;
 import com.fireball1725.firelib.guimaker.objects.GuiWindow;
+import com.fireball1725.firelib.guimaker.util.GuiControlState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;

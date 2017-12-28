@@ -12,7 +12,6 @@ package com.fireball1725.firelib.network;
 
 import com.fireball1725.firelib.ModInfo;
 import com.fireball1725.firelib.guimaker.network.PacketGuiObjectUpdate;
-import com.fireball1725.firelib.network.messages.PacketGuiToggleEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
@@ -26,10 +25,6 @@ public class PacketHandler {
     }
 
     public static void init() {
-        NETWORK_INSTANCE.registerMessage(PacketGuiToggleEvent.Handler.class, PacketGuiToggleEvent.class, nextID(), Side.SERVER);
-
-        NETWORK_INSTANCE.registerMessage(PacketGuiToggleEvent.Handler.class, PacketGuiToggleEvent.class, nextID(), Side.CLIENT);
-
         NETWORK_INSTANCE.registerMessage(PacketGuiObjectUpdate.Handler.class, PacketGuiObjectUpdate.class, nextID(), Side.SERVER);
 
         NETWORK_INSTANCE.registerMessage(PacketGuiObjectUpdate.Handler.class, PacketGuiObjectUpdate.class, nextID(), Side.CLIENT);

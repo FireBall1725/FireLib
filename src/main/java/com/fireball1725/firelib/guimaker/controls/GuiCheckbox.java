@@ -21,6 +21,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.awt.*;
 
 public class GuiCheckbox extends GuiBaseControl implements IGuiObject {
+    GuiLabel guiCheckBoxLabel = null;
+
     public GuiCheckbox(String controlName) {
         super(controlName);
         this.width = 12;
@@ -75,5 +77,37 @@ public class GuiCheckbox extends GuiBaseControl implements IGuiObject {
                 this.removeGuiControlState(GuiControlState.SELECTED);
             }
         }
+    }
+
+    @Override
+    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+        super.drawGuiContainerForegroundLayer(mouseX, mouseY);
+
+        if (this.guiCheckBoxLabel != null) {
+            guiCheckBoxLabel.drawGuiContainerForegroundLayer(mouseX, mouseY);
+        }
+    }
+
+    @Override
+    public void initGui() {
+        super.initGui();
+
+        if (guiCheckBoxLabel != null) {
+            guiCheckBoxLabel.setGuiContainer(this.guiContainer);
+            guiCheckBoxLabel.setGuiMaker(this.guiMaker);
+
+            guiCheckBoxLabel.initGui();
+        }
+    }
+
+    public void setLabel(String labelText, int labelColor) {
+        if (this.guiCheckBoxLabel == null) {
+            this.guiCheckBoxLabel = new GuiLabel(this.controlName + "-label");
+
+            this.guiCheckBoxLabel.setControlPosition(this.left + 16, this.top + 2);
+        }
+
+        this.guiCheckBoxLabel.label = labelText;
+        this.guiCheckBoxLabel.color = labelColor;
     }
 }

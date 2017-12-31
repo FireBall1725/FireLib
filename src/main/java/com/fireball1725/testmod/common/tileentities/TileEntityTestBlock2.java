@@ -32,6 +32,8 @@ public class TileEntityTestBlock2 extends TileEntityBase implements IGuiMaker {
 
         guiCheckbox.setControlPosition(4, 4);
         guiCheckbox2.setControlPosition(4, 20);
+
+        guiCheckbox.setLabel("Test Checkbox", 0xffffff);
     }
 
     @Override

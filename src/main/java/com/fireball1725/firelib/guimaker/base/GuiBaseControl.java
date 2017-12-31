@@ -16,7 +16,6 @@ import com.fireball1725.firelib.guimaker.util.GuiControlState;
 import com.fireball1725.firelib.network.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.relauncher.Side;

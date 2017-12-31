@@ -12,7 +12,6 @@ package com.fireball1725.firelib.guimaker.controls;
 
 import com.fireball1725.firelib.guimaker.base.GuiBaseControl;
 import com.fireball1725.firelib.guimaker.base.IGuiObject;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 

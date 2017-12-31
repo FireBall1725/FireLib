@@ -30,15 +30,16 @@ public class GuiCheckbox extends GuiBaseControl implements IGuiObject {
         this.height = 12;
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public Rectangle getClickableArea(GuiContainer guiContainer) {
+    public Rectangle getClickableArea() {
         return new Rectangle(guiContainer.getGuiLeft() + this.left, guiContainer.getGuiTop() + top, this.width, this.height);
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY) {
-        super.drawGuiContainerBackgroundLayer(guiContainer, partialTicks, mouseX, mouseY);
+    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+        super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
 
         //Draw Checkbox Border
         GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.left, guiContainer.getGuiTop() + this.top, 0, 32, 12, 12, 12, 12, 1, 100);
@@ -82,23 +83,24 @@ public class GuiCheckbox extends GuiBaseControl implements IGuiObject {
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerForegroundLayer(GuiContainer guiContainer, int mouseX, int mouseY) {
-        super.drawGuiContainerForegroundLayer(guiContainer, mouseX, mouseY);
+    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+        super.drawGuiContainerForegroundLayer(mouseX, mouseY);
 
         if (this.guiCheckBoxLabel != null) {
-            guiCheckBoxLabel.drawGuiContainerForegroundLayer(guiContainer, mouseX, mouseY);
+            guiCheckBoxLabel.drawGuiContainerForegroundLayer(mouseX, mouseY);
         }
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void initGui(GuiContainer guiContainer) {
-        super.initGui(guiContainer);
+    public void initGui() {
+        super.initGui();
 
         if (guiCheckBoxLabel != null) {
             guiCheckBoxLabel.setGuiMaker(this.guiMaker);
+            guiCheckBoxLabel.setGuiContainer(this.guiContainer);
 
-            guiCheckBoxLabel.initGui(guiContainer);
+            guiCheckBoxLabel.initGui();
         }
     }
 

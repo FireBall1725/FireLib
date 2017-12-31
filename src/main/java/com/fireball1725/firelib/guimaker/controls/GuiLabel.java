@@ -26,8 +26,8 @@ public class GuiLabel extends GuiBaseControl implements IGuiObject {
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerForegroundLayer(GuiContainer guiContainer, int mouseX, int mouseY) {
-        super.drawGuiContainerForegroundLayer(guiContainer, mouseX, mouseY);
+    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+        super.drawGuiContainerForegroundLayer(mouseX, mouseY);
 
         guiContainer.drawString(guiContainer.mc.fontRenderer, this.label, this.left, this.top, this.color);
     }

@@ -20,35 +20,35 @@ import java.io.IOException;
 
 public interface IGuiObject {
     @SideOnly(Side.CLIENT)
-    void initGui(GuiContainer guiContainer);
+    void initGui();
 
     @SideOnly(Side.CLIENT)
-    void drawScreen(GuiContainer guiContainer, int mouseX, int mouseY, float partialTicks);
+    void drawScreen(int mouseX, int mouseY, float partialTicks);
 
     @SideOnly(Side.CLIENT)
-    void drawGuiContainerForegroundLayer(GuiContainer guiContainer, int mouseX, int mouseY);
+    void drawGuiContainerForegroundLayer(int mouseX, int mouseY);
 
     @SideOnly(Side.CLIENT)
-    void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY);
+    void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY);
 
     @SideOnly(Side.CLIENT)
-    void mouseClicked(GuiContainer guiContainer, int mouseX, int mouseY, int mouseButton) throws IOException;
+    void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException;
 
     @SideOnly(Side.CLIENT)
-    void keyTyped(GuiContainer guiContainer, char typedChar, int keyCode) throws IOException;
+    void keyTyped(char typedChar, int keyCode) throws IOException;
 
     @SideOnly(Side.CLIENT)
-    void onGuiClosed(GuiContainer guiContainer);
+    void onGuiClosed();
 
     @SideOnly(Side.CLIENT)
-    void updateScreen(GuiContainer guiContainer);
+    void updateScreen();
 
     NBTTagCompound writeNBT();
 
     void readNBT(NBTTagCompound nbt);
 
     @SideOnly(Side.CLIENT)
-    default Rectangle getClickableArea(GuiContainer guiContainer) {
+    default Rectangle getClickableArea() {
         return null;
     }
 }

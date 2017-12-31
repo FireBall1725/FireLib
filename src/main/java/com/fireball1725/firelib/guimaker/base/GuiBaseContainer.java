@@ -53,50 +53,51 @@ public abstract class GuiBaseContainer extends GuiObject {
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void initGui(GuiContainer guiContainer) {
-        super.initGui(guiContainer);
+    public void initGui() {
+        super.initGui();
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
                 guiObject.setGuiMaker(this.guiMaker);
+                guiObject.setGuiContainer(this.guiContainer);
 
-                guiObject.initGui(guiContainer);
+                guiObject.initGui();
             }
         }
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void drawScreen(GuiContainer guiContainer, int mouseX, int mouseY, float partialTicks) {
-        super.drawScreen(guiContainer, mouseX, mouseY, partialTicks);
+    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        super.drawScreen(mouseX, mouseY, partialTicks);
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
-                guiObject.drawScreen(guiContainer, mouseX, mouseY, partialTicks);
+                guiObject.drawScreen(mouseX, mouseY, partialTicks);
             }
         }
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerForegroundLayer(GuiContainer guiContainer, int mouseX, int mouseY) {
-        super.drawGuiContainerForegroundLayer(guiContainer, mouseX, mouseY);
+    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+        super.drawGuiContainerForegroundLayer(mouseX, mouseY);
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
-                guiObject.drawGuiContainerForegroundLayer(guiContainer, mouseX, mouseY);
+                guiObject.drawGuiContainerForegroundLayer(mouseX, mouseY);
             }
         }
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY) {
-        super.drawGuiContainerBackgroundLayer(guiContainer, partialTicks, mouseX, mouseY);
+    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+        super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
-                guiObject.drawGuiContainerBackgroundLayer(guiContainer, partialTicks, mouseX, mouseY);
+                guiObject.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
             }
         }
 
@@ -104,48 +105,48 @@ public abstract class GuiBaseContainer extends GuiObject {
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void mouseClicked(GuiContainer guiContainer, int mouseX, int mouseY, int mouseButton) throws IOException {
-        super.mouseClicked(guiContainer, mouseX, mouseY, mouseButton);
+    public void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+        super.mouseClicked(mouseX, mouseY, mouseButton);
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
-                guiObject.mouseClicked(guiContainer, mouseX, mouseY, mouseButton);
+                guiObject.mouseClicked(mouseX, mouseY, mouseButton);
             }
         }
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void keyTyped(GuiContainer guiContainer, char typedChar, int keyCode) throws IOException {
-        super.keyTyped(guiContainer, typedChar, keyCode);
+    public void keyTyped(char typedChar, int keyCode) throws IOException {
+        super.keyTyped(typedChar, keyCode);
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
-                guiObject.keyTyped(guiContainer, typedChar, keyCode);
+                guiObject.keyTyped(typedChar, keyCode);
             }
         }
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void onGuiClosed(GuiContainer guiContainer) {
-        super.onGuiClosed(guiContainer);
+    public void onGuiClosed() {
+        super.onGuiClosed();
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
-                guiObject.onGuiClosed(guiContainer);
+                guiObject.onGuiClosed();
             }
         }
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void updateScreen(GuiContainer guiContainer) {
-        super.updateScreen(guiContainer);
+    public void updateScreen() {
+        super.updateScreen();
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
-                guiObject.updateScreen(guiContainer);
+                guiObject.updateScreen();
             }
         }
     }

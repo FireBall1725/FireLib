@@ -76,8 +76,8 @@ public abstract class GuiBaseControl extends GuiObject {
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY) {
-        super.drawGuiContainerBackgroundLayer(guiContainer, partialTicks, mouseX, mouseY);
+    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+        super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
 
         if (this.hasGuiControlState(GuiControlState.INVISIBLE)) {
             return;
@@ -98,8 +98,8 @@ public abstract class GuiBaseControl extends GuiObject {
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void mouseClicked(GuiContainer guiContainer, int mouseX, int mouseY, int mouseButton) throws IOException {
-        super.mouseClicked(guiContainer, mouseX, mouseY, mouseButton);
+    public void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+        super.mouseClicked(mouseX, mouseY, mouseButton);
 
         if (this.hasGuiControlState(GuiControlState.INVISIBLE)) {
             return;

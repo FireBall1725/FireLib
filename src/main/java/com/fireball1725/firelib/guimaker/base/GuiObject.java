@@ -26,6 +26,9 @@ public abstract class GuiObject implements IGuiObject {
 
     // Set from GuiContainer
     protected GuiMaker guiMaker = null;
+
+    @SideOnly(Side.CLIENT)
+    protected GuiContainer guiContainer;
     // ---------------------
 
     public GuiObject(String controlName) {
@@ -42,51 +45,61 @@ public abstract class GuiObject implements IGuiObject {
         this.guiMaker = guiMaker;
     }
 
+    /**
+     * Set the parent gui container
+     *
+     * @param guiContainer the GuiContainer instance to set
+     */
+    @SideOnly(Side.CLIENT)
+    public void setGuiContainer(GuiContainer guiContainer) {
+        this.guiContainer = guiContainer;
+    }
+
     @SideOnly(Side.CLIENT)
     @Override
-    public void initGui(GuiContainer guiContainer) {
+    public void initGui() {
 
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void drawScreen(GuiContainer guiContainer, int mouseX, int mouseY, float partialTicks) {
+    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerForegroundLayer(GuiContainer guiContainer, int mouseX, int mouseY) {
+    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY) {
+    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void mouseClicked(GuiContainer guiContainer, int mouseX, int mouseY, int mouseButton) throws IOException {
+    public void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
 
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void keyTyped(GuiContainer guiContainer, char typedChar, int keyCode) throws IOException {
+    public void keyTyped(char typedChar, int keyCode) throws IOException {
 
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void onGuiClosed(GuiContainer guiContainer) {
+    public void onGuiClosed() {
 
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void updateScreen(GuiContainer guiContainer) {
+    public void updateScreen() {
 
     }
 

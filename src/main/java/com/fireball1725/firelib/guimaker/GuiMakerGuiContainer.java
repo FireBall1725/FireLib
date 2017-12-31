@@ -55,14 +55,15 @@ public class GuiMakerGuiContainer extends GuiContainer {
         super.initGui();
 
         guiMaker.getGuiContainer().setGuiMaker(this.guiMaker);
-        guiMaker.getGuiContainer().initGui(this);
+        guiMaker.getGuiContainer().setGuiContainer(this);
+        guiMaker.getGuiContainer().initGui();
     }
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         scissorCut(this.guiLeft, this.guiTop, this.xSize, this.ySize);
 
-        guiMaker.getGuiContainer().drawGuiContainerBackgroundLayer(this, partialTicks, mouseX, mouseY);
+        guiMaker.getGuiContainer().drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
 
         scissorsEnd();
     }
@@ -73,7 +74,7 @@ public class GuiMakerGuiContainer extends GuiContainer {
 
         scissorCut(this.guiLeft + 2, this.guiTop + 2, this.xSize - 4, this.ySize - 4);
 
-        guiMaker.getGuiContainer().drawGuiContainerForegroundLayer(this, mouseX, mouseY);
+        guiMaker.getGuiContainer().drawGuiContainerForegroundLayer(mouseX, mouseY);
 
         scissorsEnd();
     }
@@ -83,14 +84,14 @@ public class GuiMakerGuiContainer extends GuiContainer {
         this.drawDefaultBackground();
         super.drawScreen(mouseX, mouseY, partialTicks);
 
-        guiMaker.getGuiContainer().drawScreen(this, mouseX, mouseY, partialTicks);
+        guiMaker.getGuiContainer().drawScreen(mouseX, mouseY, partialTicks);
     }
 
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
         super.mouseClicked(mouseX, mouseY, mouseButton);
 
-        guiMaker.getGuiContainer().mouseClicked(this, mouseX, mouseY, mouseButton);
+        guiMaker.getGuiContainer().mouseClicked(mouseX, mouseY, mouseButton);
 
 //        for (GuiObject guiObject : guiObjects) {
 //            if (guiObject != null) {
@@ -112,21 +113,21 @@ public class GuiMakerGuiContainer extends GuiContainer {
     protected void keyTyped(char typedChar, int keyCode) throws IOException {
         super.keyTyped(typedChar, keyCode);
 
-        guiMaker.getGuiContainer().keyTyped(this, typedChar, keyCode);
+        guiMaker.getGuiContainer().keyTyped(typedChar, keyCode);
     }
 
     @Override
     public void onGuiClosed() {
         super.onGuiClosed();
 
-        guiMaker.getGuiContainer().onGuiClosed(this);
+        guiMaker.getGuiContainer().onGuiClosed();
     }
 
     @Override
     public void updateScreen() {
         super.updateScreen();
 
-        guiMaker.getGuiContainer().updateScreen(this);
+        guiMaker.getGuiContainer().updateScreen();
     }
 
     // --------

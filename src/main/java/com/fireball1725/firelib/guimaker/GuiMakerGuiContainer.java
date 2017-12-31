@@ -12,7 +12,6 @@ package com.fireball1725.firelib.guimaker;
 
 import com.fireball1725.firelib.FireLib;
 import com.fireball1725.firelib.guimaker.base.GuiBaseContainer;
-import com.fireball1725.firelib.guimaker.base.GuiObject;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -23,7 +22,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.opengl.GL11;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * GuiMaker Client Side Container
@@ -56,16 +54,15 @@ public class GuiMakerGuiContainer extends GuiContainer {
 
         super.initGui();
 
-        guiMaker.getGuiContainer().setGuiContainer(this);
         guiMaker.getGuiContainer().setGuiMaker(this.guiMaker);
-        guiMaker.getGuiContainer().initGui();
+        guiMaker.getGuiContainer().initGui(this);
     }
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         scissorCut(this.guiLeft, this.guiTop, this.xSize, this.ySize);
 
-        guiMaker.getGuiContainer().drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+        guiMaker.getGuiContainer().drawGuiContainerBackgroundLayer(this, partialTicks, mouseX, mouseY);
 
         scissorsEnd();
     }
@@ -76,7 +73,7 @@ public class GuiMakerGuiContainer extends GuiContainer {
 
         scissorCut(this.guiLeft + 2, this.guiTop + 2, this.xSize - 4, this.ySize - 4);
 
-        guiMaker.getGuiContainer().drawGuiContainerForegroundLayer(mouseX, mouseY);
+        guiMaker.getGuiContainer().drawGuiContainerForegroundLayer(this, mouseX, mouseY);
 
         scissorsEnd();
     }
@@ -86,14 +83,14 @@ public class GuiMakerGuiContainer extends GuiContainer {
         this.drawDefaultBackground();
         super.drawScreen(mouseX, mouseY, partialTicks);
 
-        guiMaker.getGuiContainer().drawScreen(mouseX, mouseY, partialTicks);
+        guiMaker.getGuiContainer().drawScreen(this, mouseX, mouseY, partialTicks);
     }
 
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
         super.mouseClicked(mouseX, mouseY, mouseButton);
 
-        guiMaker.getGuiContainer().mouseClicked(mouseX, mouseY, mouseButton);
+        guiMaker.getGuiContainer().mouseClicked(this, mouseX, mouseY, mouseButton);
 
 //        for (GuiObject guiObject : guiObjects) {
 //            if (guiObject != null) {
@@ -115,21 +112,21 @@ public class GuiMakerGuiContainer extends GuiContainer {
     protected void keyTyped(char typedChar, int keyCode) throws IOException {
         super.keyTyped(typedChar, keyCode);
 
-        guiMaker.getGuiContainer().keyTyped(typedChar, keyCode);
+        guiMaker.getGuiContainer().keyTyped(this, typedChar, keyCode);
     }
 
     @Override
     public void onGuiClosed() {
         super.onGuiClosed();
 
-        guiMaker.getGuiContainer().onGuiClosed();
+        guiMaker.getGuiContainer().onGuiClosed(this);
     }
 
     @Override
     public void updateScreen() {
         super.updateScreen();
 
-        guiMaker.getGuiContainer().updateScreen();
+        guiMaker.getGuiContainer().updateScreen(this);
     }
 
     // --------

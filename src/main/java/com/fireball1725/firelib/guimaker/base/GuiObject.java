@@ -26,8 +26,6 @@ public abstract class GuiObject implements IGuiObject {
 
     // Set from GuiContainer
     protected GuiMaker guiMaker = null;
-    @SideOnly(Side.CLIENT)
-    protected GuiContainer guiContainer = null;
     // ---------------------
 
     public GuiObject(String controlName) {
@@ -44,55 +42,51 @@ public abstract class GuiObject implements IGuiObject {
         this.guiMaker = guiMaker;
     }
 
-    /**
-     * Set the parent gui container
-     *
-     * @param guiContainer the GuiContainer instance to set
-     */
     @SideOnly(Side.CLIENT)
-    public void setGuiContainer(GuiContainer guiContainer) {
-        this.guiContainer = guiContainer;
-    }
-
     @Override
-    public void initGui() {
-
-    }
-
-    @Override
-    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-
-    }
-
-    @Override
-    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+    public void initGui(GuiContainer guiContainer) {
 
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+    public void drawScreen(GuiContainer guiContainer, int mouseX, int mouseY, float partialTicks) {
 
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+    public void drawGuiContainerForegroundLayer(GuiContainer guiContainer, int mouseX, int mouseY) {
 
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public void keyTyped(char typedChar, int keyCode) throws IOException {
+    public void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY) {
 
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public void onGuiClosed() {
+    public void mouseClicked(GuiContainer guiContainer, int mouseX, int mouseY, int mouseButton) throws IOException {
 
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public void updateScreen() {
+    public void keyTyped(GuiContainer guiContainer, char typedChar, int keyCode) throws IOException {
+
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void onGuiClosed(GuiContainer guiContainer) {
+
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void updateScreen(GuiContainer guiContainer) {
 
     }
 

@@ -16,8 +16,11 @@ import com.fireball1725.firelib.guimaker.util.GuiControlState;
 import com.fireball1725.firelib.network.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.awt.*;
 import java.io.IOException;
@@ -71,9 +74,10 @@ public abstract class GuiBaseControl extends GuiObject {
         this.top = y;
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-        super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+    public void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY) {
+        super.drawGuiContainerBackgroundLayer(guiContainer, partialTicks, mouseX, mouseY);
 
         if (this.hasGuiControlState(GuiControlState.INVISIBLE)) {
             return;
@@ -81,20 +85,21 @@ public abstract class GuiBaseControl extends GuiObject {
 
         // todo: check if control supports hover state...
 
-            Rectangle rectangle = new Rectangle(guiContainer.getGuiLeft() + this.left, guiContainer.getGuiTop() + this.top, this.width, this.height);
-            boolean mouseOver = rectangle.contains(mouseX, mouseY);
+        Rectangle rectangle = new Rectangle(guiContainer.getGuiLeft() + this.left, guiContainer.getGuiTop() + this.top, this.width, this.height);
+        boolean mouseOver = rectangle.contains(mouseX, mouseY);
 
-            if (mouseOver) {
-                this.addGuiControlState(GuiControlState.HOVERED);
-            } else {
-                this.removeGuiControlState(GuiControlState.HOVERED);
-            }
+        if (mouseOver) {
+            this.addGuiControlState(GuiControlState.HOVERED);
+        } else {
+            this.removeGuiControlState(GuiControlState.HOVERED);
+        }
 
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-        super.mouseClicked(mouseX, mouseY, mouseButton);
+    public void mouseClicked(GuiContainer guiContainer, int mouseX, int mouseY, int mouseButton) throws IOException {
+        super.mouseClicked(guiContainer, mouseX, mouseY, mouseButton);
 
         if (this.hasGuiControlState(GuiControlState.INVISIBLE)) {
             return;

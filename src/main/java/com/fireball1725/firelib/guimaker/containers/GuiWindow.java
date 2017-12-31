@@ -12,6 +12,7 @@ package com.fireball1725.firelib.guimaker.containers;
 
 import com.fireball1725.firelib.guimaker.base.GuiBaseContainer;
 import com.fireball1725.firelib.guimaker.base.IGuiObject;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraftforge.fml.client.config.GuiUtils;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -25,8 +26,8 @@ public class GuiWindow extends GuiBaseContainer implements IGuiObject {
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-        super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+    public void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY) {
+        super.drawGuiContainerBackgroundLayer(guiContainer, partialTicks, mouseX, mouseY);
 
         GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft(), guiContainer.getGuiTop(), 0, 0, this.width, this.height, 32, 32, 4, this.zLevel);
     }

@@ -10,8 +10,9 @@
 
 package com.fireball1725.firelib.guimaker.base;
 
-import com.fireball1725.firelib.guimaker.GuiMaker;
-import com.fireball1725.firelib.guimaker.util.IGuiMaker;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -50,94 +51,101 @@ public abstract class GuiBaseContainer extends GuiObject {
         return height;
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public void initGui() {
-        super.initGui();
+    public void initGui(GuiContainer guiContainer) {
+        super.initGui(guiContainer);
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
-                guiObject.setGuiContainer(this.guiContainer);
                 guiObject.setGuiMaker(this.guiMaker);
 
-                guiObject.initGui();
+                guiObject.initGui(guiContainer);
             }
         }
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        super.drawScreen(mouseX, mouseY, partialTicks);
+    public void drawScreen(GuiContainer guiContainer, int mouseX, int mouseY, float partialTicks) {
+        super.drawScreen(guiContainer, mouseX, mouseY, partialTicks);
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
-                guiObject.drawScreen(mouseX, mouseY, partialTicks);
+                guiObject.drawScreen(guiContainer, mouseX, mouseY, partialTicks);
             }
         }
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        super.drawGuiContainerForegroundLayer(mouseX, mouseY);
+    public void drawGuiContainerForegroundLayer(GuiContainer guiContainer, int mouseX, int mouseY) {
+        super.drawGuiContainerForegroundLayer(guiContainer, mouseX, mouseY);
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
-                guiObject.drawGuiContainerForegroundLayer(mouseX, mouseY);
+                guiObject.drawGuiContainerForegroundLayer(guiContainer, mouseX, mouseY);
             }
         }
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-        super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+    public void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY) {
+        super.drawGuiContainerBackgroundLayer(guiContainer, partialTicks, mouseX, mouseY);
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
-                guiObject.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+                guiObject.drawGuiContainerBackgroundLayer(guiContainer, partialTicks, mouseX, mouseY);
             }
         }
 
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-        super.mouseClicked(mouseX, mouseY, mouseButton);
+    public void mouseClicked(GuiContainer guiContainer, int mouseX, int mouseY, int mouseButton) throws IOException {
+        super.mouseClicked(guiContainer, mouseX, mouseY, mouseButton);
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
-                guiObject.mouseClicked(mouseX, mouseY, mouseButton);
+                guiObject.mouseClicked(guiContainer, mouseX, mouseY, mouseButton);
             }
         }
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public void keyTyped(char typedChar, int keyCode) throws IOException {
-        super.keyTyped(typedChar, keyCode);
+    public void keyTyped(GuiContainer guiContainer, char typedChar, int keyCode) throws IOException {
+        super.keyTyped(guiContainer, typedChar, keyCode);
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
-                guiObject.keyTyped(typedChar, keyCode);
+                guiObject.keyTyped(guiContainer, typedChar, keyCode);
             }
         }
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public void onGuiClosed() {
-        super.onGuiClosed();
+    public void onGuiClosed(GuiContainer guiContainer) {
+        super.onGuiClosed(guiContainer);
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
-                guiObject.onGuiClosed();
+                guiObject.onGuiClosed(guiContainer);
             }
         }
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public void updateScreen() {
-        super.updateScreen();
+    public void updateScreen(GuiContainer guiContainer) {
+        super.updateScreen(guiContainer);
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
-                guiObject.updateScreen();
+                guiObject.updateScreen(guiContainer);
             }
         }
     }

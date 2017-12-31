@@ -12,6 +12,7 @@ package com.fireball1725.firelib.guimaker.controls;
 
 import com.fireball1725.firelib.guimaker.base.GuiBaseControl;
 import com.fireball1725.firelib.guimaker.base.IGuiObject;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -25,8 +26,8 @@ public class GuiLabel extends GuiBaseControl implements IGuiObject {
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        super.drawGuiContainerForegroundLayer(mouseX, mouseY);
+    public void drawGuiContainerForegroundLayer(GuiContainer guiContainer, int mouseX, int mouseY) {
+        super.drawGuiContainerForegroundLayer(guiContainer, mouseX, mouseY);
 
         guiContainer.drawString(guiContainer.mc.fontRenderer, this.label, this.left, this.top, this.color);
     }

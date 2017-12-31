@@ -13,6 +13,7 @@ package com.fireball1725.firelib.guimaker.controls;
 import com.fireball1725.firelib.guimaker.base.GuiBaseControl;
 import com.fireball1725.firelib.guimaker.base.IGuiObject;
 import com.fireball1725.firelib.guimaker.util.GuiControlState;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.client.config.GuiUtils;
 import net.minecraftforge.fml.relauncher.Side;
@@ -30,14 +31,14 @@ public class GuiCheckbox extends GuiBaseControl implements IGuiObject {
     }
 
     @Override
-    public Rectangle getClickableArea() {
+    public Rectangle getClickableArea(GuiContainer guiContainer) {
         return new Rectangle(guiContainer.getGuiLeft() + this.left, guiContainer.getGuiTop() + top, this.width, this.height);
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-        super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+    public void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY) {
+        super.drawGuiContainerBackgroundLayer(guiContainer, partialTicks, mouseX, mouseY);
 
         //Draw Checkbox Border
         GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.left, guiContainer.getGuiTop() + this.top, 0, 32, 12, 12, 12, 12, 1, 100);
@@ -79,24 +80,25 @@ public class GuiCheckbox extends GuiBaseControl implements IGuiObject {
         }
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        super.drawGuiContainerForegroundLayer(mouseX, mouseY);
+    public void drawGuiContainerForegroundLayer(GuiContainer guiContainer, int mouseX, int mouseY) {
+        super.drawGuiContainerForegroundLayer(guiContainer, mouseX, mouseY);
 
         if (this.guiCheckBoxLabel != null) {
-            guiCheckBoxLabel.drawGuiContainerForegroundLayer(mouseX, mouseY);
+            guiCheckBoxLabel.drawGuiContainerForegroundLayer(guiContainer, mouseX, mouseY);
         }
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
-    public void initGui() {
-        super.initGui();
+    public void initGui(GuiContainer guiContainer) {
+        super.initGui(guiContainer);
 
         if (guiCheckBoxLabel != null) {
-            guiCheckBoxLabel.setGuiContainer(this.guiContainer);
             guiCheckBoxLabel.setGuiMaker(this.guiMaker);
 
-            guiCheckBoxLabel.initGui();
+            guiCheckBoxLabel.initGui(guiContainer);
         }
     }
 

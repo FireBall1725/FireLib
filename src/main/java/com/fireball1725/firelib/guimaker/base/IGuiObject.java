@@ -10,33 +10,45 @@
 
 package com.fireball1725.firelib.guimaker.base;
 
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.awt.*;
 import java.io.IOException;
 
 public interface IGuiObject {
-    void initGui();
+    @SideOnly(Side.CLIENT)
+    void initGui(GuiContainer guiContainer);
 
-    void drawScreen(int mouseX, int mouseY, float partialTicks);
+    @SideOnly(Side.CLIENT)
+    void drawScreen(GuiContainer guiContainer, int mouseX, int mouseY, float partialTicks);
 
-    void drawGuiContainerForegroundLayer(int mouseX, int mouseY);
+    @SideOnly(Side.CLIENT)
+    void drawGuiContainerForegroundLayer(GuiContainer guiContainer, int mouseX, int mouseY);
 
-    void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY);
+    @SideOnly(Side.CLIENT)
+    void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY);
 
-    void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException;
+    @SideOnly(Side.CLIENT)
+    void mouseClicked(GuiContainer guiContainer, int mouseX, int mouseY, int mouseButton) throws IOException;
 
-    void keyTyped(char typedChar, int keyCode) throws IOException;
+    @SideOnly(Side.CLIENT)
+    void keyTyped(GuiContainer guiContainer, char typedChar, int keyCode) throws IOException;
 
-    void onGuiClosed();
+    @SideOnly(Side.CLIENT)
+    void onGuiClosed(GuiContainer guiContainer);
 
-    void updateScreen();
+    @SideOnly(Side.CLIENT)
+    void updateScreen(GuiContainer guiContainer);
 
     NBTTagCompound writeNBT();
 
     void readNBT(NBTTagCompound nbt);
 
-    default Rectangle getClickableArea() {
+    @SideOnly(Side.CLIENT)
+    default Rectangle getClickableArea(GuiContainer guiContainer) {
         return null;
     }
 }

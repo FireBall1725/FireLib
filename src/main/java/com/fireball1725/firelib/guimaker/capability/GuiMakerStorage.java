@@ -10,6 +10,7 @@
 
 package com.fireball1725.firelib.guimaker.capability;
 
+import com.fireball1725.firelib.guimaker.base.GuiBaseContainer;
 import com.fireball1725.firelib.guimaker.base.GuiObject;
 import com.fireball1725.firelib.guimaker.util.IGuiMaker;
 import net.minecraft.nbt.NBTBase;
@@ -18,7 +19,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
 
 public class GuiMakerStorage implements Capability.IStorage<IGuiMaker> {
     @Nullable
@@ -26,13 +26,13 @@ public class GuiMakerStorage implements Capability.IStorage<IGuiMaker> {
     public NBTBase writeNBT(Capability<IGuiMaker> capability, IGuiMaker instance, EnumFacing side) {
         NBTTagCompound nbtTagCompound = new NBTTagCompound();
 
-        ArrayList<GuiObject> guiObjects = instance.getGuiMaker().getGuiObjects();
+        GuiBaseContainer guiBaseContainer = instance.getGuiMaker().getGuiContainer();
 
-        for (GuiObject guiObject : guiObjects) {
+        for (GuiObject guiObject : guiBaseContainer.getGuiObjects()) {
             NBTTagCompound guiObjectTag = guiObject.writeNBT();
 
             if (guiObjectTag != null) {
-                nbtTagCompound.setTag(guiObject.getControlID().toString(), guiObjectTag);
+                nbtTagCompound.setTag(guiObject.getControlName(), guiObjectTag);
             }
         }
 
@@ -41,11 +41,11 @@ public class GuiMakerStorage implements Capability.IStorage<IGuiMaker> {
 
     @Override
     public void readNBT(Capability<IGuiMaker> capability, IGuiMaker instance, EnumFacing side, NBTBase nbt) {
-        ArrayList<GuiObject> guiObjects = instance.getGuiMaker().getGuiObjects();
+        GuiBaseContainer guiBaseContainer = instance.getGuiMaker().getGuiContainer();
         NBTTagCompound nbtTagCompound = (NBTTagCompound) nbt;
 
-        for (GuiObject guiObject : guiObjects) {
-            String controlID = guiObject.getControlID().toString();
+        for (GuiObject guiObject : guiBaseContainer.getGuiObjects()) {
+            String controlID = guiObject.getControlName();
 
             if (nbtTagCompound.hasKey(controlID)) {
                 guiObject.readNBT(nbtTagCompound.getCompoundTag(controlID));

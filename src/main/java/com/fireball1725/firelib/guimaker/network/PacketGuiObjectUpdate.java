@@ -27,10 +27,8 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 
-import java.util.UUID;
-
 public class PacketGuiObjectUpdate implements IMessage {
-    public UUID controlUUID;
+    public String controlName;
     public NBTTagCompound controlTagCompound;
     public BlockPos blockPos;
 
@@ -38,22 +36,22 @@ public class PacketGuiObjectUpdate implements IMessage {
         /* Required for Forge Simple Network Wrapper */
     }
 
-    public PacketGuiObjectUpdate(UUID controlUUID, NBTTagCompound controlTagCompound, BlockPos blockPos) {
-        this.controlUUID = controlUUID;
+    public PacketGuiObjectUpdate(String controlName, NBTTagCompound controlTagCompound, BlockPos blockPos) {
+        this.controlName = controlName;
         this.controlTagCompound = controlTagCompound;
         this.blockPos = blockPos;
     }
 
     @Override
     public void fromBytes(ByteBuf byteBuf) {
-        this.controlUUID = UUID.fromString(ByteBufUtils.readUTF8String(byteBuf));
+        this.controlName = ByteBufUtils.readUTF8String(byteBuf);
         this.controlTagCompound = ByteBufUtils.readTag(byteBuf);
         this.blockPos = NetworkHelper.readBlockPos(byteBuf);
     }
 
     @Override
     public void toBytes(ByteBuf byteBuf) {
-        ByteBufUtils.writeUTF8String(byteBuf, this.controlUUID.toString());
+        ByteBufUtils.writeUTF8String(byteBuf, this.controlName);
         ByteBufUtils.writeTag(byteBuf, this.controlTagCompound);
         NetworkHelper.writeBlockPos(byteBuf, this.blockPos);
     }
@@ -70,7 +68,7 @@ public class PacketGuiObjectUpdate implements IMessage {
             TileEntity tileEntity;
 
             if (messageContext.side == Side.SERVER) {
-                PacketGuiObjectUpdate packet = new PacketGuiObjectUpdate(packetGuiObjectUpdate.controlUUID, packetGuiObjectUpdate.controlTagCompound, packetGuiObjectUpdate.blockPos);
+                PacketGuiObjectUpdate packet = new PacketGuiObjectUpdate(packetGuiObjectUpdate.controlName, packetGuiObjectUpdate.controlTagCompound, packetGuiObjectUpdate.blockPos);
                 PacketHandler.NETWORK_INSTANCE.sendToAllAround(packet, NetworkHelper.getTargetPoint(messageContext.getServerHandler().player.dimension, packetGuiObjectUpdate.blockPos, 50));
 
                 tileEntity = getServerSideTileEntity(packetGuiObjectUpdate, messageContext);
@@ -83,8 +81,8 @@ public class PacketGuiObjectUpdate implements IMessage {
                 return;
             }
 
-            for (GuiObject guiObject : ((IGuiMaker) tileEntity).getGuiMaker().getGuiObjects()) {
-                if (guiObject.getControlID().equals(packetGuiObjectUpdate.controlUUID)) {
+            for (GuiObject guiObject : ((IGuiMaker) tileEntity).getGuiMaker().getGuiContainer().getGuiObjects()) {
+                if (guiObject.getControlName().equals(packetGuiObjectUpdate.controlName)) {
                     guiObject.readNBT(packetGuiObjectUpdate.controlTagCompound);
                 }
             }

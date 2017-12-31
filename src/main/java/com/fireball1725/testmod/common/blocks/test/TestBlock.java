@@ -12,10 +12,11 @@ package com.fireball1725.testmod.common.blocks.test;
 
 import com.fireball1725.firelib.blocks.BlockTileBase;
 import com.fireball1725.firelib.guimaker.GuiMaker;
-import com.fireball1725.firelib.guimaker.objects.GuiLabel;
-import com.fireball1725.firelib.guimaker.objects.GuiWindow;
+import com.fireball1725.firelib.guimaker.containers.GuiWindow;
+import com.fireball1725.firelib.guimaker.controls.GuiLabel;
 import com.fireball1725.firelib.util.IProvideRecipe;
 import com.fireball1725.testmod.TestMod;
+import com.fireball1725.testmod.common.tileentities.TileEntityTestBlock2;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,19 +28,21 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.RegistryEvent;
 
 public class TestBlock extends BlockTileBase implements IProvideRecipe {
-    private GuiMaker guiMaker = new GuiMaker();
-    private GuiWindow guiWindow = new GuiWindow(200, 100);
-    private GuiLabel guiLabel = new GuiLabel(4, 4);
-    private GuiLabel guiLabel2 = new GuiLabel(4, 16);
+    private GuiWindow guiWindow = new GuiWindow("Windows 95", 200, 100);
+    private GuiMaker guiMaker = new GuiMaker(guiWindow);
+    private GuiLabel guiLabel = new GuiLabel("label");
+    private GuiLabel guiLabel2 = new GuiLabel("label");
 
     public TestBlock() {
         super(Material.IRON, "testblock", TestMod.instance);
         this.setInternalName("testblock");
         this.setTileEntity(com.fireball1725.testmod.common.tileentities.TestBlock.class);
 
-        guiMaker.registerGuiObject(guiWindow);
-        guiMaker.registerGuiObject(guiLabel);
-        guiMaker.registerGuiObject(guiLabel2);
+        guiWindow.addGuiObject(guiLabel);
+        guiWindow.addGuiObject(guiLabel2);
+
+        guiLabel.setControlPosition(4, 4);
+        guiLabel.setControlPosition(4, 20);
 
         guiLabel.setLabel("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel magna ac nunc congue egestas sed a erat. Nam a odio elementum, pharetra turpis sit amet, blandit magna. Fusce vestibulum risus enim, id porta");
         guiLabel.setColor(0xFF69B4);
@@ -70,7 +73,9 @@ public class TestBlock extends BlockTileBase implements IProvideRecipe {
             return true;
         }
 
-        TestMod.instance.getLogger().info(">>> CLICKED ON THE THING WITH THE STUFFS!~");
+        TileEntityTestBlock2 test = new TileEntityTestBlock2();
+
+
         guiMaker.show(worldIn, playerIn, pos);
 
         return true;

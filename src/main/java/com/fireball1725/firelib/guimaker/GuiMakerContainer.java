@@ -11,11 +11,14 @@
 package com.fireball1725.firelib.guimaker;
 
 import com.fireball1725.firelib.FireLib;
+import com.fireball1725.firelib.guimaker.base.GuiObject;
 import com.fireball1725.firelib.guimaker.util.IGuiMaker;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.tileentity.TileEntity;
+
+import java.util.ArrayList;
 
 /**
  * GuiMaker Server Side Container
@@ -40,6 +43,14 @@ public class GuiMakerContainer extends Container {
     public void initContainer() {
         this.inventoryItemStacks.clear();
         this.inventorySlots.clear();
+
+        ArrayList<GuiObject> guiObjects = guiMaker.getGuiContainer().getGuiObjects();
+
+        for (GuiObject guiObject : guiObjects) {
+            if (guiObject != null) {
+                guiObject.setGuiMaker(this.guiMaker);
+            }
+        }
     }
 
     @Override

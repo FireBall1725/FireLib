@@ -11,28 +11,27 @@
 package com.fireball1725.testmod.common.tileentities;
 
 import com.fireball1725.firelib.guimaker.GuiMaker;
-import com.fireball1725.firelib.guimaker.objects.GuiCheckbox;
-import com.fireball1725.firelib.guimaker.objects.GuiWindow;
+import com.fireball1725.firelib.guimaker.containers.GuiWindow;
+import com.fireball1725.firelib.guimaker.controls.GuiCheckbox;
 import com.fireball1725.firelib.guimaker.util.IGuiMaker;
 import com.fireball1725.firelib.tileentities.TileEntityBase;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class TileEntityTestBlock2 extends TileEntityBase implements IGuiMaker {
-    public GuiMaker guiMaker = new GuiMaker();
-    public GuiWindow guiWindow = new GuiWindow(100, 40);
+    public GuiWindow guiWindow = new GuiWindow("Window", 100, 40);
+    public GuiMaker guiMaker = new GuiMaker(guiWindow);
 
-    public GuiCheckbox guiCheckbox = new GuiCheckbox(GuiMaker.generateUUIDFromName("buttonSomething"));
-    public GuiCheckbox guiCheckbox2 = new GuiCheckbox(GuiMaker.generateUUIDFromName("buttonSomething2"));
+    public GuiCheckbox guiCheckbox = new GuiCheckbox("test button 1");
+    public GuiCheckbox guiCheckbox2 = new GuiCheckbox("test button 2");
 
     private int test = 0;
 
     public TileEntityTestBlock2() {
-        guiMaker.registerGuiObject(guiWindow);
-        guiMaker.registerGuiObject(guiCheckbox);
-        guiMaker.registerGuiObject(guiCheckbox2);
+        guiWindow.addGuiObject(guiCheckbox);
+        guiWindow.addGuiObject(guiCheckbox2);
 
-        guiCheckbox.setLocation(4, 4);
-        guiCheckbox2.setLocation(4, 20);
+        guiCheckbox.setControlPosition(4, 4);
+        guiCheckbox2.setControlPosition(4, 20);
     }
 
     @Override

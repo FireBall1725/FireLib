@@ -8,32 +8,27 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.guimaker.objects;
+package com.fireball1725.firelib.guimaker.controls;
 
-import com.fireball1725.firelib.guimaker.base.GuiObject;
+import com.fireball1725.firelib.guimaker.base.GuiBaseControl;
 import com.fireball1725.firelib.guimaker.base.IGuiObject;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.UUID;
-
-public class GuiLabel extends GuiObject implements IGuiObject {
+public class GuiLabel extends GuiBaseControl implements IGuiObject {
     public String label = "";
     public int color = 0;
 
-    public GuiLabel(int x, int y) {
-        super(UUID.randomUUID());
-        this.x = x;
-        this.y = y;
+    public GuiLabel(String controlName) {
+        super(controlName);
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerForegroundLayer(GuiContainer guiContainer, int mouseX, int mouseY) {
-        super.drawGuiContainerForegroundLayer(guiContainer, mouseX, mouseY);
+    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+        super.drawGuiContainerForegroundLayer(mouseX, mouseY);
 
-        guiContainer.drawString(guiContainer.mc.fontRenderer, this.label, this.x, this.y, this.color);
+        guiContainer.drawString(guiContainer.mc.fontRenderer, this.label, this.left, this.top, this.color);
     }
 
     public String getLabel() {

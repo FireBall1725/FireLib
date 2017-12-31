@@ -8,49 +8,52 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.firelib.guimaker.objects;
+package com.fireball1725.firelib.guimaker.controls;
 
-import com.fireball1725.firelib.guimaker.base.GuiToggleable;
+import com.fireball1725.firelib.guimaker.base.GuiBaseControl;
 import com.fireball1725.firelib.guimaker.base.IGuiObject;
-import com.fireball1725.firelib.guimaker.util.GuiControlOption;
 import com.fireball1725.firelib.guimaker.util.GuiControlState;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.client.config.GuiUtils;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.UUID;
+import java.awt.*;
 
-public class GuiCheckbox extends GuiToggleable implements IGuiObject {
-    public GuiCheckbox(UUID controlId) {
-        super(controlId, GuiControlOption.HOVER_STATE, GuiControlOption.TOGGLE_STATE);
+public class GuiCheckbox extends GuiBaseControl implements IGuiObject {
+    public GuiCheckbox(String controlName) {
+        super(controlName);
         this.width = 12;
         this.height = 12;
     }
 
+    @Override
+    public Rectangle getClickableArea() {
+        return new Rectangle(guiContainer.getGuiLeft() + this.left, guiContainer.getGuiTop() + top, this.width, this.height);
+    }
+
     @SideOnly(Side.CLIENT)
     @Override
-    public void drawGuiContainerBackgroundLayer(GuiContainer guiContainer, float partialTicks, int mouseX, int mouseY) {
-        super.drawGuiContainerBackgroundLayer(guiContainer, partialTicks, mouseX, mouseY);
+    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+        super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
 
         //Draw Checkbox Border
-        GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.x, guiContainer.getGuiTop() + this.y, 0, 32, 12, 12, 12, 12, 1, 100);
+        GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.left, guiContainer.getGuiTop() + this.top, 0, 32, 12, 12, 12, 12, 1, 100);
 
         if (this.hasGuiControlState(GuiControlState.HOVERED)) {
             if (this.hasGuiControlState(GuiControlState.SELECTED)) {
                 // Hovered Checked
-                GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.x, guiContainer.getGuiTop() + this.y, 64, 32, 12, 12, 12, 12, 1, 100);
+                GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.left, guiContainer.getGuiTop() + this.top, 64, 32, 12, 12, 12, 12, 1, 100);
             } else {
                 // Hovered
-                GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.x, guiContainer.getGuiTop() + this.y, 32, 32, 12, 12, 12, 12, 1, 100);
+                GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.left, guiContainer.getGuiTop() + this.top, 32, 32, 12, 12, 12, 12, 1, 100);
             }
         } else if (this.hasGuiControlState(GuiControlState.SELECTED)) {
             // Checked
-            GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.x, guiContainer.getGuiTop() + this.y, 48, 32, 12, 12, 12, 12, 1, 100);
+            GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.left, guiContainer.getGuiTop() + this.top, 48, 32, 12, 12, 12, 12, 1, 100);
         } else {
             // Normal
-            GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.x, guiContainer.getGuiTop() + this.y, 16, 32, 12, 12, 12, 12, 1, 100);
+            GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.left, guiContainer.getGuiTop() + this.top, 16, 32, 12, 12, 12, 12, 1, 100);
         }
     }
 

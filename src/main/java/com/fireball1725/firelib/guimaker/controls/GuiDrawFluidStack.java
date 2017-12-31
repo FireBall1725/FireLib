@@ -8,36 +8,7 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.fireball1725.testmod2.common.items;
+package com.fireball1725.firelib.guimaker.controls;
 
-import com.fireball1725.firelib.items.IFireItems;
-import com.fireball1725.testmod2.common.items.test.ItemTest;
-import com.fireball1725.testmod2.common.items.test.ItemToolTest;
-import net.minecraft.item.Item;
-
-public enum Items implements IFireItems {
-    TEST_ITEM(ItemTest.class),
-    TEST_TOOL(ItemToolTest.class);
-
-    private final Class<? extends Item> itemClass;
-    private Item item;
-
-    Items(Class<? extends Item> itemClass) {
-        this.itemClass = itemClass;
-    }
-
-    @Override
-    public Class<? extends Item> getItemClass() {
-        return this.itemClass;
-    }
-
-    @Override
-    public Item getItem() {
-        return item;
-    }
-
-    @Override
-    public void setItem(Item item) {
-        this.item = item;
-    }
+public class GuiDrawFluidStack {
 }

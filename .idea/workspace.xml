@@ -2,8 +2,50 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d6495af-6a70-4a07-8f67-cf5da647a3d1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/network/PacketHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/network/PacketHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/network/messages/PacketGuiToggleEvent.java" afterPath="" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiBaseContainer.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiBaseControl.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/GuiObjectDimensions.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMaker.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMaker.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerContainer.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerContainer.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerGuiContainer.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerGuiContainer.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiClickable.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiObject.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiObject.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiToggleable.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/IGuiObject.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/IGuiObject.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerStorage.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerStorage.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/network/PacketGuiObjectUpdate.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/network/PacketGuiObjectUpdate.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/objects/GuiButton.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiButton.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/objects/GuiCheckbox.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiCheckbox.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/objects/GuiDrawFluidStack.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiDrawFluidStack.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/objects/GuiDrawItemStack.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiDrawItemStack.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/objects/GuiImage.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiImage.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/objects/GuiInventorySlots.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiInventorySlots.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/objects/GuiLabel.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiLabel.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/objects/GuiLine.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiLine.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/objects/GuiProgressBar.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiProgressBar.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/objects/GuiRadioButton.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiRadioButton.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/objects/GuiScrollBox.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/containers/GuiScrollBox.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/objects/GuiSlot.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiSlot.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/objects/GuiTab.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiTab.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/objects/GuiWindow.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/containers/GuiWindow.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/util/RegistrationHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/util/RegistrationHelper.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/blocks/test/TestBlock.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/blocks/test/TestBlock.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/tileentities/TileEntityTestBlock2.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/tileentities/TileEntityTestBlock2.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/ModInfo.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/TestMod2.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/blocks/Blocks.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/blocks/test/TestBlock.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/blocks/test/TestBlock2.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/items/Items.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/items/test/ItemTest.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/items/test/ItemToolTest.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/tileentities/TestBlock.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/tileentities/TileEntityTestBlock2.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/proxy/ClientProxy.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/proxy/CommonProxy.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/proxy/IProxy.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/proxy/ServerProxy.java" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -16,7 +58,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/FireLib$Minecraft_Client___FireBall1725.coverage" NAME="Minecraft Client - FireBall1725 Coverage Results" MODIFIED="1514064058181" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/FireLib$Minecraft_Client___FireBall1725.coverage" NAME="Minecraft Client - FireBall1725 Coverage Results" MODIFIED="1514663243013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -32,43 +74,58 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="PacketHandler.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/network/PacketHandler.java">
+      <file leaf-file-name="GuiMakerGuiContainer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerGuiContainer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="13" column="71" lean-forward="false" selection-start-line="13" selection-start-column="71" selection-end-line="13" selection-end-column="71" />
+            <state relative-caret-position="466">
+              <caret line="51" column="68" lean-forward="false" selection-start-line="51" selection-start-column="68" selection-end-line="51" selection-end-column="68" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GuiMakerContainer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerContainer.java">
+      <file leaf-file-name="GuiWindow.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/containers/GuiWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="21" column="3" lean-forward="false" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
+            <state relative-caret-position="96">
+              <caret line="18" column="7" lean-forward="false" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PacketGuiObjectUpdate.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/network/PacketGuiObjectUpdate.java">
+      <file leaf-file-name="dark.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/assets/firelib/textures/gui/dark.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestMod.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/TestMod.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="592">
-              <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="96">
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="47" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NetworkHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/NetworkHelper.java">
+      <file leaf-file-name="FireMod.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/FireMod.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="28" column="85" lean-forward="false" selection-start-line="28" selection-start-column="85" selection-end-line="28" selection-end-column="85" />
+            <state relative-caret-position="788">
+              <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GuiBaseContainer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiBaseContainer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="879">
+              <caret line="142" column="5" lean-forward="false" selection-start-line="142" selection-start-column="5" selection-end-line="142" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -79,35 +136,29 @@
       <file leaf-file-name="GuiObject.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="143" column="20" lean-forward="false" selection-start-line="143" selection-start-column="20" selection-end-line="143" selection-end-column="20" />
+            <state relative-caret-position="447">
+              <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TileEntityTestBlock2.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/tileentities/TileEntityTestBlock2.java">
+      <file leaf-file-name="GuiMakerContainer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerContainer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="44" column="19" lean-forward="false" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="19" />
-              <folding>
-                <element signature="e#2293#2294#0" expanded="true" />
-                <element signature="e#2320#2321#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="480">
+              <caret line="46" column="85" lean-forward="false" selection-start-line="46" selection-start-column="85" selection-end-line="46" selection-end-column="85" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TileEntityTestBlock2.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/tileentities/TileEntityTestBlock2.java">
+      <file leaf-file-name="GuiBaseControl.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiBaseControl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-              <folding>
-                <element signature="e#2292#2293#0" expanded="true" />
-                <element signature="e#2319#2320#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="367">
+              <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -115,8 +166,8 @@
       <file leaf-file-name="GuiMakerStorage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerStorage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="51" column="13" lean-forward="false" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+            <state relative-caret-position="192">
+              <caret line="28" column="84" lean-forward="false" selection-start-line="28" selection-start-column="84" selection-end-line="28" selection-end-column="84" />
               <folding />
             </state>
           </provider>
@@ -758,24 +809,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/proxy/CommonProxy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/proxy/CommonProxy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/FireMod.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/TestMod.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/util/RegistrationHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/blocks/BlockBase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/blocks/test/TestBlock2.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/blocks/test/TestBlock.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/blocks/test/TestBlock2.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/items/ItemBase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/items/ItemBaseTool.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/items/test/ItemTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/items/test/ItemToolTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/items/test/ItemToolTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/items/test/ItemTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/blocks/BlockTileBase.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/proxy/base/IProxyBase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/blocks/test/TestBlock.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/FireLib.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerCapabilityHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/IGuiMakerCapability.java" />
@@ -786,29 +824,42 @@
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/tileentities/TileEntityBase.java" />
         <option value="$PROJECT_DIR$/gradle.properties" />
         <option value="$PROJECT_DIR$/gradle/scripts/dependencies.gradle" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerStorage.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/objects/GuiObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/network/messages/PacketGuiToggleEvent.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/baseobjects/GuiClickable.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/baseobjects/GuiObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/baseobjects/IGuiObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/baseobjects/GuiToggleable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/objects/GuiCheckbox.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/IGuiMaker.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerContainer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerGuiContainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerCapability.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/misc/GuiControlState.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/misc/GuiControlOption.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/misc/IGuiMaker.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/IGuiMaker.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/events/GuiMakerGuiHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/tileentities/TileEntityTestBlock2.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/tileentities/TileEntityTestBlock2.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/NetworkHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/network/PacketGuiObjectUpdate.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/network/PacketHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/IGuiObject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/objects/GuiCheckbox.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/GuiObjectDimensions.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/containers/GuiScrollBox.java" />
+        <option value="$PROJECT_DIR$/devnotes.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/util/RegistrationHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiCheckbox.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiLabel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerStorage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/blocks/test/TestBlock.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/tileentities/TileEntityTestBlock2.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/network/PacketGuiObjectUpdate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerContainer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/blocks/test/TestBlock.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMaker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/containers/GuiWindow.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerGuiContainer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiBaseContainer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiObject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiBaseControl.java" />
       </list>
     </option>
   </component>
@@ -824,9 +875,10 @@
     </order>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-2" />
     <option name="y" value="22" />
-    <option name="width" value="1921" />
-    <option name="height" value="1102" />
+    <option name="width" value="1591" />
+    <option name="height" value="1125" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -846,10 +898,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -900,6 +951,82 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
               <item name="firelib" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
+              <item name="firelib" type="462c0819:PsiDirectoryNode" />
+              <item name="guimaker" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
+              <item name="firelib" type="462c0819:PsiDirectoryNode" />
+              <item name="guimaker" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
+              <item name="firelib" type="462c0819:PsiDirectoryNode" />
+              <item name="guimaker" type="462c0819:PsiDirectoryNode" />
+              <item name="capability" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
+              <item name="firelib" type="462c0819:PsiDirectoryNode" />
+              <item name="guimaker" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
+              <item name="firelib" type="462c0819:PsiDirectoryNode" />
+              <item name="guimaker" type="462c0819:PsiDirectoryNode" />
+              <item name="controls" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
+              <item name="firelib" type="462c0819:PsiDirectoryNode" />
+              <item name="guimaker" type="462c0819:PsiDirectoryNode" />
+              <item name="events" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
+              <item name="firelib" type="462c0819:PsiDirectoryNode" />
+              <item name="guimaker" type="462c0819:PsiDirectoryNode" />
               <item name="network" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -907,23 +1034,40 @@
               <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
+              <item name="firelib" type="462c0819:PsiDirectoryNode" />
+              <item name="guimaker" type="462c0819:PsiDirectoryNode" />
+              <item name="slots" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
               <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
+              <item name="firelib" type="462c0819:PsiDirectoryNode" />
+              <item name="guimaker" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
               <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
+              <item name="firelib" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
               <item name="testmod" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -931,10 +1075,61 @@
               <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
               <item name="testmod" type="462c0819:PsiDirectoryNode" />
-              <item name="blockstates" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
+              <item name="testmod" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="blocks" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
+              <item name="testmod" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="blocks" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
+              <item name="testmod" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="tileentities" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
+              <item name="testmod" type="462c0819:PsiDirectoryNode" />
+              <item name="proxy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
@@ -943,13 +1138,31 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="testmod" type="462c0819:PsiDirectoryNode" />
-              <item name="temp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="textures" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="textures" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -961,7 +1174,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="external.system.task.project.file.to.start" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
-    <property name="SearchEverywhereHistoryKey" value="IItemH&#9;PSI&#9;JAVA://net.minecraftforge.items.IItemHandler&#10;CapabilityItem&#9;PSI&#9;JAVA://net.minecraftforge.items.CapabilityItemHandler&#10;CapabilityFluid&#9;PSI&#9;JAVA://net.minecraftforge.fluids.capability.CapabilityFluidHandler&#10;TileEntity&#9;FILE&#9;jar:///Users/ereed/Repo/FireLib/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/net/minecraft/tileentity/TileEntity.java&#10;Sand&#9;FILE&#9;jar:///Users/ereed/Repo/FireLib/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/net/minecraft/block/BlockSand.java&#10;BlockAnvil&#9;PSI&#9;JAVA://net.minecraft.block.BlockAnvil&#10;EnumFa&#9;PSI&#9;JAVA://net.minecraft.util.EnumFacing&#10;BlockDis&#9;PSI&#9;JAVA://net.minecraft.block.BlockDispenser&#10;BlockFurn&#9;FILE&#9;jar:///Users/ereed/Repo/FireLib/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/net/minecraft/block/BlockFurnace.java&#10;BlockFurnace&#9;PSI&#9;JAVA://net.minecraft.block.BlockFurnace&#10;BlockLo&#9;PSI&#9;JAVA://net.minecraft.block.BlockLog&#10;ItemBlock&#9;PSI&#9;JAVA://net.minecraft.item.ItemBlock&#10;gui&#9;PSI&#9;JAVA://com.fireball1725.firelib.gui.GuiCustomizeSkin" />
+    <property name="SearchEverywhereHistoryKey" value="TextForm&#9;PSI&#9;JAVA://net.minecraft.util.text.TextFormatting&#10;EnumChatFormat&#9;null&#9;null&#10;ChatColor&#9;PSI&#9;JAVA://net.minecraft.client.settings.GameSettings.Options#CHAT_COLOR&#10;GuiContainer&#9;PSI&#9;JAVA://net.minecraft.client.gui.inventory.GuiContainer&#10;guiScreen&#9;PSI&#9;JAVA://net.minecraft.client.gui.GuiScreen&#10;GuiMainm&#9;PSI&#9;JAVA://net.minecraft.client.gui.GuiMainMenu&#10;IItemH&#9;PSI&#9;JAVA://net.minecraftforge.items.IItemHandler&#10;CapabilityItem&#9;PSI&#9;JAVA://net.minecraftforge.items.CapabilityItemHandler&#10;CapabilityFluid&#9;PSI&#9;JAVA://net.minecraftforge.fluids.capability.CapabilityFluidHandler&#10;TileEntity&#9;FILE&#9;jar:///Users/ereed/Repo/FireLib/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/net/minecraft/tileentity/TileEntity.java&#10;Sand&#9;FILE&#9;jar:///Users/ereed/Repo/FireLib/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/net/minecraft/block/BlockSand.java&#10;BlockAnvil&#9;PSI&#9;JAVA://net.minecraft.block.BlockAnvil&#10;EnumFa&#9;PSI&#9;JAVA://net.minecraft.util.EnumFacing&#10;BlockDis&#9;PSI&#9;JAVA://net.minecraft.block.BlockDispenser&#10;BlockFurn&#9;FILE&#9;jar:///Users/ereed/Repo/FireLib/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/net/minecraft/block/BlockFurnace.java&#10;BlockFurnace&#9;PSI&#9;JAVA://net.minecraft.block.BlockFurnace&#10;BlockLo&#9;PSI&#9;JAVA://net.minecraft.block.BlockLog&#10;ItemBlock&#9;PSI&#9;JAVA://net.minecraft.item.ItemBlock&#10;gui&#9;PSI&#9;JAVA://com.fireball1725.firelib.gui.GuiCustomizeSkin" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -1171,31 +1384,33 @@
       <workItem from="1513908719369" duration="11357000" />
       <workItem from="1514047399053" duration="71591000" />
       <workItem from="1514302769864" duration="12119000" />
-      <workItem from="1514409245438" duration="8465000" />
+      <workItem from="1514409245438" duration="16897000" />
+      <workItem from="1514580647119" duration="14201000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173955000" />
+    <option name="totallyTimeSpent" value="196588000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1921" height="1125" extended-state="6" />
+    <frame x="0" y="22" width="1920" height="1125" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32658958" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3256262" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3270936" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32627526" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935262" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20874545" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16666667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1203,7 +1418,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30154142" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30057803" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1211,7 +1426,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916266" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1222,7 +1436,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="89" />
+      <option name="time" value="93" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1235,74 +1449,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/blocks/test/TestBlock2.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/blocks/test/TestBlock.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/blocks/BlockBase.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/blocks/BlockTileBase.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/items/ItemBase.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/items/ItemBaseTool.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/items/test/ItemTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/items/test/ItemToolTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/items/test/ItemToolTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/items/test/ItemTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/CapabilityGuiMaker.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/proxy/base/IProxyBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="110" column="5" lean-forward="false" selection-start-line="110" selection-start-column="5" selection-end-line="110" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/util/RegistrationHelper.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/blocks/test/TestBlock2.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/blocks/test/TestBlock.java" />
-    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/net/minecraft/util/ResourceLocation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="25" column="11" lean-forward="false" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/net/minecraftforge/event/AttachCapabilitiesEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="65" column="16" lean-forward="false" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2562-PROJECT(FireLib)-sources.jar!/net/minecraft/tileentity/TileEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7104">
-          <caret line="520" column="77" lean-forward="false" selection-start-line="520" selection-start-column="77" selection-end-line="520" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/FireMod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/FireLib.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="39" column="5" lean-forward="false" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/IGuiMakerCapability.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/proxy/CommonProxy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="29" column="34" lean-forward="false" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-449">
@@ -1324,16 +1470,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
           <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradle/scripts/dependencies.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1359,87 +1495,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiClickable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/IGuiObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="17" column="17" lean-forward="false" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/objects/GuiCheckbox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="24" column="46" lean-forward="false" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiToggleable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="21" column="4" lean-forward="false" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1358#1359#0" expanded="false" />
-            <element signature="e#1402#1403#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerGuiContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="33" column="36" lean-forward="false" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
-          <folding>
-            <element signature="e#6218#6219#0" expanded="false" />
-            <element signature="e#6270#6271#0" expanded="false" />
-            <element signature="e#6311#6312#0" expanded="false" />
-            <element signature="e#6344#6345#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMaker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerCapability.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="15" column="54" lean-forward="false" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiClickable.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiToggleable.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/GuiControlState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
@@ -1456,92 +1513,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/IGuiMaker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/events/GuiMakerGuiHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerStorage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="51" column="13" lean-forward="false" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="143" column="20" lean-forward="false" selection-start-line="143" selection-start-column="20" selection-end-line="143" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/tileentities/TileEntityTestBlock2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="44" column="19" lean-forward="false" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="19" />
-          <folding>
-            <element signature="e#2293#2294#0" expanded="true" />
-            <element signature="e#2320#2321#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/tileentities/TileEntityTestBlock2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding>
-            <element signature="e#2292#2293#0" expanded="true" />
-            <element signature="e#2319#2320#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="21" column="3" lean-forward="false" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/network/messages/PacketGuiToggleEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="73" column="16" lean-forward="false" selection-start-line="73" selection-start-column="16" selection-end-line="73" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/network/messages/PacketGuiToggleEvent.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/NetworkHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
           <caret line="28" column="85" lean-forward="false" selection-start-line="28" selection-start-column="85" selection-end-line="28" selection-end-column="85" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/network/PacketGuiObjectUpdate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1550,6 +1536,325 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="13" column="71" lean-forward="false" selection-start-line="13" selection-start-column="71" selection-end-line="13" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/IGuiMaker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/IGuiObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding>
+            <element signature="e#1803#1804#0" expanded="false" />
+            <element signature="e#1830#1831#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2581-PROJECT(FireLib).jar!/net/minecraft/client/gui/GuiMainMenu.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="53" column="42" lean-forward="false" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/GuiObjectDimensions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+          <folding>
+            <element signature="e#1537#1538#0" expanded="true" />
+            <element signature="e#1564#1565#0" expanded="true" />
+            <element signature="e#1601#1602#0" expanded="true" />
+            <element signature="e#1633#1634#0" expanded="true" />
+            <element signature="e#1660#1661#0" expanded="true" />
+            <element signature="e#1686#1687#0" expanded="true" />
+            <element signature="e#1721#1722#0" expanded="true" />
+            <element signature="e#1751#1752#0" expanded="true" />
+            <element signature="e#1780#1781#0" expanded="true" />
+            <element signature="e#1808#1809#0" expanded="true" />
+            <element signature="e#1847#1848#0" expanded="true" />
+            <element signature="e#1881#1882#0" expanded="true" />
+            <element signature="e#1911#1912#0" expanded="true" />
+            <element signature="e#1940#1941#0" expanded="true" />
+            <element signature="e#1981#1982#0" expanded="true" />
+            <element signature="e#2017#2018#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2581-PROJECT(FireLib).jar!/net/minecraft/client/gui/GuiScreen.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="56" column="22" lean-forward="false" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/util/ModEventHandlerHack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="728">
+          <caret line="82" column="67" lean-forward="true" selection-start-line="82" selection-start-column="67" selection-end-line="82" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/util/RecipeHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/util/RegistrationHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2581-PROJECT(FireLib).jar!/net/minecraft/client/settings/GameSettings.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18464">
+          <caret line="1214" column="8" lean-forward="false" selection-start-line="1214" selection-start-column="8" selection-end-line="1214" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2581-PROJECT(FireLib).jar!/net/minecraft/util/text/TextFormatting.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="38" column="28" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="38" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerCapability.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="15" column="54" lean-forward="false" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradle/scripts/dependencies.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="39" column="1" lean-forward="true" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2581-PROJECT(FireLib).jar!/net/minecraft/client/gui/inventory/GuiContainer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="34" column="22" lean-forward="false" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/events/GuiMakerGuiHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/devnotes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="29" column="2" lean-forward="false" selection-start-line="29" selection-start-column="2" selection-end-line="29" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/containers/GuiScrollBox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiCheckbox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="60" column="38" lean-forward="false" selection-start-line="60" selection-start-column="38" selection-end-line="60" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiLabel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="17" column="44" lean-forward="false" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+          <folding>
+            <element signature="e#1516#1517#0" expanded="false" />
+            <element signature="e#1550#1551#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/blocks/test/TestBlock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="47" column="48" lean-forward="true" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/network/PacketGuiObjectUpdate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="976">
+          <caret line="84" column="87" lean-forward="false" selection-start-line="84" selection-start-column="87" selection-end-line="84" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/blocks/test/TestBlock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMaker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="38" column="49" lean-forward="false" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
+          <folding>
+            <element signature="e#2755#2756#0" expanded="false" />
+            <element signature="e#2796#2797#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/renderer/layers/LayerSword.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="30" column="13" lean-forward="false" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/tileentities/TileEntityTestBlock2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="688">
+          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="28" column="84" lean-forward="false" selection-start-line="28" selection-start-column="84" selection-end-line="28" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/assets/firelib/textures/gui/dark.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/TestMod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="47" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/FireMod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="788">
+          <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/containers/GuiWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="18" column="7" lean-forward="false" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="46" column="85" lean-forward="false" selection-start-line="46" selection-start-column="85" selection-end-line="46" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerGuiContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="51" column="68" lean-forward="false" selection-start-line="51" selection-start-column="68" selection-end-line="51" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiBaseContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="879">
+          <caret line="142" column="5" lean-forward="false" selection-start-line="142" selection-start-column="5" selection-end-line="142" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiBaseControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
           <folding />
         </state>
       </provider>

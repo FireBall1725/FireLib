@@ -11,8 +11,8 @@
 package com.fireball1725.firelib.guimaker;
 
 import com.fireball1725.firelib.FireLib;
+import com.fireball1725.firelib.guimaker.base.GuiBaseContainer;
 import com.fireball1725.firelib.guimaker.base.GuiObject;
-import com.fireball1725.firelib.guimaker.objects.GuiWindow;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -49,34 +49,23 @@ public class GuiMakerGuiContainer extends GuiContainer {
 
     @Override
     public void initGui() {
-        GuiWindow guiWindow = guiMaker.getGuiWindow();
-        if (guiWindow != null) {
-            this.xSize = guiWindow.getWidth();
-            this.ySize = guiWindow.getHeight();
-        }
+        GuiBaseContainer baseContainer = guiMaker.getGuiContainer();
+
+        this.xSize = baseContainer.getWidth();
+        this.ySize = baseContainer.getHeight();
 
         super.initGui();
 
-        ArrayList<GuiObject> guiObjects = guiMaker.getGuiObjects();
-
-        for (GuiObject guiObject : guiObjects) {
-            if (guiObject != null) {
-                guiObject.initGui(this);
-            }
-        }
+        guiMaker.getGuiContainer().setGuiContainer(this);
+        guiMaker.getGuiContainer().setGuiMaker(this.guiMaker);
+        guiMaker.getGuiContainer().initGui();
     }
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         scissorCut(this.guiLeft, this.guiTop, this.xSize, this.ySize);
 
-        ArrayList<GuiObject> guiObjects = guiMaker.getGuiObjects();
-
-        for (GuiObject guiObject : guiObjects) {
-            if (guiObject != null) {
-                guiObject.drawGuiContainerBackgroundLayer(this, partialTicks, mouseX, mouseY);
-            }
-        }
+        guiMaker.getGuiContainer().drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
 
         scissorsEnd();
     }
@@ -87,13 +76,7 @@ public class GuiMakerGuiContainer extends GuiContainer {
 
         scissorCut(this.guiLeft + 2, this.guiTop + 2, this.xSize - 4, this.ySize - 4);
 
-        ArrayList<GuiObject> guiObjects = guiMaker.getGuiObjects();
-
-        for (GuiObject guiObject : guiObjects) {
-            if (guiObject != null) {
-                guiObject.drawGuiContainerForegroundLayer(this, mouseX, mouseY);
-            }
-        }
+        guiMaker.getGuiContainer().drawGuiContainerForegroundLayer(mouseX, mouseY);
 
         scissorsEnd();
     }
@@ -103,65 +86,50 @@ public class GuiMakerGuiContainer extends GuiContainer {
         this.drawDefaultBackground();
         super.drawScreen(mouseX, mouseY, partialTicks);
 
-        ArrayList<GuiObject> guiObjects = guiMaker.getGuiObjects();
-
-        for (GuiObject guiObject : guiObjects) {
-            if (guiObject != null) {
-                guiObject.drawScreen(this, mouseX, mouseY, partialTicks);
-            }
-        }
+        guiMaker.getGuiContainer().drawScreen(mouseX, mouseY, partialTicks);
     }
 
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
         super.mouseClicked(mouseX, mouseY, mouseButton);
 
-        ArrayList<GuiObject> guiObjects = guiMaker.getGuiObjects();
+        guiMaker.getGuiContainer().mouseClicked(mouseX, mouseY, mouseButton);
 
-        for (GuiObject guiObject : guiObjects) {
-            if (guiObject != null) {
-                guiObject.mouseClicked(this, mouseX, mouseY, mouseButton);
-            }
-        }
+//        for (GuiObject guiObject : guiObjects) {
+//            if (guiObject != null) {
+//
+//                // Check to see if there is a clickable area defined
+//                if (guiObject.getClickableArea() == null) {
+//                    return;
+//                }
+//
+//                // If the mouse is in the clickable area, then send the event
+//                if (guiObject.getClickableArea().contains(mouseX, mouseY)) {
+//                    guiObject.mouseClicked(mouseX, mouseY, mouseButton);
+//                }
+//            }
+//        }
     }
 
     @Override
     protected void keyTyped(char typedChar, int keyCode) throws IOException {
         super.keyTyped(typedChar, keyCode);
 
-        ArrayList<GuiObject> guiObjects = guiMaker.getGuiObjects();
-
-        for (GuiObject guiObject : guiObjects) {
-            if (guiObject != null) {
-                guiObject.keyTyped(this, typedChar, keyCode);
-            }
-        }
+        guiMaker.getGuiContainer().keyTyped(typedChar, keyCode);
     }
 
     @Override
     public void onGuiClosed() {
         super.onGuiClosed();
 
-        ArrayList<GuiObject> guiObjects = guiMaker.getGuiObjects();
-
-        for (GuiObject guiObject : guiObjects) {
-            if (guiObject != null) {
-                guiObject.onGuiClosed(this);
-            }
-        }
+        guiMaker.getGuiContainer().onGuiClosed();
     }
 
     @Override
     public void updateScreen() {
         super.updateScreen();
 
-        ArrayList<GuiObject> guiObjects = guiMaker.getGuiObjects();
-
-        for (GuiObject guiObject : guiObjects) {
-            if (guiObject != null) {
-                guiObject.updateScreen(this);
-            }
-        }
+        guiMaker.getGuiContainer().updateScreen();
     }
 
     // --------

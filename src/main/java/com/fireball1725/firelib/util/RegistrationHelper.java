@@ -48,6 +48,7 @@ public class RegistrationHelper {
     @SubscribeEvent
     public final void registerBlocks(RegistryEvent.Register<Block> event) {
         registerEnum(fireMod.getBlockEnum(), event.getRegistry());
+
     }
 
     @SubscribeEvent

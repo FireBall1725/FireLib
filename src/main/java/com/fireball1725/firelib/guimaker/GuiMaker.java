@@ -11,27 +11,32 @@
 package com.fireball1725.firelib.guimaker;
 
 import com.fireball1725.firelib.FireLib;
-import com.fireball1725.firelib.guimaker.base.GuiObject;
-import com.fireball1725.firelib.guimaker.objects.GuiWindow;
-import com.fireball1725.firelib.guimaker.util.GuiControlState;
+import com.fireball1725.firelib.guimaker.base.GuiBaseContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.UUID;
 
 public class GuiMaker {
     private static HashMap<Integer, GuiMaker> guiInstances = new HashMap<>();
+
     private final int guiID;
-    private HashMap<String, ArrayList<GuiObject>> guiObjects = new HashMap<>();
-    private String defaultGroup = "default";
+
+    private GuiBaseContainer defaultGuiContainer = null;
+    private GuiBaseContainer openContainer = null;
 
     public GuiMaker() {
         this.guiID = guiInstances.size();
-
         guiInstances.put(this.guiID, this);
+    }
+
+    public GuiMaker(GuiBaseContainer defaultGuiContainer) {
+        this.guiID = guiInstances.size();
+        guiInstances.put(this.guiID, this);
+
+        this.defaultGuiContainer = defaultGuiContainer;
+        this.openContainer = defaultGuiContainer;
     }
 
     public static GuiMaker getGuiMaker(int guiID) {
@@ -42,106 +47,20 @@ public class GuiMaker {
         return null;
     }
 
-    public static UUID generateUUIDFromName(String input) {
-        return UUID.nameUUIDFromBytes(input.getBytes());
+    public void show(World world, EntityPlayer player, BlockPos pos) {
+        show(world, player, pos, this.defaultGuiContainer);
     }
 
-    public void show(World world, EntityPlayer player, BlockPos pos) {
+    public void show(World world, EntityPlayer player, BlockPos pos, GuiBaseContainer guiContainer) {
+        this.openContainer = guiContainer;
         player.openGui(FireLib.instance, this.guiID, world, pos.getX(), pos.getY(), pos.getZ());
     }
 
-    public void registerGuiObjectGroup(String groupName) {
-        if (groupExists(groupName)) {
-            return;
-        }
-
-        guiObjects.put(groupName, new ArrayList<GuiObject>());
+    public void setDefaultGuiContainer(GuiBaseContainer defaultGuiContainer) {
+        this.defaultGuiContainer = defaultGuiContainer;
     }
 
-    public void registerGuiObject(GuiObject guiObject) {
-        if (!groupExists(defaultGroup)) {
-            registerGuiObjectGroup(defaultGroup);
-        }
-
-        registerGuiObject(defaultGroup, guiObject);
-    }
-
-    public void registerGuiObject(String groupName, GuiObject guiObject) {
-        if (!groupExists(groupName)) {
-            return;
-        }
-
-        ArrayList<GuiObject> guiObjectsArray = guiObjects.get(groupName);
-        guiObjectsArray.add(guiObject);
-        guiObjects.replace(groupName, guiObjectsArray);
-    }
-
-    public ArrayList<GuiObject> getGuiObjects() {
-        return getGuiObjects(defaultGroup);
-    }
-
-    public ArrayList<GuiObject> getGuiObjects(String groupName) {
-        if (!groupExists(groupName)) {
-            return null;
-        }
-
-        return guiObjects.get(groupName);
-    }
-
-    public void setDefaultGroup(String defaultGroup) {
-        this.defaultGroup = defaultGroup;
-    }
-
-    public GuiWindow getGuiWindow() {
-        return getGuiWindow(defaultGroup);
-    }
-
-    public GuiWindow getGuiWindow(String groupName) {
-        if (!groupExists(groupName)) {
-            return null;
-        }
-
-        ArrayList<GuiObject> guiObjectArrayList = getGuiObjects(groupName);
-        for (GuiObject guiObject : guiObjectArrayList) {
-            if (guiObject instanceof GuiWindow) {
-                return (GuiWindow) guiObject;
-            }
-        }
-
-        return null;
-    }
-
-    private boolean groupExists(String groupName) {
-        return guiObjects.containsKey(groupName);
-    }
-
-    public void addGuiControlState(GuiControlState guiControlState, UUID guiControlID) {
-        GuiObject guiObject = getGuiObjectFromUUID(guiControlID);
-
-        if (guiObject == null) {
-            return;
-        }
-
-        guiObject.addGuiControlState(guiControlState);
-    }
-
-    public void removeGuiControlState(GuiControlState guiControlState, UUID guiControlID) {
-        GuiObject guiObject = getGuiObjectFromUUID(guiControlID);
-
-        if (guiObject == null) {
-            return;
-        }
-
-        guiObject.removeGuiControlState(guiControlState);
-    }
-
-    private GuiObject getGuiObjectFromUUID(UUID guiControlID) {
-        for (GuiObject guiObject : this.getGuiObjects()) {
-            if (guiObject.getControlID().equals(guiControlID)) {
-                return guiObject;
-            }
-        }
-
-        return null;
+    public GuiBaseContainer getGuiContainer() {
+        return this.openContainer;
     }
 }

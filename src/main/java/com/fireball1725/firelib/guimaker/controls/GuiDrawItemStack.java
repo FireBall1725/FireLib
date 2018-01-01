@@ -10,5 +10,102 @@
 
 package com.fireball1725.firelib.guimaker.controls;
 
-public class GuiDrawItemStack {
+import com.fireball1725.firelib.guimaker.base.GuiBaseControl;
+import com.fireball1725.firelib.guimaker.util.GuiControlState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.RenderItem;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
+import net.minecraftforge.fml.client.config.GuiUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class GuiDrawItemStack extends GuiBaseControl {
+    private long displayTime = System.currentTimeMillis();
+    private NonNullList<ItemStack> itemStacks = NonNullList.create();
+    private int displayID = 0;
+
+    public GuiDrawItemStack(String controlName) {
+        super(controlName);
+        this.width = 16;
+        this.height = 16;
+    }
+
+    public void addItemStack(ItemStack itemStack) {
+        if (!itemStack.getHasSubtypes() && !itemExists(itemStack)) {
+            this.itemStacks.add(itemStack);
+            return;
+        }
+
+        for (CreativeTabs creativeTab : itemStack.getItem().getCreativeTabs()) {
+            NonNullList<ItemStack> itemStacks = NonNullList.create();
+            itemStack.getItem().getSubItems(creativeTab, itemStacks);
+
+            for (ItemStack itemStackSubItem : itemStacks) {
+                if (!itemExists(itemStackSubItem)) {
+                    this.itemStacks.add(itemStackSubItem);
+                }
+            }
+        }
+    }
+
+    public void addItemStack(NonNullList<ItemStack> itemStacks) {
+        for (ItemStack itemStack : itemStacks) {
+            addItemStack(itemStack);
+        }
+    }
+
+    private boolean itemExists(ItemStack itemIn) {
+        for (ItemStack itemStack : this.itemStacks) {
+            if (ItemStack.areItemStacksEqual(itemStack, itemIn)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    @Override
+    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+        super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+
+        RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
+
+        ItemStack itemStack = this.itemStacks.get(displayID);
+
+        GlStateManager.pushMatrix();
+
+        GlStateManager.enableDepth();
+        RenderHelper.enableGUIStandardItemLighting();
+
+        renderItem.renderItemAndEffectIntoGUI(itemStack, this.guiContainer.getGuiLeft() + this.left, this.guiContainer.getGuiTop() + this.top);
+
+        GlStateManager.popMatrix();
+
+        if (System.currentTimeMillis() > this.displayTime + 1500) {
+            this.displayTime = System.currentTimeMillis();
+            displayID = (++displayID) % itemStacks.size();
+        }
+
+
+    }
+
+    @Override
+    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        super.drawScreen(mouseX, mouseY, partialTicks);
+
+        if (this.hasGuiControlState(GuiControlState.HOVERED)) {
+            List<String> text = new ArrayList<>();
+
+            text = this.itemStacks.get(displayID).getTooltip(Minecraft.getMinecraft().player, Minecraft.getMinecraft().gameSettings.advancedItemTooltips ? ITooltipFlag.TooltipFlags.ADVANCED : ITooltipFlag.TooltipFlags.NORMAL);
+
+            GuiUtils.drawHoveringText(this.itemStacks.get(displayID), text, mouseX, mouseY, this.guiContainer.width, this.guiContainer.height, 200, Minecraft.getMinecraft().fontRenderer);
+            //todo: make a better hover text helper...
+        }
+    }
 }

@@ -12,6 +12,7 @@ package com.fireball1725.firelib.guimaker;
 
 import com.fireball1725.firelib.FireLib;
 import com.fireball1725.firelib.guimaker.base.GuiBaseContainer;
+import com.fireball1725.firelib.guimaker.util.IGuiMaker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -37,7 +38,7 @@ public class GuiMakerGuiContainer extends GuiContainer {
         this.inventoryPlayer = inventoryPlayer;
         this.tileEntity = tileEntity;
 
-        this.guiMaker = GuiMaker.getGuiMaker(id);
+        this.guiMaker = ((IGuiMaker) tileEntity).getGuiMaker();
 
         if (this.guiMaker == null) {
             FireLib.instance.getLogger().fatal("GuiMaker is returning a null instance, this is a problem...");

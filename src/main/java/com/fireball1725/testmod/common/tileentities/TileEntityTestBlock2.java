@@ -13,27 +13,41 @@ package com.fireball1725.testmod.common.tileentities;
 import com.fireball1725.firelib.guimaker.GuiMaker;
 import com.fireball1725.firelib.guimaker.containers.GuiWindow;
 import com.fireball1725.firelib.guimaker.controls.GuiCheckbox;
+import com.fireball1725.firelib.guimaker.controls.GuiDrawItemStack;
 import com.fireball1725.firelib.guimaker.util.IGuiMaker;
 import com.fireball1725.firelib.tileentities.TileEntityBase;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class TileEntityTestBlock2 extends TileEntityBase implements IGuiMaker {
-    public GuiWindow guiWindow = new GuiWindow("Window", 100, 40);
+    public GuiWindow guiWindow = new GuiWindow("window", 100, 40);
     public GuiMaker guiMaker = new GuiMaker(guiWindow);
 
     public GuiCheckbox guiCheckbox = new GuiCheckbox("test button 1");
     public GuiCheckbox guiCheckbox2 = new GuiCheckbox("test button 2");
+    public GuiDrawItemStack guiDrawItemStack = new GuiDrawItemStack("test stack");
 
     private int test = 0;
 
     public TileEntityTestBlock2() {
+        //guiWindow = new GuiWindow("window", 100, 40);
+
+        //guiMaker = new GuiMaker(guiWindow);
+
+        //guiCheckbox = new GuiCheckbox("test button 1");
+        guiCheckbox.setControlPosition(4, 4);
+        guiCheckbox.setLabel("Test Checkbox", 0xff69b4);
         guiWindow.addGuiObject(guiCheckbox);
+
+        //guiCheckbox2 = new GuiCheckbox("test button 2");
+        guiCheckbox2.setControlPosition(4, 20);
         guiWindow.addGuiObject(guiCheckbox2);
 
-        guiCheckbox.setControlPosition(4, 4);
-        guiCheckbox2.setControlPosition(4, 20);
-
-        guiCheckbox.setLabel("Test Checkbox", 0xffffff);
+        guiDrawItemStack.setControlPosition(20, 20);
+        guiDrawItemStack.addItemStack(OreDictionary.getOres("slimeball"));
+        guiDrawItemStack.addItemStack(OreDictionary.getOres("logWood"));
+        guiDrawItemStack.addItemStack(OreDictionary.getOres("dye"));
+        guiWindow.addGuiObject(guiDrawItemStack);
     }
 
     @Override

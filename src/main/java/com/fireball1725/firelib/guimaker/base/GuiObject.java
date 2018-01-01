@@ -11,13 +11,20 @@
 package com.fireball1725.firelib.guimaker.base;
 
 import com.fireball1725.firelib.guimaker.GuiMaker;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fml.client.config.GuiUtils;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.io.IOException;
+import java.util.List;
 
 public abstract class GuiObject implements IGuiObject {
     protected final ResourceLocation DarkSkin = new ResourceLocation("firelib", "textures/gui/dark.png");
@@ -115,5 +122,26 @@ public abstract class GuiObject implements IGuiObject {
 
     public String getControlName() {
         return controlName;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void renderItemStackToolTip(ItemStack itemStack, int x, int y) {
+        FontRenderer font = itemStack.getItem().getFontRenderer(itemStack) == null ? Minecraft.getMinecraft().fontRenderer : itemStack.getItem().getFontRenderer(itemStack);
+
+        Minecraft minecraft = Minecraft.getMinecraft();
+
+
+        List<String> list = itemStack.getTooltip(Minecraft.getMinecraft().player, Minecraft.getMinecraft().gameSettings.advancedItemTooltips ? ITooltipFlag.TooltipFlags.ADVANCED : ITooltipFlag.TooltipFlags.NORMAL);
+
+        for (int i = 0; i < list.size(); ++i) {
+            if (i != 0) {
+                list.set(i, TextFormatting.GRAY + list.get(i));
+                continue;
+            }
+
+            list.set(i, itemStack.getRarity().rarityColor + list.get(i));
+        }
+
+        GuiUtils.drawHoveringText(list, x, y, this.guiContainer.width, this.guiContainer.height, 100, font);
     }
 }

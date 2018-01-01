@@ -47,6 +47,10 @@ public class GuiMaker {
         return null;
     }
 
+    public int getGuiID() {
+        return this.guiID;
+    }
+
     public void show(World world, EntityPlayer player, BlockPos pos) {
         show(world, player, pos, this.defaultGuiContainer);
     }

@@ -31,7 +31,7 @@ public class GuiMakerContainer extends Container {
     public GuiMakerContainer(InventoryPlayer inventoryPlayer, TileEntity tileEntity, int id) {
         this.inventoryPlayer = inventoryPlayer;
         this.tileEntity = tileEntity;
-        this.guiMaker = GuiMaker.getGuiMaker(id);
+        this.guiMaker = ((IGuiMaker) tileEntity).getGuiMaker();
 
         if (this.guiMaker == null) {
             FireLib.instance.getLogger().fatal("GuiMaker is returning a null instance, this is a problem...");

@@ -10,8 +10,8 @@
 
 package com.fireball1725.firelib.guimaker.controls;
 
+import com.fireball1725.firelib.FireLib;
 import com.fireball1725.firelib.guimaker.base.GuiBaseControl;
-import com.fireball1725.firelib.guimaker.base.IGuiObject;
 import com.fireball1725.firelib.guimaker.util.GuiControlState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.client.config.GuiUtils;
@@ -20,7 +20,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.awt.*;
 
-public class GuiCheckbox extends GuiBaseControl implements IGuiObject {
+public class GuiCheckbox extends GuiBaseControl {
     GuiLabel guiCheckBoxLabel = null;
 
     public GuiCheckbox(String controlName) {
@@ -72,6 +72,7 @@ public class GuiCheckbox extends GuiBaseControl implements IGuiObject {
     @Override
     public void readNBT(NBTTagCompound nbt) {
         if (nbt.hasKey("controlSelected")) {
+            FireLib.instance.getLogger().info(">>> " + nbt.getBoolean("controlSelected"));
             if (nbt.getBoolean("controlSelected")) {
                 this.addGuiControlState(GuiControlState.SELECTED);
             } else {

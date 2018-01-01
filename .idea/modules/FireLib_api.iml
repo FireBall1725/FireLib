@@ -44,7 +44,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/minecraft/deobfedDeps/deobf/mezz/jei/jei_1.12.2/4.8.5.132/jei_1.12.2-4.8.5.132.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2582-PROJECT(FireLib).jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -53,7 +53,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2581-PROJECT(FireLib).jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/minecraft/deobfedDeps/deobf/mezz/jei/jei_1.12.2/4.8.5.132/jei_1.12.2-4.8.5.132.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

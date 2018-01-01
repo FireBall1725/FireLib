@@ -32,6 +32,7 @@
     </content>
     <orderEntry type="jdk" jdkName="1.8.0_151" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="FireLib_api" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -41,11 +42,10 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module" module-name="FireLib_api" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2581-PROJECT(FireLib).jar!/" />
+          <root url="jar://$USER_HOME$/.gradle/caches/minecraft/deobfedDeps/compileDummy.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -54,7 +54,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/minecraft/deobfedDeps/compileDummy.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2582-PROJECT(FireLib).jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -131,7 +131,7 @@
     <orderEntry type="module-library" scope="RUNTIME">
       <library>
         <CLASSES>
-          <root url="file://$USER_HOME$/.gradle/caches/minecraft/net/minecraftforge/forge/1.12.2-14.23.1.2581/start" />
+          <root url="file://$USER_HOME$/.gradle/caches/minecraft/net/minecraftforge/forge/1.12.2-14.23.1.2582/start" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

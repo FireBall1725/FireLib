@@ -45,5 +45,6 @@ dependencies {
     mods "ftb-utilities:FTBUtilities:4.2.4"
     mods "ftblib:FTBLib:4.2.5"
     mods "com.fireball1725.devworld:devworld:1.12-b18-client"
+    mods "mod-name-tooltip:modnametooltip_1.12.2:1.10.0"
     //mods "mezz.jei:jei_1.12.2:4.8.5.132"
 }

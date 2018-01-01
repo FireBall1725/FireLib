@@ -16,4 +16,6 @@ public interface IGuiMaker {
     GuiMaker getGuiMaker();
 
     boolean canInteractWith();
+
+    void guiControlInteraction(String guiControlName);
 }

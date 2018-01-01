@@ -17,8 +17,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class GuiBaseContainer extends GuiObject {
-    protected int width = 0;
-    protected int height = 0;
     protected int zLevel = 1;
     private int scrollOffsetX = 0;
     private int scrollOffsetY = 0;
@@ -31,6 +29,7 @@ public abstract class GuiBaseContainer extends GuiObject {
     public void addGuiObject(GuiObject guiObject) {
         if (guiObject != null) {
             this.guiObjects.add(guiObject);
+            this.setParent(this);
 
             if (guiObject instanceof GuiBaseContainer) {
                 ((GuiBaseContainer) guiObject).zLevel += 10;
@@ -40,14 +39,6 @@ public abstract class GuiBaseContainer extends GuiObject {
 
     public ArrayList<GuiObject> getGuiObjects() {
         return this.guiObjects;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
     }
 
     @SideOnly(Side.CLIENT)

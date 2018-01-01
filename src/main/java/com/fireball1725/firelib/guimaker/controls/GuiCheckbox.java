@@ -25,14 +25,13 @@ public class GuiCheckbox extends GuiBaseControl {
 
     public GuiCheckbox(String controlName) {
         super(controlName);
-        this.width = 12;
-        this.height = 12;
+        this.setSize(12, 12);
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public Rectangle getClickableArea() {
-        return new Rectangle(guiContainer.getGuiLeft() + this.left, guiContainer.getGuiTop() + top, this.width, this.height);
+        return new Rectangle(this.getContainerLeft(), this.getContainerTop(), this.getWidth(), this.getHeight());
     }
 
     @SideOnly(Side.CLIENT)
@@ -41,22 +40,22 @@ public class GuiCheckbox extends GuiBaseControl {
         super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
 
         //Draw Checkbox Border
-        GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.left, guiContainer.getGuiTop() + this.top, 0, 32, 12, 12, 12, 12, 1, 100);
+        GuiUtils.drawContinuousTexturedBox(this.DarkSkin, this.getContainerLeft(), this.getContainerTop(), 0, 32, 12, 12, 12, 12, 1, 100);
 
         if (this.hasGuiControlState(GuiControlState.HOVERED)) {
             if (this.hasGuiControlState(GuiControlState.SELECTED)) {
                 // Hovered Checked
-                GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.left, guiContainer.getGuiTop() + this.top, 64, 32, 12, 12, 12, 12, 1, 100);
+                GuiUtils.drawContinuousTexturedBox(this.DarkSkin, this.getContainerLeft(), this.getContainerTop(), 64, 32, 12, 12, 12, 12, 1, 100);
             } else {
                 // Hovered
-                GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.left, guiContainer.getGuiTop() + this.top, 32, 32, 12, 12, 12, 12, 1, 100);
+                GuiUtils.drawContinuousTexturedBox(this.DarkSkin, this.getContainerLeft(), this.getContainerTop(), 32, 32, 12, 12, 12, 12, 1, 100);
             }
         } else if (this.hasGuiControlState(GuiControlState.SELECTED)) {
             // Checked
-            GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.left, guiContainer.getGuiTop() + this.top, 48, 32, 12, 12, 12, 12, 1, 100);
+            GuiUtils.drawContinuousTexturedBox(this.DarkSkin, this.getContainerLeft(), this.getContainerTop(), 48, 32, 12, 12, 12, 12, 1, 100);
         } else {
             // Normal
-            GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft() + this.left, guiContainer.getGuiTop() + this.top, 16, 32, 12, 12, 12, 12, 1, 100);
+            GuiUtils.drawContinuousTexturedBox(this.DarkSkin, this.getContainerLeft(), this.getContainerTop(), 16, 32, 12, 12, 12, 12, 1, 100);
         }
     }
 
@@ -72,7 +71,6 @@ public class GuiCheckbox extends GuiBaseControl {
     @Override
     public void readNBT(NBTTagCompound nbt) {
         if (nbt.hasKey("controlSelected")) {
-            FireLib.instance.getLogger().info(">>> " + nbt.getBoolean("controlSelected"));
             if (nbt.getBoolean("controlSelected")) {
                 this.addGuiControlState(GuiControlState.SELECTED);
             } else {
@@ -108,7 +106,7 @@ public class GuiCheckbox extends GuiBaseControl {
         if (this.guiCheckBoxLabel == null) {
             this.guiCheckBoxLabel = new GuiLabel(this.controlName + "-label");
 
-            this.guiCheckBoxLabel.setControlPosition(this.left + 16, this.top + 2);
+            this.guiCheckBoxLabel.setLocation(this.getLeft() + 16, this.getTop() + 2);
         }
 
         this.guiCheckBoxLabel.label = labelText;

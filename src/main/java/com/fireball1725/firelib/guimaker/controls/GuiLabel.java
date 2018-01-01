@@ -41,7 +41,7 @@ public class GuiLabel extends GuiBaseControl implements IGuiObject {
         boolean oldUnicode = font.getUnicodeFlag();
         font.setUnicodeFlag(false);
 
-        font.drawString(this.label, this.left / scale, this.top / scale, this.color, true);
+        font.drawString(this.label, this.getLeft() / scale, this.getTop() / scale, this.color, true);
 
         font.setUnicodeFlag(oldUnicode);
         GlStateManager.popMatrix();

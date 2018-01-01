@@ -35,15 +35,15 @@ public class TileEntityTestBlock2 extends TileEntityBase implements IGuiMaker {
         //guiMaker = new GuiMaker(guiWindow);
 
         //guiCheckbox = new GuiCheckbox("test button 1");
-        guiCheckbox.setControlPosition(4, 4);
+        guiCheckbox.setLocation(4, 4);
         guiCheckbox.setLabel("Test Checkbox", 0xff69b4);
         guiWindow.addGuiObject(guiCheckbox);
 
         //guiCheckbox2 = new GuiCheckbox("test button 2");
-        guiCheckbox2.setControlPosition(4, 20);
+        guiCheckbox2.setLocation(4, 20);
         guiWindow.addGuiObject(guiCheckbox2);
 
-        guiDrawItemStack.setControlPosition(20, 20);
+        guiDrawItemStack.setLocation(20, 20);
         guiDrawItemStack.addItemStack(OreDictionary.getOres("slimeball"));
         guiDrawItemStack.addItemStack(OreDictionary.getOres("logWood"));
         guiDrawItemStack.addItemStack(OreDictionary.getOres("dye"));
@@ -58,6 +58,11 @@ public class TileEntityTestBlock2 extends TileEntityBase implements IGuiMaker {
     @Override
     public boolean canInteractWith() {
         return true;
+    }
+
+    @Override
+    public void guiControlInteraction(String guiControlName) {
+        // todo something here...
     }
 
     @Override

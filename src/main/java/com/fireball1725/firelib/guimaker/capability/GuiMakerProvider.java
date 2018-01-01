@@ -42,7 +42,6 @@ public class GuiMakerProvider implements ICapabilitySerializable<NBTBase> {
     @Nullable
     @Override
     public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing) {
-        FireLib.instance.getLogger().info(">>> Get Capibility");
         return capability == GUI_MAKER_CAPABILITY ? GUI_MAKER_CAPABILITY.cast(this.instance) : null;
     }
 

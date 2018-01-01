@@ -23,4 +23,9 @@ public class GuiMakerCapability implements IGuiMaker {
     public boolean canInteractWith() {
         return false;
     }
+
+    @Override
+    public void guiControlInteraction(String guiControlName) {
+
+    }
 }

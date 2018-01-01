@@ -41,8 +41,8 @@ public class TestBlock extends BlockTileBase implements IProvideRecipe {
         guiWindow.addGuiObject(guiLabel);
         guiWindow.addGuiObject(guiLabel2);
 
-        guiLabel.setControlPosition(4, 4);
-        guiLabel.setControlPosition(4, 20);
+        guiLabel.setLocation(4, 4);
+        guiLabel.setLocation(4, 20);
 
         guiLabel.setLabel("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel magna ac nunc congue egestas sed a erat. Nam a odio elementum, pharetra turpis sit amet, blandit magna. Fusce vestibulum risus enim, id porta");
         guiLabel.setColor(0xFF69B4);

@@ -12,6 +12,7 @@ package com.fireball1725.firelib.guimaker.base;
 
 import com.fireball1725.firelib.guimaker.GuiMakerGuiContainer;
 import com.fireball1725.firelib.guimaker.network.PacketGuiObjectUpdate;
+import com.fireball1725.firelib.guimaker.util.GuiControlOption;
 import com.fireball1725.firelib.guimaker.util.GuiControlState;
 import com.fireball1725.firelib.network.PacketHandler;
 import net.minecraft.client.Minecraft;
@@ -26,51 +27,43 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class GuiBaseControl extends GuiObject {
-    protected int left = 0;
-    protected int top = 0;
-    protected int width;
-    protected int height;
     private ArrayList<GuiControlState> controlStates = new ArrayList<>();
+    private ArrayList<GuiControlOption> controlOptions = new ArrayList<>();
 
     public GuiBaseControl(String controlName) {
         super(controlName);
     }
 
-    /**
-     * Add a state to the gui control
-     *
-     * @param guiControlState State to add
-     */
     public void addGuiControlState(GuiControlState guiControlState) {
-        if (!this.controlStates.contains(guiControlState)) {
+        if (!hasGuiControlState(guiControlState)) {
             this.controlStates.add(guiControlState);
         }
     }
 
-    /**
-     * Remove a state from the gui control
-     *
-     * @param guiControlState State to remove
-     */
     public void removeGuiControlState(GuiControlState guiControlState) {
-        if (this.controlStates.contains(guiControlState)) {
+        if (hasGuiControlState(guiControlState)) {
             this.controlStates.remove(guiControlState);
         }
     }
 
-    /**
-     * Check if a gui control has a specific state
-     *
-     * @param guiControlState State to check
-     * @return boolean of if control state is set
-     */
     public boolean hasGuiControlState(GuiControlState guiControlState) {
         return this.controlStates.contains(guiControlState);
     }
 
-    public void setControlPosition(int x, int y) {
-        this.left = x;
-        this.top = y;
+    public void addGuiControlOption(GuiControlOption guiControlOption) {
+        if (!hasGuiControlOption(guiControlOption)) {
+            this.controlOptions.add(guiControlOption);
+        }
+    }
+
+    public void removeGuiControlOption(GuiControlOption guiControlOption) {
+        if (hasGuiControlOption(guiControlOption)) {
+            this.controlOptions.remove(guiControlOption);
+        }
+    }
+
+    public boolean hasGuiControlOption(GuiControlOption guiControlOption) {
+        return this.controlOptions.contains(guiControlOption);
     }
 
     @SideOnly(Side.CLIENT)
@@ -84,7 +77,7 @@ public abstract class GuiBaseControl extends GuiObject {
 
         // todo: check if control supports hover state...
 
-        Rectangle rectangle = new Rectangle(guiContainer.getGuiLeft() + this.left, guiContainer.getGuiTop() + this.top, this.width, this.height);
+        Rectangle rectangle = new Rectangle(this.getContainerLeft(), this.getContainerTop(), this.getHeight(), this.getWidth());
         boolean mouseOver = rectangle.contains(mouseX, mouseY);
 
         if (mouseOver) {
@@ -106,7 +99,7 @@ public abstract class GuiBaseControl extends GuiObject {
 
         TileEntity te = ((GuiMakerGuiContainer) guiContainer).getTileEntity();
 
-        Rectangle rectangle = new Rectangle(guiContainer.getGuiLeft() + this.left, guiContainer.getGuiTop() + this.top, this.width, this.height);
+        Rectangle rectangle = new Rectangle(this.getContainerLeft(), this.getContainerTop(), this.getHeight(), this.getWidth());
         boolean mouseOver = rectangle.contains(mouseX, mouseY);
 
         // todo: check if control supports toggle

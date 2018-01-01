@@ -28,38 +28,98 @@ import java.util.List;
 
 public abstract class GuiObject implements IGuiObject {
     protected final ResourceLocation DarkSkin = new ResourceLocation("firelib", "textures/gui/dark.png");
-
     protected final String controlName;
-
-    // Set from GuiContainer
-    protected GuiMaker guiMaker = null;
-
+    protected GuiMaker guiMaker;
     @SideOnly(Side.CLIENT)
     protected GuiContainer guiContainer;
-    // ---------------------
+    private GuiObject parent;
+    private int x;
+    private int y;
+    private int w;
+    private int h;
 
     public GuiObject(String controlName) {
         // Set the control name
         this.controlName = controlName.toLowerCase().replace(' ', '-');
     }
 
-    /**
-     * Set the parent gui maker
-     *
-     * @param guiMaker the GuiMaker instance to set
-     */
     public void setGuiMaker(GuiMaker guiMaker) {
         this.guiMaker = guiMaker;
     }
 
-    /**
-     * Set the parent gui container
-     *
-     * @param guiContainer the GuiContainer instance to set
-     */
     @SideOnly(Side.CLIENT)
     public void setGuiContainer(GuiContainer guiContainer) {
         this.guiContainer = guiContainer;
+    }
+
+    public void setParent(GuiObject guiObject) {
+        this.parent = guiObject;
+    }
+
+    public void setLocation(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void setSize(int w, int h) {
+        this.w = w;
+        this.h = h;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void setWidth(int w) {
+        this.w = w;
+    }
+
+    public void setHeight(int h) {
+        this.h = h;
+    }
+
+    public int getWidth() {
+        //todo: scale..
+
+        return this.w;
+    }
+
+    public int getHeight() {
+        // todo: scale
+
+        return this.h;
+    }
+
+    public int getContainerLeft() {
+        // todo: scale / scroll
+
+        int parentLeft = this.parent == null ? 0 : this.parent.x;
+        return this.guiContainer.getGuiLeft() + this.x + parentLeft;
+    }
+
+    public int getContainerTop() {
+        // todo: scale / scroll
+
+        int parentTop = this.parent == null ? 0 : this.parent.y;
+        return this.guiContainer.getGuiTop() + this.y + parentTop;
+    }
+
+    public int getLeft() {
+        // todo: scale / scroll
+
+        int parentLeft = this.parent == null ? 0 : this.parent.x;
+        return this.x + parentLeft;
+    }
+
+    public int getTop() {
+        // todo: scale / scroll
+
+        int parentTop = this.parent == null ? 0 : this.parent.y;
+        return this.y + parentTop;
     }
 
     @SideOnly(Side.CLIENT)

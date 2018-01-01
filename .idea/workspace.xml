@@ -2,20 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d6495af-6a70-4a07-8f67-cf5da647a3d1" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/firelib_at.cfg" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/FireLib_api.iml" afterPath="$PROJECT_DIR$/.idea/modules/FireLib_api.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/FireLib_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/FireLib_main.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/FireLib_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/FireLib_test.iml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/ToolTipHelper.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" afterPath="$PROJECT_DIR$/gradle.properties" />
-      <change beforePath="$PROJECT_DIR$/gradle/scripts/dependencies.gradle" afterPath="$PROJECT_DIR$/gradle/scripts/dependencies.gradle" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMaker.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMaker.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerContainer.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerContainer.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerGuiContainer.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerGuiContainer.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiBaseContainer.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiBaseContainer.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiBaseControl.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiBaseControl.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiObject.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiObject.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerCapability.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerCapability.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerHandler.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerProvider.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerProvider.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/containers/GuiWindow.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/containers/GuiWindow.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiCheckbox.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiCheckbox.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiDrawItemStack.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiDrawItemStack.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiLabel.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiLabel.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/GuiControlOption.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/GuiControlOption.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/IGuiMaker.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/IGuiMaker.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/blocks/test/TestBlock.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/blocks/test/TestBlock.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/tileentities/TileEntityTestBlock2.java" afterPath="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/tileentities/TileEntityTestBlock2.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -57,18 +58,7 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="GuiDrawItemStack.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiDrawItemStack.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="768">
-              <caret line="106" column="144" lean-forward="false" selection-start-line="106" selection-start-column="144" selection-end-line="106" selection-end-column="144" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -91,6 +81,7 @@
       <find>IGuiMaker</find>
       <find>IGuiMakerCapability</find>
       <find>net.minecraft.client.audio.ISound</find>
+      <find>&gt;&gt;&gt;</find>
     </findStrings>
     <replaceStrings>
       <replace>FireLib.instance</replace>
@@ -98,6 +89,9 @@
       <replace>IGuiMakerCapability</replace>
       <replace>IGuiMaker</replace>
     </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/src/main/java</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -705,15 +699,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/items/test/ItemTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/blocks/BlockTileBase.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/proxy/base/IProxyBase.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/FireLib.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerCapabilityHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/IGuiMakerCapability.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/proxy/CommonProxy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerProvider.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/objects/IGuiObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/tileentities/TileEntityBase.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/objects/GuiObject.java" />
@@ -723,11 +713,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/baseobjects/IGuiObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/baseobjects/GuiToggleable.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/IGuiMaker.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerCapability.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/misc/GuiControlState.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/misc/GuiControlOption.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/misc/IGuiMaker.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/IGuiMaker.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/events/GuiMakerGuiHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/tileentities/TileEntityTestBlock2.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/NetworkHelper.java" />
@@ -739,23 +727,29 @@
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/util/RegistrationHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerStorage.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/blocks/test/TestBlock.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/blocks/test/TestBlock.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/IGuiObject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiBaseContainer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/containers/GuiWindow.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiLabel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/network/PacketGuiObjectUpdate.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMaker.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerContainer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiBaseControl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiCheckbox.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/GuiMakerGuiContainer.java" />
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/firelib_at.cfg" />
         <option value="$PROJECT_DIR$/gradle.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiObject.java" />
         <option value="$PROJECT_DIR$/gradle/scripts/dependencies.gradle" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/tileentities/TileEntityTestBlock2.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/ToolTipHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/GuiControlOption.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/IGuiObject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/IGuiMaker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerCapability.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiBaseContainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiDrawItemStack.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiBaseControl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/containers/GuiWindow.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/tileentities/TileEntityTestBlock2.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiLabel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiObject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/blocks/test/TestBlock.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerProvider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiCheckbox.java" />
       </list>
     </option>
   </component>
@@ -770,9 +764,10 @@
       <scope name="FireBall Projects" />
     </order>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-22" />
     <option name="y" value="22" />
-    <option name="width" value="1632" />
+    <option name="width" value="1577" />
     <option name="height" value="1125" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -793,7 +788,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -841,138 +836,13 @@
               <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
               <item name="firelib" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
-              <item name="firelib" type="462c0819:PsiDirectoryNode" />
-              <item name="guimaker" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
-              <item name="firelib" type="462c0819:PsiDirectoryNode" />
-              <item name="guimaker" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
-              <item name="firelib" type="462c0819:PsiDirectoryNode" />
-              <item name="guimaker" type="462c0819:PsiDirectoryNode" />
-              <item name="controls" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
-              <item name="firelib" type="462c0819:PsiDirectoryNode" />
-              <item name="guimaker" type="462c0819:PsiDirectoryNode" />
-              <item name="network" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
-              <item name="firelib" type="462c0819:PsiDirectoryNode" />
-              <item name="tileentities" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
-              <item name="testmod" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
-              <item name="testmod" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="fireball1725" type="462c0819:PsiDirectoryNode" />
-              <item name="testmod" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="tileentities" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="textures" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="textures" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FireLib" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FireLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1197,16 +1067,16 @@
       <workItem from="1514409245438" duration="16897000" />
       <workItem from="1514580647119" duration="16309000" />
       <workItem from="1514734065698" duration="17860000" />
-      <workItem from="1514765904316" duration="2308000" />
+      <workItem from="1514765904316" duration="3175000" />
+      <workItem from="1514772393173" duration="8394000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="218864000" />
+    <option name="totallyTimeSpent" value="228125000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1632" height="1125" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="22" width="1920" height="1125" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1216,13 +1086,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="1.0" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32606542" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32606542" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21708861" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916266" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18629551" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974684" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1230,12 +1099,13 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27750248" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27750248" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916266" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935262" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
     </layout>
@@ -1261,57 +1131,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/util/RecipeHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/util/RegistrationHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2581-PROJECT(FireLib).jar!/net/minecraft/client/settings/GameSettings.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18464">
-          <caret line="1214" column="8" lean-forward="false" selection-start-line="1214" selection-start-column="8" selection-end-line="1214" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2581-PROJECT(FireLib).jar!/net/minecraft/util/text/TextFormatting.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="38" column="28" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="38" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerCapability.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="15" column="54" lean-forward="false" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2581-PROJECT(FireLib).jar!/net/minecraft/client/gui/inventory/GuiContainer.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -1341,14 +1160,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod2/common/blocks/test/TestBlock.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/blocks/test/TestBlock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/renderer/layers/LayerSword.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -1401,30 +1212,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/IGuiObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiBaseContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-196">
-          <caret line="55" column="24" lean-forward="false" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/containers/GuiWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="28" column="48" lean-forward="false" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2581-PROJECT(FireLib).jar!/net/minecraft/client/gui/ScaledResolution.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-79">
@@ -1455,22 +1242,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="164">
           <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiLabel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="32" column="73" lean-forward="false" selection-start-line="32" selection-start-column="73" selection-end-line="32" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiBaseControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1532,152 +1303,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiCheckbox.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="24" column="47" lean-forward="false" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/.gradle/minecraft/forgeSrc-1.12.2-14.23.1.2581-PROJECT(FireLib).jar!/net/minecraft/item/ItemStack.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6800">
           <caret line="530" column="74" lean-forward="false" selection-start-line="530" selection-start-column="74" selection-end-line="530" selection-end-column="74" />
-          <folding>
-            <marker date="1514413003000" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1514413003000" expanded="false" signature="142:2803" ph="..." />
-            <marker date="1514413003000" expanded="false" signature="3588:3599" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="3623:3629" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="3678:3689" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="3721:3727" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="3786:3797" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="3848:3854" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="3889:3900" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="3922:3928" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="3975:3986" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="4016:4022" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="4079:4090" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="4139:4145" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="4236:4504" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="4541:4552" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="4582:4588" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="4636:5277" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="5308:5706" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="5762:5916" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="5962:6143" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="6171:6297" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="6457:6953" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="7118:7427" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="7482:7493" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="7546:7552" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="7660:7740" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="7825:7908" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="7967:8638" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="8672:8683" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="8729:8735" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="8770:8880" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="8925:9190" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="9227:9238" ph=" { " />
-            <marker date="1514413003000" expanded="true" signature="9277:9283" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="9319:9330" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="9400:9406" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="9438:9449" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="9487:9493" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="9523:9534" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="9574:9580" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="9621:9632" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="9669:9675" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="9706:9717" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="9758:9764" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="9862:10754" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="10822:11430" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="11508:11685" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="11793:11995" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="12052:12063" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="12116:12122" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="12227:12322" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="12352:12733" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="12819:13321" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="13404:13616" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="13672:14200" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="14278:14465" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="14559:14762" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="14812:14918" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="14984:15171" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="15211:15222" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="15269:15275" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="15306:15412" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="15520:15743" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="15822:15957" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="15997:16008" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="16058:16064" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="16106:16117" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="16162:16168" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="16267:16358" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="16395:16406" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="16460:16466" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="16524:16535" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="16564:16570" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="16633:16966" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="17035:17180" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="17228:17382" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="17430:17549" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="17611:17622" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="17650:17656" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="17693:18158" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="18221:18331" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="18394:18501" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="18537:18957" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="18995:19149" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="19269:27548" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="27607:27618" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="27656:27662" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="27697:27708" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="27746:27752" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="27793:27948" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="28010:28593" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="28632:28858" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="28914:29082" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="29118:29129" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="29171:29177" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="29213:29224" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="29254:29260" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="29313:29324" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="29347:29353" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="29410:29421" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="29465:29471" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="29504:29651" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="29693:29869" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="29975:31071" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="31205:31915" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="31962:32669" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="32716:33502" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="33549:34335" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="34371:34382" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="34409:34415" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="34466:34477" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="34510:34516" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="34543:34554" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="34595:34601" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="34638:34709" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="34745:34756" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="34797:34803" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="34841:34852" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="34873:34879" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="34969:35097" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="35199:35326" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="35379:35536" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="35579:35687" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="35743:36007" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="36038:36482" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="36527:36538" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="36555:36561" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="36660:36852" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="36924:37100" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="37191:37517" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="37612:37713" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1685,15 +1314,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="17" column="23" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="17" selection-end-column="23" />
-          <folding>
-            <marker date="1514413003000" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1514413003000" expanded="false" signature="149:239" ph="..." />
-            <marker date="1514413003000" expanded="true" signature="410:684" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="541:556" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="583:593" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="630:645" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="668:678" ph=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1709,62 +1329,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="169" column="13" lean-forward="false" selection-start-line="169" selection-start-column="4" selection-end-line="169" selection-end-column="13" />
-          <folding>
-            <marker date="1514413003000" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1514413003000" expanded="false" signature="148:2200" ph="..." />
-            <marker date="1514413003000" expanded="true" signature="3129:3136" ph="{}" />
-            <marker date="1514413003000" expanded="true" signature="3209:3541" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="3619:3825" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="3887:3958" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="4006:4425" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="4486:4837" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="4903:5160" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="5224:5689" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="5750:5761" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="5810:5816" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="5873:5884" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="5919:5925" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="5957:5968" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="5988:5994" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="6067:6141" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="6236:6330" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="6412:8558" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="8632:8639" ph="{}" />
-            <marker date="1514413003000" expanded="true" signature="8707:11224" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="11269:11280" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="11312:11318" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="11383:11760" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="11854:12756" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="12826:13004" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="13113:13120" ph="{}" />
-            <marker date="1514413003000" expanded="true" signature="13194:13201" ph="{}" />
-            <marker date="1514413003000" expanded="true" signature="13278:13802" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="13845:13901" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="13929:13936" ph="{}" />
-            <marker date="1514413003000" expanded="true" signature="13987:15145" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="15201:16155" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="16214:16460" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="16493:16500" ph="{}" />
-            <marker date="1514413003000" expanded="true" signature="16532:16539" ph="{}" />
-            <marker date="1514413003000" expanded="true" signature="16581:16696" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="16744:16946" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="16989:18060" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="18099:18110" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="18122:18128" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="18185:18413" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="18453:18898" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="18942:19160" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="19204:19215" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="19271:19277" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="19319:19330" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="19387:19393" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="19448:19542" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="19597:19691" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="19746:19840" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="19895:19989" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="20045:20056" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="20095:20101" ph=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1772,7 +1336,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
           <caret line="1" column="97" lean-forward="false" selection-start-line="1" selection-start-column="97" selection-end-line="1" selection-end-column="97" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1780,7 +1343,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
           <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1788,62 +1350,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1824">
           <caret line="169" column="19" lean-forward="false" selection-start-line="169" selection-start-column="19" selection-end-line="169" selection-end-column="19" />
-          <folding>
-            <marker date="1514766234000" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1514766234000" expanded="false" signature="148:2200" ph="..." />
-            <marker date="1514766234000" expanded="true" signature="3129:3136" ph="{}" />
-            <marker date="1514766234000" expanded="true" signature="3209:3541" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="3619:3825" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="3887:3958" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="4006:4425" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="4486:4837" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="4903:5160" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="5224:5689" ph="{...}" />
-            <marker date="1514766234000" expanded="false" signature="5750:5761" ph=" { " />
-            <marker date="1514766234000" expanded="false" signature="5810:5816" ph=" }" />
-            <marker date="1514766234000" expanded="false" signature="5873:5884" ph=" { " />
-            <marker date="1514766234000" expanded="false" signature="5919:5925" ph=" }" />
-            <marker date="1514766234000" expanded="false" signature="5957:5968" ph=" { " />
-            <marker date="1514766234000" expanded="false" signature="5988:5994" ph=" }" />
-            <marker date="1514766234000" expanded="true" signature="6067:6141" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="6236:6330" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="6412:8558" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="8632:8639" ph="{}" />
-            <marker date="1514766234000" expanded="true" signature="8707:11224" ph="{...}" />
-            <marker date="1514766234000" expanded="false" signature="11269:11280" ph=" { " />
-            <marker date="1514766234000" expanded="false" signature="11312:11318" ph=" }" />
-            <marker date="1514766234000" expanded="true" signature="11383:11760" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="11854:12756" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="12826:13004" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="13113:13120" ph="{}" />
-            <marker date="1514766234000" expanded="true" signature="13194:13201" ph="{}" />
-            <marker date="1514766234000" expanded="true" signature="13278:13802" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="13845:13901" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="13929:13936" ph="{}" />
-            <marker date="1514766234000" expanded="true" signature="13987:15145" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="15201:16155" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="16214:16460" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="16493:16500" ph="{}" />
-            <marker date="1514766234000" expanded="true" signature="16532:16539" ph="{}" />
-            <marker date="1514766234000" expanded="true" signature="16581:16696" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="16744:16946" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="16989:18060" ph="{...}" />
-            <marker date="1514766234000" expanded="false" signature="18099:18110" ph=" { " />
-            <marker date="1514766234000" expanded="false" signature="18122:18128" ph=" }" />
-            <marker date="1514766234000" expanded="true" signature="18185:18413" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="18453:18898" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="18942:19160" ph="{...}" />
-            <marker date="1514766234000" expanded="false" signature="19204:19215" ph=" { " />
-            <marker date="1514766234000" expanded="false" signature="19271:19277" ph=" }" />
-            <marker date="1514766234000" expanded="false" signature="19319:19330" ph=" { " />
-            <marker date="1514766234000" expanded="false" signature="19387:19393" ph=" }" />
-            <marker date="1514766234000" expanded="true" signature="19448:19542" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="19597:19691" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="19746:19840" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="19895:19989" ph="{...}" />
-            <marker date="1514766234000" expanded="false" signature="20045:20056" ph=" { " />
-            <marker date="1514766234000" expanded="false" signature="20095:20101" ph=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1851,25 +1357,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
           <caret line="115" column="66" lean-forward="false" selection-start-line="115" selection-start-column="66" selection-end-line="115" selection-end-column="78" />
-          <folding>
-            <marker date="1514766234000" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1514766234000" expanded="false" signature="160:1085" ph="..." />
-            <marker date="1514766234000" expanded="true" signature="1698:1705" ph="{}" />
-            <marker date="1514766234000" expanded="true" signature="1769:1883" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="2052:2206" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="2397:2556" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="2797:3024" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="3243:5643" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="5755:6627" ph="{...}" />
-            <marker date="1514766234000" expanded="false" signature="6692:6703" ph=" { " />
-            <marker date="1514766234000" expanded="false" signature="6730:6736" ph=" }" />
-            <marker date="1514766234000" expanded="false" signature="6778:6789" ph=" { " />
-            <marker date="1514766234000" expanded="false" signature="6826:6832" ph=" }" />
-            <marker date="1514766234000" expanded="true" signature="6994:7121" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="7309:13619" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="13745:15428" ph="{...}" />
-            <marker date="1514766234000" expanded="true" signature="15441:15494" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1877,26 +1364,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="16" column="56" lean-forward="false" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/tileentities/TileEntityTestBlock2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="47" column="72" lean-forward="false" selection-start-line="47" selection-start-column="72" selection-end-line="47" selection-end-column="72" />
-          <folding>
-            <element signature="e#2921#2922#0" expanded="false" />
-            <element signature="e#2952#2953#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="134" column="0" lean-forward="false" selection-start-line="133" selection-start-column="8" selection-end-line="134" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1904,73 +1371,157 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="335" column="23" lean-forward="false" selection-start-line="335" selection-start-column="16" selection-end-line="335" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/GuiControlState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="16" column="8" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/ToolTipHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="43" column="35" lean-forward="false" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
           <folding>
-            <marker date="1514413003000" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1514413003000" expanded="false" signature="153:2750" ph="..." />
-            <marker date="1514413003000" expanded="true" signature="3286:3475" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="3524:3535" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="3563:3569" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="3645:3757" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="3835:3918" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="3980:3991" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="4030:4036" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="4096:4107" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="4145:4151" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="4217:4228" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="4263:4269" ph=" }" />
-            <marker date="1514413003000" expanded="false" signature="4329:4340" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="4388:4394" ph=" }" />
-            <marker date="1514413003000" expanded="true" signature="4472:5102" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="5167:5781" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="5832:7161" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="7234:7388" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="7469:7609" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="7715:8317" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="8376:8527" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="8608:8854" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="8994:9185" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="9313:9593" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="9716:10855" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="10937:11057" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="11124:11257" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="11356:12437" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="12521:12914" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="13006:13116" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="13264:14951" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="13845:14016" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="13905:13998" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="14110:14285" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="14170:14267" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="14379:14557" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="14439:14539" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="14652:14825" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="14712:14807" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="15052:15145" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="15275:17964" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="18090:18641" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="18676:67323" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="61137:61315" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="61214:61305" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="63480:63655" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="63557:63645" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="63732:63904" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="63809:63894" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="63984:64159" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="64061:64149" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="65513:65696" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="65590:65686" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="65780:65959" ph="{...}" />
-            <marker date="1514413003000" expanded="true" signature="65857:65949" ph="{...}" />
-            <marker date="1514413003000" expanded="false" signature="67398:67409" ph=" { " />
-            <marker date="1514413003000" expanded="false" signature="67445:67451" ph=" }" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/GuiControlOption.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="16" column="18" lean-forward="false" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/IGuiObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="51" column="5" lean-forward="false" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/util/IGuiMaker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerCapability.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiBaseContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="29" column="32" lean-forward="false" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiDrawItemStack.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
-          <caret line="106" column="144" lean-forward="false" selection-start-line="106" selection-start-column="144" selection-end-line="106" selection-end-column="144" />
+        <state relative-caret-position="583">
+          <caret line="94" column="104" lean-forward="false" selection-start-line="94" selection-start-column="104" selection-end-line="94" selection-end-column="104" />
+          <folding>
+            <element signature="e#3059#3060#0" expanded="true" />
+            <element signature="e#3113#3114#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiBaseControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="854">
+          <caret line="101" column="128" lean-forward="false" selection-start-line="101" selection-start-column="128" selection-end-line="101" selection-end-column="128" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/containers/GuiWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="29" column="150" lean-forward="false" selection-start-line="29" selection-start-column="150" selection-end-line="29" selection-end-column="150" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiLabel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="43" column="73" lean-forward="false" selection-start-line="43" selection-start-column="73" selection-end-line="43" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/base/GuiObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+          <folding>
+            <element signature="e#2578#2579#0" expanded="true" />
+            <element signature="e#2617#2618#0" expanded="true" />
+            <element signature="e#2826#2827#0" expanded="true" />
+            <element signature="e#2852#2853#0" expanded="true" />
+            <element signature="e#2883#2884#0" expanded="true" />
+            <element signature="e#2909#2910#0" expanded="true" />
+            <element signature="e#2944#2945#0" expanded="true" />
+            <element signature="e#2970#2971#0" expanded="true" />
+            <element signature="e#3006#3007#0" expanded="true" />
+            <element signature="e#3032#3033#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/blocks/test/TestBlock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="44" column="34" lean-forward="false" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/testmod/common/tileentities/TileEntityTestBlock2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="31" column="35" lean-forward="false" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="43" column="96" lean-forward="false" selection-start-line="43" selection-start-column="96" selection-end-line="43" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/controls/GuiCheckbox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="72" column="44" lean-forward="false" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fireball1725/firelib/guimaker/capability/GuiMakerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="24" column="53" lean-forward="true" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
           <folding />
         </state>
       </provider>
@@ -2039,11 +1590,12 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>FireLib_api|FireLib</last-edited>
+          <last-edited>FireLib_main|FireLib</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

@@ -23,9 +23,7 @@ public class GuiMakerHandler {
     @SubscribeEvent
     public void attachCapabilitiesEvent(AttachCapabilitiesEvent<TileEntity> event) {
         if (event.getObject() instanceof IGuiMaker) {
-            FireLib.instance.getLogger().info(">>> Attaching capability");
             event.addCapability(GUI_MAKER, new GuiMakerProvider(event.getObject()));
-
         }
     }
 }

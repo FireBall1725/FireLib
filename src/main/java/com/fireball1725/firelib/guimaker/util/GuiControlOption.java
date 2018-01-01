@@ -11,7 +11,8 @@
 package com.fireball1725.firelib.guimaker.util;
 
 public enum GuiControlOption {
-    HOVER_STATE,
-    TOGGLE_STATE,
-    BUTTON_CLICK
+    SUPPORTS_HOVER,
+    SUPPORTS_TOGGLE,
+    SUPPORTS_CLICK,
+    SUPPORTS_SCALE
 }

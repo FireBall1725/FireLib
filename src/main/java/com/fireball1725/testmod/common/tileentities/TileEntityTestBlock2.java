@@ -16,11 +16,12 @@ import com.fireball1725.firelib.guimaker.controls.GuiCheckbox;
 import com.fireball1725.firelib.guimaker.controls.GuiDrawItemStack;
 import com.fireball1725.firelib.guimaker.util.IGuiMaker;
 import com.fireball1725.firelib.tileentities.TileEntityBase;
+import com.fireball1725.testmod.TestMod;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class TileEntityTestBlock2 extends TileEntityBase implements IGuiMaker {
-    public GuiWindow guiWindow = new GuiWindow("window", 100, 40);
+    public GuiWindow guiWindow = new GuiWindow("window", 200, 200);
     public GuiMaker guiMaker = new GuiMaker(guiWindow);
 
     public GuiCheckbox guiCheckbox = new GuiCheckbox("test button 1");
@@ -47,8 +48,11 @@ public class TileEntityTestBlock2 extends TileEntityBase implements IGuiMaker {
         guiDrawItemStack.addItemStack(OreDictionary.getOres("slimeball"));
         guiDrawItemStack.addItemStack(OreDictionary.getOres("logWood"));
         guiDrawItemStack.addItemStack(OreDictionary.getOres("dye"));
+        guiDrawItemStack.setScale(0.5f);
         guiWindow.addGuiObject(guiDrawItemStack);
     }
+
+
 
     @Override
     public GuiMaker getGuiMaker() {
@@ -61,7 +65,8 @@ public class TileEntityTestBlock2 extends TileEntityBase implements IGuiMaker {
     }
 
     @Override
-    public void guiControlInteraction(String guiControlName) {
+    public void guiControlInteraction(String guiControlName, NBTTagCompound nbtTagCompound) {
+        TestMod.instance.getLogger().info(">>> INTERACTION " + guiControlName);
         // todo something here...
     }
 

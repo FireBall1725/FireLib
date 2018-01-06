@@ -93,21 +93,6 @@ public class GuiMakerGuiContainer extends GuiContainer {
         super.mouseClicked(mouseX, mouseY, mouseButton);
 
         guiMaker.getGuiContainer().mouseClicked(mouseX, mouseY, mouseButton);
-
-//        for (GuiObject guiObject : guiObjects) {
-//            if (guiObject != null) {
-//
-//                // Check to see if there is a clickable area defined
-//                if (guiObject.getClickableArea() == null) {
-//                    return;
-//                }
-//
-//                // If the mouse is in the clickable area, then send the event
-//                if (guiObject.getClickableArea().contains(mouseX, mouseY)) {
-//                    guiObject.mouseClicked(mouseX, mouseY, mouseButton);
-//                }
-//            }
-//        }
     }
 
     @Override
@@ -130,8 +115,6 @@ public class GuiMakerGuiContainer extends GuiContainer {
 
         guiMaker.getGuiContainer().updateScreen();
     }
-
-    // --------
 
     @SideOnly(Side.CLIENT)
     public void scissorCut(int x, int y, int w, int h) {

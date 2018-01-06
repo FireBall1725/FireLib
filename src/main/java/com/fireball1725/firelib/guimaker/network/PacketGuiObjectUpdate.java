@@ -84,6 +84,7 @@ public class PacketGuiObjectUpdate implements IMessage {
             for (GuiObject guiObject : ((IGuiMaker) tileEntity).getGuiMaker().getGuiContainer().getGuiObjects()) {
                 if (guiObject.getControlName().equals(packetGuiObjectUpdate.controlName)) {
                     guiObject.readNBT(packetGuiObjectUpdate.controlTagCompound);
+                    ((IGuiMaker) tileEntity).guiControlInteraction(packetGuiObjectUpdate.controlName, packetGuiObjectUpdate.controlTagCompound);
                 }
             }
 

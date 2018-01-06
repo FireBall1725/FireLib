@@ -12,6 +12,7 @@ package com.fireball1725.firelib.guimaker.controls;
 
 import com.fireball1725.firelib.guimaker.base.GuiBaseControl;
 import com.fireball1725.firelib.guimaker.base.IGuiObject;
+import com.fireball1725.firelib.guimaker.util.GuiControlOption;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -22,10 +23,10 @@ public class GuiLabel extends GuiBaseControl implements IGuiObject {
     public String label = "";
     public int color = 0;
 
-    private float scale = 1f;
-
     public GuiLabel(String controlName) {
         super(controlName);
+
+        this.addGuiControlOption(GuiControlOption.SUPPORTS_SCALE);
     }
 
     @SideOnly(Side.CLIENT)
@@ -33,18 +34,11 @@ public class GuiLabel extends GuiBaseControl implements IGuiObject {
     public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
         super.drawGuiContainerForegroundLayer(mouseX, mouseY);
 
-        //guiContainer.drawString(guiContainer.mc.fontRenderer, this.label, this.left, this.top, this.color);
-
         FontRenderer font = Minecraft.getMinecraft().fontRenderer;
-        GlStateManager.pushMatrix();
-        GlStateManager.scale(scale, scale, scale);
         boolean oldUnicode = font.getUnicodeFlag();
         font.setUnicodeFlag(false);
-
-        font.drawString(this.label, this.getLeft() / scale, this.getTop() / scale, this.color, true);
-
+        font.drawString(this.label, this.getLeft(), this.getTop(), this.color, true);
         font.setUnicodeFlag(oldUnicode);
-        GlStateManager.popMatrix();
     }
 
     public String getLabel() {

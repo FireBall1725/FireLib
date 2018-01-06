@@ -12,6 +12,7 @@ package com.fireball1725.firelib.guimaker.controls;
 
 import com.fireball1725.firelib.FireLib;
 import com.fireball1725.firelib.guimaker.base.GuiBaseControl;
+import com.fireball1725.firelib.guimaker.util.GuiControlOption;
 import com.fireball1725.firelib.guimaker.util.GuiControlState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.client.config.GuiUtils;
@@ -21,11 +22,17 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.awt.*;
 
 public class GuiCheckbox extends GuiBaseControl {
-    GuiLabel guiCheckBoxLabel = null;
+    private GuiLabel guiCheckBoxLabel = null;
+    private static final int TEXTURE_V = 32;
+    private static final int TEXTURE_W = 12;
+    private static final int TEXTURE_H = 12;
 
     public GuiCheckbox(String controlName) {
         super(controlName);
         this.setSize(12, 12);
+
+        this.addGuiControlOption(GuiControlOption.SUPPORTS_HOVER);
+        this.addGuiControlOption(GuiControlOption.SUPPORTS_TOGGLE);
     }
 
     @SideOnly(Side.CLIENT)
@@ -40,22 +47,22 @@ public class GuiCheckbox extends GuiBaseControl {
         super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
 
         //Draw Checkbox Border
-        GuiUtils.drawContinuousTexturedBox(this.DarkSkin, this.getContainerLeft(), this.getContainerTop(), 0, 32, 12, 12, 12, 12, 1, 100);
+        GuiUtils.drawContinuousTexturedBox(this.DarkSkin, this.getContainerLeft(), this.getContainerTop(), 0, TEXTURE_V, TEXTURE_W, TEXTURE_H, TEXTURE_W, TEXTURE_H, 1, 100);
 
         if (this.hasGuiControlState(GuiControlState.HOVERED)) {
             if (this.hasGuiControlState(GuiControlState.SELECTED)) {
                 // Hovered Checked
-                GuiUtils.drawContinuousTexturedBox(this.DarkSkin, this.getContainerLeft(), this.getContainerTop(), 64, 32, 12, 12, 12, 12, 1, 100);
+                GuiUtils.drawContinuousTexturedBox(this.DarkSkin, this.getContainerLeft(), this.getContainerTop(), 64, TEXTURE_V, TEXTURE_W, TEXTURE_H, TEXTURE_W, TEXTURE_H, 1, 100);
             } else {
                 // Hovered
-                GuiUtils.drawContinuousTexturedBox(this.DarkSkin, this.getContainerLeft(), this.getContainerTop(), 32, 32, 12, 12, 12, 12, 1, 100);
+                GuiUtils.drawContinuousTexturedBox(this.DarkSkin, this.getContainerLeft(), this.getContainerTop(), 32, TEXTURE_V, TEXTURE_W, TEXTURE_H, TEXTURE_W, TEXTURE_H, 1, 100);
             }
         } else if (this.hasGuiControlState(GuiControlState.SELECTED)) {
             // Checked
-            GuiUtils.drawContinuousTexturedBox(this.DarkSkin, this.getContainerLeft(), this.getContainerTop(), 48, 32, 12, 12, 12, 12, 1, 100);
+            GuiUtils.drawContinuousTexturedBox(this.DarkSkin, this.getContainerLeft(), this.getContainerTop(), 48, TEXTURE_V, TEXTURE_W, TEXTURE_H, TEXTURE_W, TEXTURE_H, 1, 100);
         } else {
             // Normal
-            GuiUtils.drawContinuousTexturedBox(this.DarkSkin, this.getContainerLeft(), this.getContainerTop(), 16, 32, 12, 12, 12, 12, 1, 100);
+            GuiUtils.drawContinuousTexturedBox(this.DarkSkin, this.getContainerLeft(), this.getContainerTop(), 16, TEXTURE_V, TEXTURE_W, TEXTURE_H, TEXTURE_W, TEXTURE_H, 1, 100);
         }
     }
 

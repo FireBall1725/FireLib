@@ -10,6 +10,7 @@
 
 package com.fireball1725.firelib.guimaker.base;
 
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -75,7 +76,14 @@ public abstract class GuiBaseContainer extends GuiObject {
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
-                guiObject.drawGuiContainerForegroundLayer(mouseX, mouseY);
+                if (guiObject.isScaled()) {
+                    GlStateManager.pushMatrix();
+                    GlStateManager.scale(guiObject.getScale(), guiObject.getScale(), guiObject.getScale());
+                    guiObject.drawGuiContainerForegroundLayer(mouseX, mouseY);
+                    GlStateManager.popMatrix();
+                } else {
+                    guiObject.drawGuiContainerForegroundLayer(mouseX, mouseY);
+                }
             }
         }
     }
@@ -87,7 +95,14 @@ public abstract class GuiBaseContainer extends GuiObject {
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
-                guiObject.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+                if (guiObject.isScaled()) {
+                    GlStateManager.pushMatrix();
+                    GlStateManager.scale(guiObject.getScale(), guiObject.getScale(), guiObject.getScale());
+                    guiObject.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+                    GlStateManager.popMatrix();
+                } else {
+                    guiObject.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+                }
             }
         }
 

@@ -10,7 +10,10 @@
 
 package com.fireball1725.firelib.guimaker.base;
 
+import com.fireball1725.firelib.FireLib;
 import com.fireball1725.firelib.guimaker.GuiMaker;
+import com.fireball1725.firelib.guimaker.util.GuiControlOption;
+import com.fireball1725.firelib.guimaker.util.GuiControlState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -24,6 +27,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class GuiObject implements IGuiObject {
@@ -37,6 +41,9 @@ public abstract class GuiObject implements IGuiObject {
     private int y;
     private int w;
     private int h;
+    private float scale = 1.0f;
+    private ArrayList<GuiControlState> controlStates = new ArrayList<>();
+    private ArrayList<GuiControlOption> controlOptions = new ArrayList<>();
 
     public GuiObject(String controlName) {
         // Set the control name
@@ -82,28 +89,85 @@ public abstract class GuiObject implements IGuiObject {
         this.h = h;
     }
 
+    public void setScale(float scale) {
+        if (hasGuiControlOption(GuiControlOption.SUPPORTS_SCALE)) {
+            this.scale = scale;
+        }
+    }
+
+    public float getScale() {
+        return this.scale;
+    }
+
+    public boolean isScaled() {
+        return !(this.scale == 1.0f);
+    }
+
+    public void addGuiControlState(GuiControlState guiControlState) {
+        if (!hasGuiControlState(guiControlState)) {
+            this.controlStates.add(guiControlState);
+        }
+    }
+
+    public void removeGuiControlState(GuiControlState guiControlState) {
+        if (hasGuiControlState(guiControlState)) {
+            this.controlStates.remove(guiControlState);
+        }
+    }
+
+    public boolean hasGuiControlState(GuiControlState guiControlState) {
+        return this.controlStates.contains(guiControlState);
+    }
+
+    protected void addGuiControlOption(GuiControlOption guiControlOption) {
+        if (!hasGuiControlOption(guiControlOption)) {
+            this.controlOptions.add(guiControlOption);
+        }
+    }
+
+    // todo: not sure if this is needed...
+    protected void removeGuiControlOption(GuiControlOption guiControlOption) {
+        if (hasGuiControlOption(guiControlOption)) {
+            this.controlOptions.remove(guiControlOption);
+        }
+    }
+
+    protected boolean hasGuiControlOption(GuiControlOption guiControlOption) {
+        return this.controlOptions.contains(guiControlOption);
+    }
+
     public int getWidth() {
         //todo: scale..
 
-        return this.w;
+        return Math.round(this.w * scale);
     }
 
     public int getHeight() {
         // todo: scale
 
-        return this.h;
+        return Math.round(this.h * scale);
     }
 
     public int getContainerLeft() {
         // todo: scale / scroll
 
         int parentLeft = this.parent == null ? 0 : this.parent.x;
-        return this.guiContainer.getGuiLeft() + this.x + parentLeft;
+        return Math.round((this.guiContainer.getGuiLeft() + this.x) / scale) + parentLeft;
     }
 
     public int getContainerTop() {
         // todo: scale / scroll
 
+        int parentTop = this.parent == null ? 0 : this.parent.y;
+        return Math.round((this.guiContainer.getGuiTop() + this.y) / scale) + parentTop;
+    }
+
+    public int getUnscaledLeft() {
+        int parentLeft = this.parent == null ? 0 : this.parent.x;
+        return this.guiContainer.getGuiLeft() + this.x + parentLeft;
+    }
+
+    public int getUnscaledTop() {
         int parentTop = this.parent == null ? 0 : this.parent.y;
         return this.guiContainer.getGuiTop() + this.y + parentTop;
     }
@@ -112,14 +176,14 @@ public abstract class GuiObject implements IGuiObject {
         // todo: scale / scroll
 
         int parentLeft = this.parent == null ? 0 : this.parent.x;
-        return this.x + parentLeft;
+        return Math.round(this.x / scale) + parentLeft;
     }
 
     public int getTop() {
         // todo: scale / scroll
 
         int parentTop = this.parent == null ? 0 : this.parent.y;
-        return this.y + parentTop;
+        return Math.round(this.y / scale) + parentTop;
     }
 
     @SideOnly(Side.CLIENT)

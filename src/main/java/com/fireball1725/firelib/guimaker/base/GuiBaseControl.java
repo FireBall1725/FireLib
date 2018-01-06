@@ -27,44 +27,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class GuiBaseControl extends GuiObject {
-    private ArrayList<GuiControlState> controlStates = new ArrayList<>();
-    private ArrayList<GuiControlOption> controlOptions = new ArrayList<>();
+
 
     public GuiBaseControl(String controlName) {
         super(controlName);
     }
 
-    public void addGuiControlState(GuiControlState guiControlState) {
-        if (!hasGuiControlState(guiControlState)) {
-            this.controlStates.add(guiControlState);
-        }
-    }
 
-    public void removeGuiControlState(GuiControlState guiControlState) {
-        if (hasGuiControlState(guiControlState)) {
-            this.controlStates.remove(guiControlState);
-        }
-    }
-
-    public boolean hasGuiControlState(GuiControlState guiControlState) {
-        return this.controlStates.contains(guiControlState);
-    }
-
-    public void addGuiControlOption(GuiControlOption guiControlOption) {
-        if (!hasGuiControlOption(guiControlOption)) {
-            this.controlOptions.add(guiControlOption);
-        }
-    }
-
-    public void removeGuiControlOption(GuiControlOption guiControlOption) {
-        if (hasGuiControlOption(guiControlOption)) {
-            this.controlOptions.remove(guiControlOption);
-        }
-    }
-
-    public boolean hasGuiControlOption(GuiControlOption guiControlOption) {
-        return this.controlOptions.contains(guiControlOption);
-    }
 
     @SideOnly(Side.CLIENT)
     @Override
@@ -77,10 +46,10 @@ public abstract class GuiBaseControl extends GuiObject {
 
         // todo: check if control supports hover state...
 
-        Rectangle rectangle = new Rectangle(this.getContainerLeft(), this.getContainerTop(), this.getHeight(), this.getWidth());
+        Rectangle rectangle = new Rectangle(this.getUnscaledLeft(), this.getUnscaledTop(), this.getHeight(), this.getWidth());
         boolean mouseOver = rectangle.contains(mouseX, mouseY);
 
-        if (mouseOver) {
+        if (mouseOver && this.hasGuiControlOption(GuiControlOption.SUPPORTS_HOVER)) {
             this.addGuiControlState(GuiControlState.HOVERED);
         } else {
             this.removeGuiControlState(GuiControlState.HOVERED);
@@ -99,13 +68,12 @@ public abstract class GuiBaseControl extends GuiObject {
 
         TileEntity te = ((GuiMakerGuiContainer) guiContainer).getTileEntity();
 
-        Rectangle rectangle = new Rectangle(this.getContainerLeft(), this.getContainerTop(), this.getHeight(), this.getWidth());
+        Rectangle rectangle = new Rectangle(this.getUnscaledLeft(), this.getUnscaledTop(), this.getHeight(), this.getWidth());
         boolean mouseOver = rectangle.contains(mouseX, mouseY);
+        boolean sendPacket = false;
 
-        // todo: check if control supports toggle
-        if (mouseOver && mouseButton == 0) {
-            //if (this.supportsToggle && mouseButton == 0 && mouseOver) {
-
+        // Handle toggle
+        if (mouseOver && mouseButton == 0 && this.hasGuiControlOption(GuiControlOption.SUPPORTS_TOGGLE)) {
             boolean toggleState = this.hasGuiControlState(GuiControlState.SELECTED);
 
             if (toggleState) {
@@ -114,7 +82,16 @@ public abstract class GuiBaseControl extends GuiObject {
                 this.addGuiControlState(GuiControlState.SELECTED);
             }
 
-            PacketGuiObjectUpdate packetGuiObjectUpdate = new PacketGuiObjectUpdate(this.controlName, this.writeNBT(), te.getPos()); //todo: fix this to use nbt
+            sendPacket = true;
+        }
+
+        // Handle click
+        if (mouseOver && mouseButton == 0 && this.hasGuiControlOption(GuiControlOption.SUPPORTS_CLICK)) {
+            sendPacket = true;
+        }
+
+        if (sendPacket) {
+            PacketGuiObjectUpdate packetGuiObjectUpdate = new PacketGuiObjectUpdate(this.controlName, this.writeNBT(), te.getPos());
             PacketHandler.NETWORK_INSTANCE.sendToServer(packetGuiObjectUpdate);
 
             Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));

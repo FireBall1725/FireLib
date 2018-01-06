@@ -12,6 +12,7 @@ package com.fireball1725.firelib.guimaker.capability;
 
 import com.fireball1725.firelib.guimaker.GuiMaker;
 import com.fireball1725.firelib.guimaker.util.IGuiMaker;
+import net.minecraft.nbt.NBTTagCompound;
 
 public class GuiMakerCapability implements IGuiMaker {
     @Override
@@ -25,7 +26,7 @@ public class GuiMakerCapability implements IGuiMaker {
     }
 
     @Override
-    public void guiControlInteraction(String guiControlName) {
+    public void guiControlInteraction(String guiControlName, NBTTagCompound nbtTagCompound) {
 
     }
 }

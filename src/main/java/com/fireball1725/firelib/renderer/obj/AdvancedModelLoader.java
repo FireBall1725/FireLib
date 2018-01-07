@@ -22,7 +22,7 @@ import java.util.Map;
 /**
  * Common interface for advanced model loading from files, based on file suffix
  * Model support can be queried through the {@link #getSupportedSuffixes()} method.
- * Instances can be created by calling {@link #loadModel(String)} with a class-loadable-path
+ * Instances can be created by calling loadModel(String) with a class-loadable-path
  *
  * @author cpw
  */

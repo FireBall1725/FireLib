@@ -8,19 +8,24 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-task wrapper(type: Wrapper) {
-    gradleVersion = "2.4"
-}
+package com.fireball1725.firelib.guimaker.util;
 
-task installMods(type: Copy, dependsOn: "deinstallMods") {
-    from { configurations.mods }
-    include "**/*.jar"
-    into file(minecraft.runDir + "/mods")
-}
+import io.netty.buffer.ByteBuf;
+import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
-task deinstallMods(type: Delete) {
-    delete fileTree(dir: minecraft.runDir + "/mods", include: "*.jar")
-}
+public class NetworkHelper {
+    public static NetworkRegistry.TargetPoint getTargetPoint(int dim, BlockPos blockPos, int range) {
+        return new NetworkRegistry.TargetPoint(dim, blockPos.getX(), blockPos.getY(), blockPos.getZ(), range);
+    }
 
-tasks.setupDecompWorkspace.dependsOn installMods
-tasks.setupDevWorkspace.dependsOn installMods
+    public static void writeBlockPos(ByteBuf byteBuf, BlockPos blockPos) {
+        byteBuf.writeInt(blockPos.getX());
+        byteBuf.writeInt(blockPos.getY());
+        byteBuf.writeInt(blockPos.getZ());
+    }
+
+    public static BlockPos readBlockPos(ByteBuf byteBuf) {
+        return new BlockPos(byteBuf.readInt(), byteBuf.readInt(), byteBuf.readInt());
+    }
+}

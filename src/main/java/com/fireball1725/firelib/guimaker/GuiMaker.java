@@ -10,32 +10,61 @@
 
 package com.fireball1725.firelib.guimaker;
 
+import com.fireball1725.firelib.FireLib;
+import com.fireball1725.firelib.guimaker.base.GuiBaseContainer;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+
 import java.util.HashMap;
 
-public abstract class GuiMaker {
+public class GuiMaker {
     private static HashMap<Integer, GuiMaker> guiInstances = new HashMap<>();
-    private static int guiInstanceCount = 0;
 
     private final int guiID;
-    private final GuiMaker guiMakerInstance;
 
-    private int guiHeight;
-    private int guiWidth;
+    private GuiBaseContainer defaultGuiContainer = null;
+    private GuiBaseContainer openContainer = null;
 
-    public GuiMaker(int guiWidth, int guiHeight) {
-        this.guiWidth = guiWidth;
-        this.guiHeight = guiHeight;
-        this.guiID = getNextGuiID();
-        this.guiMakerInstance = this;
-
-        guiInstances.put(this.guiID, this.guiMakerInstance);
+    public GuiMaker() {
+        this.guiID = guiInstances.size();
+        guiInstances.put(this.guiID, this);
     }
 
-    private int getNextGuiID() {
-        int nextID = guiInstanceCount;
-        guiInstanceCount++;
-        return nextID;
+    public GuiMaker(GuiBaseContainer defaultGuiContainer) {
+        this.guiID = guiInstances.size();
+        guiInstances.put(this.guiID, this);
+
+        this.defaultGuiContainer = defaultGuiContainer;
+        this.openContainer = defaultGuiContainer;
     }
 
+    public static GuiMaker getGuiMaker(int guiID) {
+        if (guiInstances.containsKey(guiID)) {
+            return guiInstances.get(guiID);
+        }
 
+        return null;
+    }
+
+    public int getGuiID() {
+        return this.guiID;
+    }
+
+    public void show(World world, EntityPlayer player, BlockPos pos) {
+        show(world, player, pos, this.defaultGuiContainer);
+    }
+
+    public void show(World world, EntityPlayer player, BlockPos pos, GuiBaseContainer guiContainer) {
+        this.openContainer = guiContainer;
+        player.openGui(FireLib.instance, this.guiID, world, pos.getX(), pos.getY(), pos.getZ());
+    }
+
+    public void setDefaultGuiContainer(GuiBaseContainer defaultGuiContainer) {
+        this.defaultGuiContainer = defaultGuiContainer;
+    }
+
+    public GuiBaseContainer getGuiContainer() {
+        return this.openContainer;
+    }
 }

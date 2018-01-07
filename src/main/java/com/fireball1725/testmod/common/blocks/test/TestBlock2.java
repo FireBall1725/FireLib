@@ -11,19 +11,45 @@
 package com.fireball1725.testmod.common.blocks.test;
 
 import com.fireball1725.firelib.blocks.BlockTileBase;
+import com.fireball1725.firelib.util.TileHelper;
+import com.fireball1725.testmod.TestMod;
+import com.fireball1725.testmod.common.tileentities.TileEntityTestBlock2;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class TestBlock2 extends BlockTileBase {
+
+
     public TestBlock2() {
-        super(Material.IRON, "testblock");
+        super(Material.IRON, "testblock", TestMod.instance);
         this.setInternalName("testblock2");
-        this.setTileEnttiy(com.fireball1725.testmod.common.tileentities.TestBlock.class);
+        this.setTileEntity(TileEntityTestBlock2.class);
     }
 
     @Override
     public boolean hasGravity(World worldIn, BlockPos pos) {
+        return true;
+    }
+
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if (worldIn.isRemote) {
+            return true;
+        }
+
+
+        TileEntityTestBlock2 te = TileHelper.getTileEntity(worldIn, pos, TileEntityTestBlock2.class);
+        if (te == null) {
+            return false;
+        }
+
+        te.getGuiMaker().show(worldIn, playerIn, pos);
+
         return true;
     }
 }

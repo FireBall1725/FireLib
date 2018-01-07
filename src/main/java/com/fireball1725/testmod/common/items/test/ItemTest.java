@@ -11,10 +11,11 @@
 package com.fireball1725.testmod.common.items.test;
 
 import com.fireball1725.firelib.items.ItemBase;
+import com.fireball1725.testmod.TestMod;
 
 public class ItemTest extends ItemBase {
     public ItemTest() {
-        super("test/item");
+        super("test/item", TestMod.instance);
         this.setInternalName("testitem");
     }
 }

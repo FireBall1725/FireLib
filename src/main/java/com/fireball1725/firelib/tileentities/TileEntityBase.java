@@ -10,13 +10,95 @@
 
 package com.fireball1725.firelib.tileentities;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.EnumSkyBlock;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
 
 public class TileEntityBase extends TileEntity {
-    private String customName = "";
+    private String customName;
+    private int renderedFragment = 0;
+    private NBTTagCompound controlStates;
+
+    @Override
+    public NBTTagCompound getUpdateTag() {
+        return writeToNBT(new NBTTagCompound());
+    }
+
+    @Nullable
+    @Override
+    public SPacketUpdateTileEntity getUpdatePacket() {
+        return new SPacketUpdateTileEntity(pos, 0, getUpdateTag());
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void onDataPacket(NetworkManager networkManager, SPacketUpdateTileEntity s35PacketUpdateTileEntity) {
+        super.onDataPacket(networkManager, s35PacketUpdateTileEntity);
+        readFromNBT(s35PacketUpdateTileEntity.getNbtCompound());
+        this.getWorld().markBlockRangeForRenderUpdate(this.pos, this.pos);
+        markForUpdate();
+    }
+
+    public void markForUpdate() {
+        if (this.renderedFragment > 0) {
+            this.renderedFragment |= 0x1;
+        } else if (this.getWorld() != null) {
+            Block block = this.getWorld().getBlockState(this.pos).getBlock();
+            //todo: look at this, is it correct?
+            this.getWorld().notifyBlockUpdate(this.pos, this.getWorld().getBlockState(this.pos), this.getWorld().getBlockState(this.pos), 3);
+
+            int xCoord = this.pos.getX();
+            int yCoord = this.pos.getY();
+            int zCoord = this.pos.getZ();
+
+            // Todo: update detectors?
+            this.getWorld().notifyNeighborsOfStateChange(new BlockPos(xCoord, yCoord - 1, zCoord), block, false);
+            this.getWorld().notifyNeighborsOfStateChange(new BlockPos(xCoord, yCoord + 1, zCoord), block, false);
+            this.getWorld().notifyNeighborsOfStateChange(new BlockPos(xCoord - 1, yCoord, zCoord), block, false);
+            this.getWorld().notifyNeighborsOfStateChange(new BlockPos(xCoord + 1, yCoord, zCoord), block, false);
+            this.getWorld().notifyNeighborsOfStateChange(new BlockPos(xCoord, yCoord - 1, zCoord - 1), block, false);
+            this.getWorld().notifyNeighborsOfStateChange(new BlockPos(xCoord, yCoord - 1, zCoord + 1), block, false);
+        }
+    }
+
+    public void markForLightUpdate() {
+        if (this.getWorld().isRemote) {
+            this.getWorld().notifyBlockUpdate(this.pos, this.getWorld().getBlockState(this.pos), this.getWorld().getBlockState(this.pos), 3);
+        }
+
+        this.getWorld().checkLightFor(EnumSkyBlock.BLOCK, this.pos);
+    }
+
+    public void onChunkLoad() {
+        if (this.isInvalid())
+            this.validate();
+
+        markForUpdate();
+    }
+
+    @Override
+    public void onChunkUnload() {
+        if (!this.isInvalid())
+            this.invalidate();
+    }
+
+    public TileEntity getTile() {
+        return this;
+    }
 
     public String getCustomName() {
-        return customName;
+        return this.customName;
     }
 
     public void setCustomName(String customName) {
@@ -24,6 +106,51 @@ public class TileEntityBase extends TileEntity {
     }
 
     public boolean hasCustomName() {
-        return !customName.isEmpty();
+        return (this.customName != null) && (this.customName.length() > 0);
     }
+
+    public String getUnlocalizedName() {
+        Item item = Item.getItemFromBlock(this.getWorld().getBlockState(this.pos).getBlock());
+        ItemStack itemStack = new ItemStack(item, 1, getBlockMetadata());
+
+        return itemStack.getUnlocalizedName() + ".name";
+    }
+
+    public void setName(String name) {
+        this.customName = name;
+    }
+
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound nbtTagCompound) {
+        if (this.customName != null)
+            nbtTagCompound.setString("CustomName", this.customName);
+
+        return super.writeToNBT(nbtTagCompound);
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound nbtTagCompound) {
+        super.readFromNBT(nbtTagCompound);
+
+        this.customName = nbtTagCompound.hasKey("CustomName") ? nbtTagCompound.getString("CustomName") : null;
+    }
+
+    public IBlockState getBlockState() {
+        if (this.getWorld() == null)
+            return null;
+
+        return this.getWorld().getBlockState(pos);
+    }
+
+    //    @Override
+//    public List<String> getWailaHeadToolTip(ItemStack itemStack, List<String> currentTip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+//        if (customName != null)
+//            currentTip.add(String.format("%s%s%s", TextFormatting.BLUE, TextFormatting.ITALIC, customName));
+//
+//        return currentTip;
+//    }
+
+//    public void dropItems() {
+//        TileHelper.dropItems(this);
+//    }
 }

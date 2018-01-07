@@ -1,6 +1,7 @@
 /*
 !/.idea
 !/.circleci
+!/.travis.yml
 !/.gitignore
 !/.gitmodules
 !/.codeclimate.yml

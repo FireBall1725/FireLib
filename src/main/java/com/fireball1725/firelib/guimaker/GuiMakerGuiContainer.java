@@ -10,16 +10,27 @@
 
 package com.fireball1725.firelib.guimaker;
 
+import com.fireball1725.firelib.FireLib;
+import com.fireball1725.firelib.guimaker.base.GuiBaseContainer;
+import com.fireball1725.firelib.guimaker.util.IGuiMaker;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.GL11;
 
+import java.io.IOException;
+
+/**
+ * GuiMaker Client Side Container
+ */
 public class GuiMakerGuiContainer extends GuiContainer {
     private final InventoryPlayer inventoryPlayer;
     private final TileEntity tileEntity;
-    private GuiMaker guiMaker;
-    private int mouseX = 0;
-    private int mouseY = 0;
+    private final GuiMaker guiMaker;
 
     public GuiMakerGuiContainer(InventoryPlayer inventoryPlayer, TileEntity tileEntity, int id) {
         super(new GuiMakerContainer(inventoryPlayer, tileEntity, id));
@@ -27,10 +38,99 @@ public class GuiMakerGuiContainer extends GuiContainer {
         this.inventoryPlayer = inventoryPlayer;
         this.tileEntity = tileEntity;
 
+        this.guiMaker = ((IGuiMaker) tileEntity).getGuiMaker();
+
+        if (this.guiMaker == null) {
+            FireLib.instance.getLogger().fatal("GuiMaker is returning a null instance, this is a problem...");
+        }
+
+    }
+
+    @Override
+    public void initGui() {
+        GuiBaseContainer baseContainer = guiMaker.getGuiContainer();
+
+        this.xSize = baseContainer.getWidth();
+        this.ySize = baseContainer.getHeight();
+
+        super.initGui();
+
+        guiMaker.getGuiContainer().setGuiMaker(this.guiMaker);
+        guiMaker.getGuiContainer().setGuiContainer(this);
+        guiMaker.getGuiContainer().initGui();
     }
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+        scissorCut(this.guiLeft, this.guiTop, this.xSize, this.ySize);
 
+        guiMaker.getGuiContainer().drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+
+        scissorsEnd();
+    }
+
+    @Override
+    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+        super.drawGuiContainerForegroundLayer(mouseX, mouseY);
+
+        scissorCut(this.guiLeft + 2, this.guiTop + 2, this.xSize - 4, this.ySize - 4);
+
+        guiMaker.getGuiContainer().drawGuiContainerForegroundLayer(mouseX, mouseY);
+
+        scissorsEnd();
+    }
+
+    @Override
+    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        this.drawDefaultBackground();
+        super.drawScreen(mouseX, mouseY, partialTicks);
+
+        guiMaker.getGuiContainer().drawScreen(mouseX, mouseY, partialTicks);
+    }
+
+    @Override
+    protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+        super.mouseClicked(mouseX, mouseY, mouseButton);
+
+        guiMaker.getGuiContainer().mouseClicked(mouseX, mouseY, mouseButton);
+    }
+
+    @Override
+    protected void keyTyped(char typedChar, int keyCode) throws IOException {
+        super.keyTyped(typedChar, keyCode);
+
+        guiMaker.getGuiContainer().keyTyped(typedChar, keyCode);
+    }
+
+    @Override
+    public void onGuiClosed() {
+        super.onGuiClosed();
+
+        guiMaker.getGuiContainer().onGuiClosed();
+    }
+
+    @Override
+    public void updateScreen() {
+        super.updateScreen();
+
+        guiMaker.getGuiContainer().updateScreen();
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void scissorCut(int x, int y, int w, int h) {
+        ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
+        int scale = scaledResolution.getScaleFactor();
+
+        GL11.glEnable(GL11.GL_SCISSOR_TEST);
+        GL11.glScissor(x * scale, y * scale, w * scale, h * scale);
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void scissorsEnd() {
+        GL11.glDisable(GL11.GL_SCISSOR_TEST);
+    }
+
+    public TileEntity getTileEntity() {
+        return tileEntity;
     }
 }

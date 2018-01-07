@@ -11,18 +11,44 @@
 package com.fireball1725.testmod.common.blocks.test;
 
 import com.fireball1725.firelib.blocks.BlockTileBase;
+import com.fireball1725.firelib.guimaker.GuiMaker;
+import com.fireball1725.firelib.guimaker.containers.GuiWindow;
+import com.fireball1725.firelib.guimaker.controls.GuiLabel;
 import com.fireball1725.firelib.util.IProvideRecipe;
+import com.fireball1725.testmod.TestMod;
+import com.fireball1725.testmod.common.tileentities.TileEntityTestBlock2;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.RegistryEvent;
 
 public class TestBlock extends BlockTileBase implements IProvideRecipe {
+    private GuiWindow guiWindow = new GuiWindow("Windows 95", 200, 100);
+    private GuiMaker guiMaker = new GuiMaker(guiWindow);
+    private GuiLabel guiLabel = new GuiLabel("label");
+    private GuiLabel guiLabel2 = new GuiLabel("label");
+
     public TestBlock() {
-        super(Material.IRON, "testblock");
+        super(Material.IRON, "testblock", TestMod.instance);
         this.setInternalName("testblock");
-        this.setTileEnttiy(com.fireball1725.testmod.common.tileentities.TestBlock.class);
+        this.setTileEntity(com.fireball1725.testmod.common.tileentities.TestBlock.class);
+
+        guiWindow.addGuiObject(guiLabel);
+        guiWindow.addGuiObject(guiLabel2);
+
+        guiLabel.setLocation(4, 4);
+        guiLabel.setLocation(4, 20);
+
+        guiLabel.setLabel("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel magna ac nunc congue egestas sed a erat. Nam a odio elementum, pharetra turpis sit amet, blandit magna. Fusce vestibulum risus enim, id porta");
+        guiLabel.setColor(0xFF69B4);
+
+        guiLabel2.setLabel("This is a test...");
+        guiLabel2.setColor(0xFFFFFF);
     }
 
     @Override
@@ -39,5 +65,19 @@ public class TestBlock extends BlockTileBase implements IProvideRecipe {
     @Override
     public void registerRecipes(RegistryEvent.Register<IRecipe> event) {
 
+    }
+
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if (worldIn.isRemote) {
+            return true;
+        }
+
+        TileEntityTestBlock2 test = new TileEntityTestBlock2();
+
+
+        guiMaker.show(worldIn, playerIn, pos);
+
+        return true;
     }
 }

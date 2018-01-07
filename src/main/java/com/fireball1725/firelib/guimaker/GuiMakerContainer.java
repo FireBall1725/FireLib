@@ -10,20 +10,32 @@
 
 package com.fireball1725.firelib.guimaker;
 
+import com.fireball1725.firelib.FireLib;
+import com.fireball1725.firelib.guimaker.base.GuiObject;
+import com.fireball1725.firelib.guimaker.util.IGuiMaker;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.tileentity.TileEntity;
 
+import java.util.ArrayList;
+
+/**
+ * GuiMaker Server Side Container
+ */
 public class GuiMakerContainer extends Container {
     private final InventoryPlayer inventoryPlayer;
     private final TileEntity tileEntity;
-    private GuiMaker guiMaker;
+    private final GuiMaker guiMaker;
 
     public GuiMakerContainer(InventoryPlayer inventoryPlayer, TileEntity tileEntity, int id) {
         this.inventoryPlayer = inventoryPlayer;
         this.tileEntity = tileEntity;
-        this.guiMaker = null;
+        this.guiMaker = ((IGuiMaker) tileEntity).getGuiMaker();
+
+        if (this.guiMaker == null) {
+            FireLib.instance.getLogger().fatal("GuiMaker is returning a null instance, this is a problem...");
+        }
 
         initContainer();
     }
@@ -32,11 +44,21 @@ public class GuiMakerContainer extends Container {
         this.inventoryItemStacks.clear();
         this.inventorySlots.clear();
 
+        ArrayList<GuiObject> guiObjects = guiMaker.getGuiContainer().getGuiObjects();
 
+        for (GuiObject guiObject : guiObjects) {
+            if (guiObject != null) {
+                guiObject.setGuiMaker(this.guiMaker);
+            }
+        }
     }
 
     @Override
     public boolean canInteractWith(EntityPlayer playerIn) {
-        return true;
+        if (tileEntity instanceof IGuiMaker) {
+            return ((IGuiMaker) tileEntity).canInteractWith();
+        }
+
+        return false;
     }
 }

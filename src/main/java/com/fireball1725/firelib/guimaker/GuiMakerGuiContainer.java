@@ -30,17 +30,16 @@ import java.io.IOException;
 public class GuiMakerGuiContainer extends GuiContainer {
     private final InventoryPlayer inventoryPlayer;
     private final TileEntity tileEntity;
-    private final GuiMaker guiMaker;
+    private final GuiBaseContainer baseContainer;
 
     public GuiMakerGuiContainer(InventoryPlayer inventoryPlayer, TileEntity tileEntity, int id) {
         super(new GuiMakerContainer(inventoryPlayer, tileEntity, id));
 
         this.inventoryPlayer = inventoryPlayer;
         this.tileEntity = tileEntity;
+        this.baseContainer = ((IGuiMaker)tileEntity).getGuiWindow();
 
-        this.guiMaker = ((IGuiMaker) tileEntity).getGuiMaker();
-
-        if (this.guiMaker == null) {
+        if (this.baseContainer == null) {
             FireLib.instance.getLogger().fatal("GuiMaker is returning a null instance, this is a problem...");
         }
 
@@ -48,23 +47,21 @@ public class GuiMakerGuiContainer extends GuiContainer {
 
     @Override
     public void initGui() {
-        GuiBaseContainer baseContainer = guiMaker.getGuiContainer();
-
         this.xSize = baseContainer.getWidth();
         this.ySize = baseContainer.getHeight();
 
         super.initGui();
 
-        guiMaker.getGuiContainer().setGuiMaker(this.guiMaker);
-        guiMaker.getGuiContainer().setGuiContainer(this);
-        guiMaker.getGuiContainer().initGui();
+        //guiMaker.getGuiContainer().setGuiMaker(this.guiMaker);
+        baseContainer.setGuiContainer(this);
+        baseContainer.initGui();
     }
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         scissorCut(this.guiLeft, this.guiTop, this.xSize, this.ySize);
 
-        guiMaker.getGuiContainer().drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+        baseContainer.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
 
         scissorsEnd();
     }
@@ -75,7 +72,7 @@ public class GuiMakerGuiContainer extends GuiContainer {
 
         scissorCut(this.guiLeft + 2, this.guiTop + 2, this.xSize - 4, this.ySize - 4);
 
-        guiMaker.getGuiContainer().drawGuiContainerForegroundLayer(mouseX, mouseY);
+        baseContainer.drawGuiContainerForegroundLayer(mouseX, mouseY);
 
         scissorsEnd();
     }
@@ -85,35 +82,35 @@ public class GuiMakerGuiContainer extends GuiContainer {
         this.drawDefaultBackground();
         super.drawScreen(mouseX, mouseY, partialTicks);
 
-        guiMaker.getGuiContainer().drawScreen(mouseX, mouseY, partialTicks);
+        baseContainer.drawScreen(mouseX, mouseY, partialTicks);
     }
 
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
         super.mouseClicked(mouseX, mouseY, mouseButton);
 
-        guiMaker.getGuiContainer().mouseClicked(mouseX, mouseY, mouseButton);
+        baseContainer.mouseClicked(mouseX, mouseY, mouseButton);
     }
 
     @Override
     protected void keyTyped(char typedChar, int keyCode) throws IOException {
         super.keyTyped(typedChar, keyCode);
 
-        guiMaker.getGuiContainer().keyTyped(typedChar, keyCode);
+        baseContainer.keyTyped(typedChar, keyCode);
     }
 
     @Override
     public void onGuiClosed() {
         super.onGuiClosed();
 
-        guiMaker.getGuiContainer().onGuiClosed();
+        baseContainer.onGuiClosed();
     }
 
     @Override
     public void updateScreen() {
         super.updateScreen();
 
-        guiMaker.getGuiContainer().updateScreen();
+        baseContainer.updateScreen();
     }
 
     @SideOnly(Side.CLIENT)

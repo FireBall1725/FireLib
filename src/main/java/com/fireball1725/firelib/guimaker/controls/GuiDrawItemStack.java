@@ -34,11 +34,9 @@ public class GuiDrawItemStack extends GuiBaseControl {
     private boolean showItemToolTip = true;
 
     public GuiDrawItemStack(String controlName) {
-        super(controlName);
-        this.setSize(16, 16);
+        super(controlName, 16, 16);
+        //this.setSize(16, 16);
 
-        this.addGuiControlOption(GuiControlOption.SUPPORTS_HOVER);
-        this.addGuiControlOption(GuiControlOption.SUPPORTS_SCALE);
     }
 
     public void addItemStack(ItemStack itemStack) {
@@ -79,40 +77,40 @@ public class GuiDrawItemStack extends GuiBaseControl {
         return false;
     }
 
-    @Override
-    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-        super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+//    @Override
+//    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+//        super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+//
+//        RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
+//
+//        ItemStack itemStack = this.itemStacks.get(displayID);
+//
+//        GlStateManager.pushMatrix();
+//
+//        GlStateManager.enableDepth();
+//        RenderHelper.enableGUIStandardItemLighting();
+//
+//        renderItem.renderItemAndEffectIntoGUI(itemStack, this.getContainerLeft(), this.getContainerTop());
+//
+//        GlStateManager.popMatrix();
+//
+//        if (System.currentTimeMillis() > this.displayTime + 1500) {
+//            this.displayTime = System.currentTimeMillis();
+//            displayID = (++displayID) % itemStacks.size();
+//        }
+//
+//
+//    }
 
-        RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
-
-        ItemStack itemStack = this.itemStacks.get(displayID);
-
-        GlStateManager.pushMatrix();
-
-        GlStateManager.enableDepth();
-        RenderHelper.enableGUIStandardItemLighting();
-
-        renderItem.renderItemAndEffectIntoGUI(itemStack, this.getContainerLeft(), this.getContainerTop());
-
-        GlStateManager.popMatrix();
-
-        if (System.currentTimeMillis() > this.displayTime + 1500) {
-            this.displayTime = System.currentTimeMillis();
-            displayID = (++displayID) % itemStacks.size();
-        }
-
-
-    }
-
-    @Override
-    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        super.drawScreen(mouseX, mouseY, partialTicks);
-
-        if (this.showItemToolTip && this.hasGuiControlState(GuiControlState.HOVERED)) {
-            List<String> toolTip = ToolTipHelper.getItemStackToolTip(this.itemStacks.get(displayID));
-
-            GuiUtils.drawHoveringText(this.itemStacks.get(displayID), toolTip, mouseX, mouseY, this.guiContainer.width, this.guiContainer.height, 200, Minecraft.getMinecraft().fontRenderer);
-            //todo: make a better hover text helper...
-        }
-    }
+//    @Override
+//    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+//        super.drawScreen(mouseX, mouseY, partialTicks);
+//
+//        if (this.showItemToolTip && this.hasGuiControlState(GuiControlState.HOVERED)) {
+//            List<String> toolTip = ToolTipHelper.getItemStackToolTip(this.itemStacks.get(displayID));
+//
+//            GuiUtils.drawHoveringText(this.itemStacks.get(displayID), toolTip, mouseX, mouseY, this.guiContainer.width, this.guiContainer.height, 200, Minecraft.getMinecraft().fontRenderer);
+//            //todo: make a better hover text helper...
+//        }
+//    }
 }

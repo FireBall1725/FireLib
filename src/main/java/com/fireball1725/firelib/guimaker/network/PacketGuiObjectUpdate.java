@@ -10,6 +10,9 @@
 
 package com.fireball1725.firelib.guimaker.network;
 
+import com.fireball1725.firelib.FireLib;
+import com.fireball1725.firelib.guimaker.GuiMaker;
+import com.fireball1725.firelib.guimaker.base.GuiBaseContainer;
 import com.fireball1725.firelib.guimaker.base.GuiObject;
 import com.fireball1725.firelib.guimaker.util.IGuiMaker;
 import com.fireball1725.firelib.guimaker.util.NetworkHelper;
@@ -26,6 +29,8 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
+
+import java.util.ArrayList;
 
 public class PacketGuiObjectUpdate implements IMessage {
     public String controlName;
@@ -81,14 +86,21 @@ public class PacketGuiObjectUpdate implements IMessage {
                 return;
             }
 
-            for (GuiObject guiObject : ((IGuiMaker) tileEntity).getGuiMaker().getGuiContainer().getGuiObjects()) {
+            findControl(((IGuiMaker)tileEntity).getGuiWindow().getGuiObjects(), packetGuiObjectUpdate, tileEntity);
+
+            tileEntity.markDirty();
+        }
+
+        private void findControl (ArrayList<GuiObject> guiObjectArrayList, PacketGuiObjectUpdate packetGuiObjectUpdate, TileEntity tileEntity) {
+            for (GuiObject guiObject : guiObjectArrayList) {
+                if (guiObject instanceof GuiBaseContainer) {
+                    findControl(((GuiBaseContainer) guiObject).getGuiObjects(), packetGuiObjectUpdate, tileEntity);
+                }
                 if (guiObject.getControlName().equals(packetGuiObjectUpdate.controlName)) {
                     guiObject.readNBT(packetGuiObjectUpdate.controlTagCompound);
                     ((IGuiMaker) tileEntity).guiControlInteraction(packetGuiObjectUpdate.controlName, packetGuiObjectUpdate.controlTagCompound);
                 }
             }
-
-            tileEntity.markDirty();
         }
 
         private TileEntity getServerSideTileEntity(PacketGuiObjectUpdate packetGuiObjectUpdate, MessageContext messageContext) {

@@ -11,6 +11,7 @@
 package com.fireball1725.firelib.guimaker;
 
 import com.fireball1725.firelib.FireLib;
+import com.fireball1725.firelib.guimaker.base.GuiBaseContainer;
 import com.fireball1725.firelib.guimaker.base.GuiObject;
 import com.fireball1725.firelib.guimaker.util.IGuiMaker;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,14 +27,14 @@ import java.util.ArrayList;
 public class GuiMakerContainer extends Container {
     private final InventoryPlayer inventoryPlayer;
     private final TileEntity tileEntity;
-    private final GuiMaker guiMaker;
+    private final GuiBaseContainer baseContainer;
 
     public GuiMakerContainer(InventoryPlayer inventoryPlayer, TileEntity tileEntity, int id) {
         this.inventoryPlayer = inventoryPlayer;
         this.tileEntity = tileEntity;
-        this.guiMaker = ((IGuiMaker) tileEntity).getGuiMaker();
+        this.baseContainer = ((IGuiMaker)tileEntity).getGuiWindow();
 
-        if (this.guiMaker == null) {
+        if (this.baseContainer == null) {
             FireLib.instance.getLogger().fatal("GuiMaker is returning a null instance, this is a problem...");
         }
 
@@ -44,11 +45,11 @@ public class GuiMakerContainer extends Container {
         this.inventoryItemStacks.clear();
         this.inventorySlots.clear();
 
-        ArrayList<GuiObject> guiObjects = guiMaker.getGuiContainer().getGuiObjects();
+        ArrayList<GuiObject> guiObjects = baseContainer.getGuiObjects();
 
         for (GuiObject guiObject : guiObjects) {
             if (guiObject != null) {
-                guiObject.setGuiMaker(this.guiMaker);
+                //guiObject.setGuiMaker(this.guiMaker);
             }
         }
     }

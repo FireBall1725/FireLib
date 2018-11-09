@@ -11,52 +11,51 @@
 package com.fireball1725.testmod.common.tileentities;
 
 import com.fireball1725.firelib.guimaker.GuiMaker;
+import com.fireball1725.firelib.guimaker.base.GuiBaseContainer;
 import com.fireball1725.firelib.guimaker.containers.GuiWindow;
 import com.fireball1725.firelib.guimaker.controls.GuiCheckbox;
 import com.fireball1725.firelib.guimaker.controls.GuiDrawItemStack;
+import com.fireball1725.firelib.guimaker.controls.GuiLabel;
 import com.fireball1725.firelib.guimaker.util.IGuiMaker;
 import com.fireball1725.firelib.tileentities.TileEntityBase;
 import com.fireball1725.testmod.TestMod;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ITickable;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class TileEntityTestBlock2 extends TileEntityBase implements IGuiMaker {
-    public GuiWindow guiWindow = new GuiWindow("window", 200, 200);
-    public GuiMaker guiMaker = new GuiMaker(guiWindow);
+public class TileEntityTestBlock2 extends TileEntityBase implements IGuiMaker, ITickable {
+    // Gui Stuff
+    GuiWindow mainWindow = new GuiWindow("MainWindow", 200, 200);
+    GuiLabel labelWindowTitle = new GuiLabel("Label");
+    GuiCheckbox checkboxTest = new GuiCheckbox("TestCheckBox");
 
-    public GuiCheckbox guiCheckbox = new GuiCheckbox("test button 1");
-    public GuiCheckbox guiCheckbox2 = new GuiCheckbox("test button 2");
-    public GuiDrawItemStack guiDrawItemStack = new GuiDrawItemStack("test stack");
+    GuiWindow testWindow = new GuiWindow("TestWindow", 100, 20);
+    GuiCheckbox checkboxTest2 = new GuiCheckbox("TestCheckBox2");
 
     private int test = 0;
 
     public TileEntityTestBlock2() {
-        //guiWindow = new GuiWindow("window", 100, 40);
+        labelWindowTitle.setLabel("Hello World");
+        //labelWindowTitle.setLocation(2, 2);
+        labelWindowTitle.setColor(0xFF69B4);
+        labelWindowTitle.setLeft(10);
+        labelWindowTitle.setTop(50);
+        mainWindow.addGuiObject(labelWindowTitle);
 
-        //guiMaker = new GuiMaker(guiWindow);
+        //checkboxTest.setLocation(2, 10);
+        checkboxTest.setLeft(30);
+        mainWindow.addGuiObject(checkboxTest);
 
-        //guiCheckbox = new GuiCheckbox("test button 1");
-        guiCheckbox.setLocation(4, 4);
-        guiCheckbox.setLabel("Test Checkbox", 0xff69b4);
-        guiWindow.addGuiObject(guiCheckbox);
+        //checkboxTest2.setLocation(2, 2);
+        testWindow.addGuiObject(checkboxTest2);
 
-        //guiCheckbox2 = new GuiCheckbox("test button 2");
-        guiCheckbox2.setLocation(4, 20);
-        guiWindow.addGuiObject(guiCheckbox2);
+        testWindow.setLeft(10);
+        testWindow.setTop(20);
 
-        guiDrawItemStack.setLocation(20, 20);
-        guiDrawItemStack.addItemStack(OreDictionary.getOres("slimeball"));
-        guiDrawItemStack.addItemStack(OreDictionary.getOres("logWood"));
-        guiDrawItemStack.addItemStack(OreDictionary.getOres("dye"));
-        guiDrawItemStack.setScale(0.5f);
-        guiWindow.addGuiObject(guiDrawItemStack);
-    }
-
-
-
-    @Override
-    public GuiMaker getGuiMaker() {
-        return guiMaker;
+        mainWindow.addGuiObject(testWindow);
     }
 
     @Override
@@ -68,6 +67,15 @@ public class TileEntityTestBlock2 extends TileEntityBase implements IGuiMaker {
     public void guiControlInteraction(String guiControlName, NBTTagCompound nbtTagCompound) {
         TestMod.instance.getLogger().info(">>> INTERACTION " + guiControlName);
         // todo something here...
+
+        if (guiControlName.equals("testcheckbox")) {
+            testWindow.setContainerVisible(checkboxTest.isChecked());
+        }
+    }
+
+    @Override
+    public GuiBaseContainer getGuiWindow() {
+        return mainWindow;
     }
 
     @Override
@@ -82,5 +90,10 @@ public class TileEntityTestBlock2 extends TileEntityBase implements IGuiMaker {
         compound.setInteger("test", test);
 
         return super.writeToNBT(compound);
+    }
+
+    @Override
+    public void update() {
+
     }
 }

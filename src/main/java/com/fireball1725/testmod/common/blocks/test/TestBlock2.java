@@ -11,11 +11,14 @@
 package com.fireball1725.testmod.common.blocks.test;
 
 import com.fireball1725.firelib.blocks.BlockTileBase;
+import com.fireball1725.firelib.guimaker.GuiMaker;
+import com.fireball1725.firelib.guimaker.util.IGuiMaker;
 import com.fireball1725.firelib.util.TileHelper;
 import com.fireball1725.testmod.TestMod;
 import com.fireball1725.testmod.common.tileentities.TileEntityTestBlock2;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -48,8 +51,29 @@ public class TestBlock2 extends BlockTileBase {
             return false;
         }
 
-        te.getGuiMaker().show(worldIn, playerIn, pos);
+        GuiMaker.showGui(worldIn, playerIn, pos);
 
         return true;
+    }
+
+    @Override
+    public boolean canRotate() {
+        return true;
+    }
+
+    @Override
+    protected void onStartFalling(EntityFallingBlock fallingEntity) {
+        super.onStartFalling(fallingEntity);
+
+        TileEntityTestBlock2 te = TileHelper.getTileEntity(fallingEntity.world, new BlockPos(fallingEntity.prevPosX, fallingEntity.prevPosY, fallingEntity.prevPosZ), TileEntityTestBlock2.class);
+
+        if (te == null)
+            TestMod.instance.getLogger().info(">>> TE is null");
+        else
+            TestMod.instance.getLogger().info(">>> TE is not null");
+
+        TestMod.instance.getLogger().info(">>> Block Falling...");
+
+        fallingEntity.setGlowing(true);
     }
 }

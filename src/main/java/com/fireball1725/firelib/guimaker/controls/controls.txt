@@ -1,0 +1,48 @@
+Checkbox
+Button
+Radio Button
+
+Text Box
+
+Slider
+
+Slot
+
+Label
+
+
+
+
+
+
+
+
+Base Control
+
+ID [FINAL]
+Location (x, y)
+Control Size (h, w) [FINAL]
+Size (h, w)
+Visible (bool)
+Enabled (bool)
+
+Parent
+
+
+bool isHovered()
+bool isVisible()
+bool isEnabled()
+
+
+
++-------------------+
+|[x]                |
+|                   |
+|                   |
+|   +-----------+   |
+|   |[x]        |   |
+|   |           |   |
+|   +-----------+   |
+|                   |
+|                   |
++-------------------+

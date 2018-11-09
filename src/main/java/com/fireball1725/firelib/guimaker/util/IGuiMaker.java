@@ -11,12 +11,14 @@
 package com.fireball1725.firelib.guimaker.util;
 
 import com.fireball1725.firelib.guimaker.GuiMaker;
+import com.fireball1725.firelib.guimaker.base.GuiBaseContainer;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.nbt.NBTTagCompound;
 
 public interface IGuiMaker {
-    GuiMaker getGuiMaker();
-
     boolean canInteractWith();
 
     void guiControlInteraction(String guiControlName, NBTTagCompound nbtTagCompound);
+
+    GuiBaseContainer getGuiWindow();
 }

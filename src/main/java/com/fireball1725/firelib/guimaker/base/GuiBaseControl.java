@@ -28,73 +28,66 @@ import java.util.ArrayList;
 
 public abstract class GuiBaseControl extends GuiObject {
 
+    private final int controlWidth, controlHeight;
+    private boolean controlVisible = true;
+    private boolean controlEnabled = true;
+    private float scaleX, scaleY, scaleZ;
+    private boolean controlHovered;
 
-    public GuiBaseControl(String controlName) {
+    public GuiBaseControl(String controlName, int controlWidth, int controlHeight) {
         super(controlName);
+        this.controlWidth = controlWidth;
+        this.controlHeight = controlHeight;
+        this.setWidth(controlWidth);
+        this.setHeight(controlHeight);
     }
 
+    public GuiBaseControl(String controlName, int left, int top, int controlWidth, int controlHeight) {
+        super(controlName, left, top);
+        this.controlWidth = controlWidth;
+        this.controlHeight = controlHeight;
+        this.setWidth(controlWidth);
+        this.setHeight(controlHeight);
+    }
 
+    public GuiBaseControl(String controlName, int left, int top, int width, int height, int controlWidth, int controlHeight) {
+        super(controlName, left, top, width, height);
+        this.controlWidth = controlWidth;
+        this.controlHeight = controlHeight;
+        this.setWidth(controlWidth);
+        this.setHeight(controlHeight);
+    }
+
+    public boolean isControlHovered() {
+        return controlHovered;
+    }
+
+    public boolean isControlVisible() {
+        return controlVisible;
+    }
+
+    public void setControlVisible(boolean controlVisible) {
+        this.controlVisible = controlVisible;
+    }
+
+    public boolean isControlEnabled() {
+        return controlEnabled;
+    }
+
+    public void setControlEnabled(boolean controlEnabled) {
+        this.controlEnabled = controlEnabled;
+    }
 
     @SideOnly(Side.CLIENT)
     @Override
     public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
 
-        if (this.hasGuiControlState(GuiControlState.INVISIBLE)) {
+        if (!this.controlVisible) {
             return;
         }
 
-        // todo: check if control supports hover state...
-
-        Rectangle rectangle = new Rectangle(this.getUnscaledLeft(), this.getUnscaledTop(), this.getHeight(), this.getWidth());
-        boolean mouseOver = rectangle.contains(mouseX, mouseY);
-
-        if (mouseOver && this.hasGuiControlOption(GuiControlOption.SUPPORTS_HOVER)) {
-            this.addGuiControlState(GuiControlState.HOVERED);
-        } else {
-            this.removeGuiControlState(GuiControlState.HOVERED);
-        }
-
-    }
-
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-        super.mouseClicked(mouseX, mouseY, mouseButton);
-
-        if (this.hasGuiControlState(GuiControlState.INVISIBLE)) {
-            return;
-        }
-
-        TileEntity te = ((GuiMakerGuiContainer) guiContainer).getTileEntity();
-
-        Rectangle rectangle = new Rectangle(this.getUnscaledLeft(), this.getUnscaledTop(), this.getHeight(), this.getWidth());
-        boolean mouseOver = rectangle.contains(mouseX, mouseY);
-        boolean sendPacket = false;
-
-        // Handle toggle
-        if (mouseOver && mouseButton == 0 && this.hasGuiControlOption(GuiControlOption.SUPPORTS_TOGGLE)) {
-            boolean toggleState = this.hasGuiControlState(GuiControlState.SELECTED);
-
-            if (toggleState) {
-                this.removeGuiControlState(GuiControlState.SELECTED);
-            } else {
-                this.addGuiControlState(GuiControlState.SELECTED);
-            }
-
-            sendPacket = true;
-        }
-
-        // Handle click
-        if (mouseOver && mouseButton == 0 && this.hasGuiControlOption(GuiControlOption.SUPPORTS_CLICK)) {
-            sendPacket = true;
-        }
-
-        if (sendPacket) {
-            PacketGuiObjectUpdate packetGuiObjectUpdate = new PacketGuiObjectUpdate(this.controlName, this.writeNBT(), te.getPos());
-            PacketHandler.NETWORK_INSTANCE.sendToServer(packetGuiObjectUpdate);
-
-            Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));
-        }
+        Rectangle rectangle = new Rectangle(this.getLeft(), this.getTop(), this.getWidth(), this.getHeight());
+        this.controlHovered = rectangle.contains(mouseX, mouseY);
     }
 }

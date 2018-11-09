@@ -11,15 +11,11 @@
 package com.fireball1725.firelib.guimaker.capability;
 
 import com.fireball1725.firelib.guimaker.GuiMaker;
+import com.fireball1725.firelib.guimaker.base.GuiBaseContainer;
 import com.fireball1725.firelib.guimaker.util.IGuiMaker;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class GuiMakerCapability implements IGuiMaker {
-    @Override
-    public GuiMaker getGuiMaker() {
-        return null;
-    }
-
     @Override
     public boolean canInteractWith() {
         return false;
@@ -29,4 +25,10 @@ public class GuiMakerCapability implements IGuiMaker {
     public void guiControlInteraction(String guiControlName, NBTTagCompound nbtTagCompound) {
 
     }
+
+    @Override
+    public GuiBaseContainer getGuiWindow() {
+        return null;
+    }
+
 }

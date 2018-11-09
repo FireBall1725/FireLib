@@ -24,9 +24,7 @@ public class GuiLabel extends GuiBaseControl implements IGuiObject {
     public int color = 0;
 
     public GuiLabel(String controlName) {
-        super(controlName);
-
-        this.addGuiControlOption(GuiControlOption.SUPPORTS_SCALE);
+        super(controlName, -1, 12);
     }
 
     @SideOnly(Side.CLIENT)
@@ -35,10 +33,10 @@ public class GuiLabel extends GuiBaseControl implements IGuiObject {
         super.drawGuiContainerForegroundLayer(mouseX, mouseY);
 
         FontRenderer font = Minecraft.getMinecraft().fontRenderer;
-        boolean oldUnicode = font.getUnicodeFlag();
-        font.setUnicodeFlag(false);
-        font.drawString(this.label, this.getLeft(), this.getTop(), this.color, true);
-        font.setUnicodeFlag(oldUnicode);
+        //boolean oldUnicode = font.getUnicodeFlag();
+        //font.setUnicodeFlag(false); //todo: actually look this setting up...
+        font.drawString(this.label, this.getForegroundLeft(), this.getForegroundTop(), this.color, true);
+        //font.setUnicodeFlag(oldUnicode);
     }
 
     public String getLabel() {

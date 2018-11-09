@@ -31,27 +31,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class GuiObject implements IGuiObject {
+    //todo: this really needs to be fixed...
     protected final ResourceLocation DarkSkin = new ResourceLocation("firelib", "textures/gui/dark.png");
-    protected final String controlName;
-    protected GuiMaker guiMaker;
+
     @SideOnly(Side.CLIENT)
     protected GuiContainer guiContainer;
     private GuiObject parent;
-    private int x;
-    private int y;
-    private int w;
-    private int h;
-    private float scale = 1.0f;
-    private ArrayList<GuiControlState> controlStates = new ArrayList<>();
-    private ArrayList<GuiControlOption> controlOptions = new ArrayList<>();
+    protected final String controlName;
+    private int left, top, width, height;
 
     public GuiObject(String controlName) {
-        // Set the control name
         this.controlName = controlName.toLowerCase().replace(' ', '-');
     }
 
-    public void setGuiMaker(GuiMaker guiMaker) {
-        this.guiMaker = guiMaker;
+    public GuiObject(String controlName, int left, int top) {
+        this(controlName);
+        this.left = left;
+        this.top = top;
+    }
+
+    public GuiObject(String controlName, int left, int top, int width, int height) {
+        this(controlName, left, top);
+        this.width = width;
+        this.height = height;
     }
 
     @SideOnly(Side.CLIENT)
@@ -59,131 +61,80 @@ public abstract class GuiObject implements IGuiObject {
         this.guiContainer = guiContainer;
     }
 
-    public void setParent(GuiObject guiObject) {
-        this.parent = guiObject;
+    public GuiObject getParent() {
+        return parent;
     }
 
-    public void setLocation(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public void setSize(int w, int h) {
-        this.w = w;
-        this.h = h;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public void setWidth(int w) {
-        this.w = w;
-    }
-
-    public void setHeight(int h) {
-        this.h = h;
-    }
-
-    public void setScale(float scale) {
-        if (hasGuiControlOption(GuiControlOption.SUPPORTS_SCALE)) {
-            this.scale = scale;
-        }
-    }
-
-    public float getScale() {
-        return this.scale;
-    }
-
-    public boolean isScaled() {
-        return !(this.scale == 1.0f);
-    }
-
-    public void addGuiControlState(GuiControlState guiControlState) {
-        if (!hasGuiControlState(guiControlState)) {
-            this.controlStates.add(guiControlState);
-        }
-    }
-
-    public void removeGuiControlState(GuiControlState guiControlState) {
-        if (hasGuiControlState(guiControlState)) {
-            this.controlStates.remove(guiControlState);
-        }
-    }
-
-    public boolean hasGuiControlState(GuiControlState guiControlState) {
-        return this.controlStates.contains(guiControlState);
-    }
-
-    protected void addGuiControlOption(GuiControlOption guiControlOption) {
-        if (!hasGuiControlOption(guiControlOption)) {
-            this.controlOptions.add(guiControlOption);
-        }
-    }
-
-    // todo: not sure if this is needed...
-    protected void removeGuiControlOption(GuiControlOption guiControlOption) {
-        if (hasGuiControlOption(guiControlOption)) {
-            this.controlOptions.remove(guiControlOption);
-        }
-    }
-
-    protected boolean hasGuiControlOption(GuiControlOption guiControlOption) {
-        return this.controlOptions.contains(guiControlOption);
-    }
-
-    public int getWidth() {
-        //todo: scale..
-
-        return Math.round(this.w * scale);
-    }
-
-    public int getHeight() {
-        // todo: scale
-
-        return Math.round(this.h * scale);
-    }
-
-    public int getContainerLeft() {
-        // todo: scale / scroll
-
-        int parentLeft = this.parent == null ? 0 : this.parent.x;
-        return Math.round((this.guiContainer.getGuiLeft() + this.x) / scale) + parentLeft;
-    }
-
-    public int getContainerTop() {
-        // todo: scale / scroll
-
-        int parentTop = this.parent == null ? 0 : this.parent.y;
-        return Math.round((this.guiContainer.getGuiTop() + this.y) / scale) + parentTop;
-    }
-
-    public int getUnscaledLeft() {
-        int parentLeft = this.parent == null ? 0 : this.parent.x;
-        return this.guiContainer.getGuiLeft() + this.x + parentLeft;
-    }
-
-    public int getUnscaledTop() {
-        int parentTop = this.parent == null ? 0 : this.parent.y;
-        return this.guiContainer.getGuiTop() + this.y + parentTop;
+    public void setParent(GuiObject parent) {
+        this.parent = parent;
     }
 
     public int getLeft() {
-        // todo: scale / scroll
+        int padding = this.parent == null ? this.guiContainer.getGuiLeft() : this.parent.getLeft();
+        if (this.parent instanceof GuiBaseContainer) {
+            padding += ((GuiBaseContainer)this.parent).getPaddingLeft();
+        }
+        return left + padding;
+    }
 
-        int parentLeft = this.parent == null ? 0 : this.parent.x;
-        return Math.round(this.x / scale) + parentLeft;
+    public int getForegroundLeft() {
+        int padding = this.parent == null ? 0 : this.parent.getForegroundLeft();
+        if (this.parent instanceof GuiBaseContainer) {
+            padding += ((GuiBaseContainer)this.parent).getPaddingLeft();
+        }
+        return left + padding;
+    }
+
+    public void setLeft(int left) {
+        this.left = left;
     }
 
     public int getTop() {
-        // todo: scale / scroll
+        int padding = this.parent == null ? this.guiContainer.getGuiTop() : this.parent.getTop();
+        if (this.parent instanceof GuiBaseContainer) {
+            padding += ((GuiBaseContainer)this.parent).getPaddingTop();
+        }
+        return top + padding;
+    }
 
-        int parentTop = this.parent == null ? 0 : this.parent.y;
-        return Math.round(this.y / scale) + parentTop;
+    public int getForegroundTop() {
+        int padding = this.parent == null ? 0 : this.parent.getForegroundTop();
+        if (this.parent instanceof GuiBaseContainer) {
+            padding += ((GuiBaseContainer)this.parent).getPaddingTop();
+        }
+        return top + padding;
+    }
+
+    public void setTop(int top) {
+        this.top = top;
+    }
+
+    public int getWidth() {
+        int paddingLeft = 0;
+        int paddingRight = 0;
+        if (this.parent instanceof GuiBaseContainer) {
+            paddingLeft = ((GuiBaseContainer)this.parent).getPaddingLeft();
+            paddingRight = ((GuiBaseContainer)this.parent).getPaddingRight();
+        }
+        return width;// - paddingLeft - paddingRight;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        int paddingTop = 0;
+        int paddingBottom = 0;
+        if (this.parent instanceof GuiBaseContainer) {
+            paddingTop = ((GuiBaseContainer)this.parent).getPaddingTop();
+            paddingBottom = ((GuiBaseContainer)this.parent).getPaddingBottom();
+        }
+        return height;//- paddingTop - paddingBottom;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     @SideOnly(Side.CLIENT)

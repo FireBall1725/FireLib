@@ -18,24 +18,52 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class GuiBaseContainer extends GuiObject {
+    private final int paddingLeft, paddingTop, paddingBottom, paddingRight;
     protected int zLevel = 1;
-    private int scrollOffsetX = 0;
-    private int scrollOffsetY = 0;
     private ArrayList<GuiObject> guiObjects = new ArrayList<>();
+    private boolean containerVisible = true;
 
-    public GuiBaseContainer(String controlName) {
+    public boolean isContainerVisible() {
+        return containerVisible;
+    }
+
+    public void setContainerVisible(boolean containerVisible) {
+        this.containerVisible = containerVisible;
+    }
+
+    public GuiBaseContainer(String controlName, int paddingLeft, int paddingTop, int paddingBottom, int paddingRight) {
         super(controlName);
+        this.paddingLeft = paddingLeft;
+        this.paddingTop = paddingTop;
+        this.paddingBottom = paddingBottom;
+        this.paddingRight = paddingRight;
     }
 
     public void addGuiObject(GuiObject guiObject) {
         if (guiObject != null) {
+            guiObject.setParent(this);
             this.guiObjects.add(guiObject);
-            this.setParent(this);
 
             if (guiObject instanceof GuiBaseContainer) {
                 ((GuiBaseContainer) guiObject).zLevel += 10;
             }
         }
+    }
+
+    public int getPaddingLeft() {
+        return paddingLeft;
+    }
+
+    public int getPaddingTop() {
+        return paddingTop;
+    }
+
+    public int getPaddingBottom() {
+        return paddingBottom;
+    }
+
+    public int getPaddingRight() {
+        return paddingRight;
     }
 
     public ArrayList<GuiObject> getGuiObjects() {
@@ -49,7 +77,7 @@ public abstract class GuiBaseContainer extends GuiObject {
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
-                guiObject.setGuiMaker(this.guiMaker);
+                //guiObject.setGuiMaker(this.guiMaker);
                 guiObject.setGuiContainer(this.guiContainer);
 
                 guiObject.initGui();
@@ -76,14 +104,7 @@ public abstract class GuiBaseContainer extends GuiObject {
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
-                if (guiObject.isScaled()) {
-                    GlStateManager.pushMatrix();
-                    GlStateManager.scale(guiObject.getScale(), guiObject.getScale(), guiObject.getScale());
-                    guiObject.drawGuiContainerForegroundLayer(mouseX, mouseY);
-                    GlStateManager.popMatrix();
-                } else {
-                    guiObject.drawGuiContainerForegroundLayer(mouseX, mouseY);
-                }
+                guiObject.drawGuiContainerForegroundLayer(mouseX, mouseY);
             }
         }
     }
@@ -95,14 +116,7 @@ public abstract class GuiBaseContainer extends GuiObject {
 
         for (GuiObject guiObject : this.getGuiObjects()) {
             if (guiObject != null) {
-                if (guiObject.isScaled()) {
-                    GlStateManager.pushMatrix();
-                    GlStateManager.scale(guiObject.getScale(), guiObject.getScale(), guiObject.getScale());
-                    guiObject.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
-                    GlStateManager.popMatrix();
-                } else {
-                    guiObject.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
-                }
+                guiObject.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
             }
         }
 

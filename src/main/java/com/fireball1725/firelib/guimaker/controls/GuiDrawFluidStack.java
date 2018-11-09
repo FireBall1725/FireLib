@@ -10,5 +10,45 @@
 
 package com.fireball1725.firelib.guimaker.controls;
 
-public class GuiDrawFluidStack {
+import com.fireball1725.firelib.guimaker.base.GuiBaseControl;
+import com.fireball1725.firelib.guimaker.util.GuiControlOption;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderItem;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.block.model.ModelManager;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.init.Blocks;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.client.config.GuiUtils;
+import org.lwjgl.opengl.GL11;
+
+public class GuiDrawFluidStack extends GuiBaseControl {
+    public GuiDrawFluidStack(String controlName) {
+        super(controlName, 16, 16);
+    }
+
+    @Override
+    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+        super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+
+        FluidStack fluidStack = new FluidStack(FluidRegistry.WATER, 1);
+        Fluid fluid = fluidStack.getFluid();
+        TextureAtlasSprite sprite = Minecraft.getMinecraft().getTextureMapBlocks().getTextureExtry(fluid.getStill().toString());
+        int color = fluid.getColor(fluidStack);
+
+        Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
+
+        Tessellator tessellator = Tessellator.getInstance();
+        BufferBuilder renderer = tessellator.getBuffer();
+
+        GlStateManager.disableBlend();
+        tessellator.draw();
+
+    }
 }

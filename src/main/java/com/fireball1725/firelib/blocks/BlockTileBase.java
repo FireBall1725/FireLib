@@ -64,6 +64,8 @@ public class BlockTileBase extends BlockBase implements ITileEntityProvider {
 
     @Override
     public void onBlockPlacedBy(World world, BlockPos blockPos, IBlockState state, EntityLivingBase placer, ItemStack itemStack) {
+        super.onBlockPlacedBy(world, blockPos, state, placer, itemStack);
+
         TileEntityBase tileEntity = TileHelper.getTileEntity(world, blockPos, TileEntityBase.class);
 
         if (tileEntity == null)

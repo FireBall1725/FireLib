@@ -28,32 +28,16 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.RegistryEvent;
 
 public class TestBlock extends BlockTileBase implements IProvideRecipe {
-    private GuiWindow guiWindow = new GuiWindow("Windows 95", 200, 100);
-    private GuiMaker guiMaker = new GuiMaker(guiWindow);
-    private GuiLabel guiLabel = new GuiLabel("label");
-    private GuiLabel guiLabel2 = new GuiLabel("label");
 
     public TestBlock() {
         super(Material.IRON, "testblock", TestMod.instance);
         this.setInternalName("testblock");
         this.setTileEntity(com.fireball1725.testmod.common.tileentities.TestBlock.class);
-
-        guiWindow.addGuiObject(guiLabel);
-        guiWindow.addGuiObject(guiLabel2);
-
-        guiLabel.setLocation(4, 4);
-        guiLabel.setLocation(4, 20);
-
-        guiLabel.setLabel("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel magna ac nunc congue egestas sed a erat. Nam a odio elementum, pharetra turpis sit amet, blandit magna. Fusce vestibulum risus enim, id porta");
-        guiLabel.setColor(0xFF69B4);
-
-        guiLabel2.setLabel("This is a test...");
-        guiLabel2.setColor(0xFFFFFF);
     }
 
     @Override
     public boolean hasGravity(World worldIn, BlockPos pos) {
-        return true;
+        return false;
     }
 
     @Override
@@ -72,11 +56,6 @@ public class TestBlock extends BlockTileBase implements IProvideRecipe {
         if (worldIn.isRemote) {
             return true;
         }
-
-        TileEntityTestBlock2 test = new TileEntityTestBlock2();
-
-
-        guiMaker.show(worldIn, playerIn, pos);
 
         return true;
     }

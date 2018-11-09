@@ -18,8 +18,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class GuiWindow extends GuiBaseContainer implements IGuiObject {
     public GuiWindow(String controlName, int width, int height) {
-        super(controlName);
-        this.setSize(width, height);
+        super(controlName, 4, 4, 4, 4);
+        this.setWidth(width);
+        this.setHeight(height);
     }
 
     @SideOnly(Side.CLIENT)
@@ -27,6 +28,9 @@ public class GuiWindow extends GuiBaseContainer implements IGuiObject {
     public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
 
-        GuiUtils.drawContinuousTexturedBox(this.DarkSkin, guiContainer.getGuiLeft(), guiContainer.getGuiTop(), 0, 0, this.getWidth(), this.getHeight(), 32, 32, 4, this.zLevel);
+        if (!this.isContainerVisible())
+            return;
+
+        GuiUtils.drawContinuousTexturedBox(this.DarkSkin, this.getLeft(), this.getTop(), 0, 0, this.getWidth(), this.getHeight(), 32, 32, 4, this.zLevel);
     }
 }
